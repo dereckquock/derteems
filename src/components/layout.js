@@ -1,7 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
+import { TransitionGroup, CSSTransition } from 'react-transition-group'
 import { StaticQuery, graphql, Link } from 'gatsby'
-import PageTransition from 'gatsby-plugin-page-transitions'
 import './layout.css'
 
 const styles = {
@@ -25,15 +25,13 @@ const pages = {
 
 const Layout = ({ children }) => {
   const { locations } = window
-  let transitionDirection = 'left'
+  const currentRoute = window.location.pathname.replace('/', '') || 'home'
+  let transitionDirection = 'Left'
 
   // determine the transition direction based on the previous tab/route
   if (locations.length > 1) {
-    if (
-      pages[locations[locations.length - 1]] >
-      pages[window.location.pathname.replace('/', '') || 'home']
-    ) {
-      transitionDirection = 'right'
+    if (pages[locations[locations.length - 1]] > pages[currentRoute]) {
+      transitionDirection = 'Right'
     }
   }
 
@@ -49,23 +47,16 @@ const Layout = ({ children }) => {
         }
       `}
       render={data => (
-        <div>
-          <PageTransition
-            defaultStyle={{
-              transition: `${transitionDirection} 250ms ease`,
-              [transitionDirection]: '100%',
-              position: 'absolute',
-              width: '100%',
-            }}
-            transitionStyles={{
-              entering: { [transitionDirection]: '0%' },
-              entered: { [transitionDirection]: '0%' },
-              exiting: { [transitionDirection]: '100%' },
-            }}
-            transitionTime={250}
-          >
-            {children}
-          </PageTransition>
+        <>
+          <TransitionGroup>
+            <CSSTransition
+              key={currentRoute}
+              timeout={250}
+              classNames={`slide${transitionDirection}`}
+            >
+              {children}
+            </CSSTransition>
+          </TransitionGroup>
           <div
             style={{
               width: '100%',
@@ -151,7 +142,7 @@ const Layout = ({ children }) => {
               </Link>
             </div>
           </div>
-        </div>
+        </>
       )}
     />
   )

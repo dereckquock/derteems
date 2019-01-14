@@ -28,6 +28,11 @@ module.exports = {
       },
     },
     'gatsby-plugin-offline',
-    'gatsby-plugin-page-transitions',
+    {
+      resolve: `gatsby-plugin-layout`,
+      options: {
+        component: require.resolve(`./src/components/layout`),
+      },
+    },
   ],
 }
