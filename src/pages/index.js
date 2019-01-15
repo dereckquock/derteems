@@ -20,7 +20,7 @@ const IndexPage = () => {
           css={{
             width: '100%',
             padding: '0 25%',
-            marginTop: -100,
+            marginTop: -200,
             position: 'absolute',
             top: '50%',
             textAlign: 'center',
@@ -33,11 +33,11 @@ const IndexPage = () => {
           <h1
             css={{
               width: '100%',
-              fontSize: 60,
+              fontSize: '6rem',
               fontWeight: 300,
               textShadow: '0 0 8px',
               '@media(max-width: 667px)': {
-                fontSize: 36,
+                fontSize: '4rem',
               },
             }}
           >
@@ -45,12 +45,12 @@ const IndexPage = () => {
           </h1>
           <h2
             css={{
-              fontSize: 50,
+              fontSize: '5rem',
               fontWeight: 300,
               letterSpacing: 20,
               textShadow: '0 0 8px',
               '@media(max-width: 667px)': {
-                fontSize: 30,
+                fontSize: '3rem',
               },
             }}
           >
