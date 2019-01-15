@@ -8,12 +8,12 @@ const styles = {
   tab: {
     padding: 12,
     display: 'grid',
-    background: '#000',
+    background: '#3E3D4D',
     color: '#fff',
     textDecoration: 'none',
   },
   activeTab: {
-    background: '#0070BA',
+    background: '#816D66',
   },
 }
 

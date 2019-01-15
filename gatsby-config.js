@@ -2,7 +2,7 @@ module.exports = {
   siteMetadata: {
     title: `D&F`,
     description: `Our wedding`,
-    author: `@dereck`,
+    author: `@dereckquock`,
   },
   plugins: [
     `gatsby-plugin-react-helmet`,
@@ -21,10 +21,10 @@ module.exports = {
         name: `Dereck & Fatima`,
         short_name: `D&F`,
         start_url: `/`,
-        background_color: `#000`,
-        theme_color: `#000`,
+        background_color: `#DDD3C9`,
+        theme_color: `#DDD3C9`,
         display: `standalone`,
-        icon: `src/images/gatsby-icon.png`, // This path is relative to the root of the site.
+        icon: `src/images/pup.png`, // This path is relative to the root of the site.
       },
     },
     'gatsby-plugin-offline',
