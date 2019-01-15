@@ -34,5 +34,14 @@ module.exports = {
         component: require.resolve(`./src/components/layout`),
       },
     },
+    {
+      resolve: 'gatsby-plugin-web-font-loader',
+      options: {
+        google: {
+          families: ['Petit Formal Script'],
+        },
+      },
+    },
+    `gatsby-plugin-glamor`,
   ],
 }

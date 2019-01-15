@@ -17,33 +17,40 @@ const IndexPage = () => {
         </div>
 
         <div
-          style={{
+          css={{
             width: '100%',
             padding: '0 25%',
             position: 'absolute',
-            top: '20vw',
+            top: '10rem',
             textAlign: 'center',
             color: '#fff',
+            '@media(max-width: 667px)': {
+              padding: '0 40px',
+            },
           }}
         >
           <h1
-            style={{
+            css={{
               width: '100%',
-              fontSize: '8vw',
+              fontSize: 60,
               fontWeight: 300,
               textShadow: '0 0 8px',
-              fontFamily:
-                '"HelveticaNeue-UltraLight", "Helvetica Neue Ultra Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif',
+              '@media(max-width: 667px)': {
+                fontSize: 36,
+              },
             }}
           >
-            MY BIG FAT QUOCK WEDDING COMING SOON
+            my big fat quock wedding coming soon
           </h1>
           <h2
-            style={{
-              fontSize: '6vw',
+            css={{
+              fontSize: 50,
               fontWeight: 300,
-              letterSpacing: 10,
+              letterSpacing: 20,
               textShadow: '0 0 8px',
+              '@media(max-width: 667px)': {
+                fontSize: 30,
+              },
             }}
           >
             11/02/19

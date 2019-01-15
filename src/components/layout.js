@@ -89,7 +89,7 @@ const Layout = ({ children }) => {
                     </g>
                   </svg>
                 </div>
-                Home
+                home
               </Link>
             </div>
             <div>
@@ -130,7 +130,7 @@ const Layout = ({ children }) => {
                     />
                   </svg>
                 </div>
-                The Wedding
+                wedding
               </Link>
             </div>
             <div>
@@ -143,7 +143,7 @@ const Layout = ({ children }) => {
                 <div style={{ height: 36, paddingTop: 6, fontSize: 26 }}>
                   💁‍♀️
                 </div>
-                Info
+                info
               </Link>
             </div>
           </div>
