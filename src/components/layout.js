@@ -73,7 +73,7 @@ const Layout = ({ children }) => {
                 activeStyle={styles.activeTab}
                 onClick={() => setCurrentPage('home')}
               >
-                <div>
+                <div style={{ height: 36 }}>
                   <svg
                     x="0px"
                     y="0px"
@@ -99,7 +99,7 @@ const Layout = ({ children }) => {
                 activeStyle={styles.activeTab}
                 onClick={() => setCurrentPage('wedding')}
               >
-                <div>
+                <div style={{ height: 36 }}>
                   <svg
                     x="0px"
                     y="0px"
