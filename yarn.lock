@@ -9173,6 +9173,14 @@ rc@^1.1.7:
     minimist "^1.2.0"
     strip-json-comments "~2.0.1"
 
+react-add-to-calendar-hoc@^1.0.7:
+  version "1.0.7"
+  resolved "https://registry.npmjs.org/react-add-to-calendar-hoc/-/react-add-to-calendar-hoc-1.0.7.tgz#564f86a835129c7e62cd921d34ada04c9bea311a"
+  integrity sha512-nJArRX32qfwrWAxVKBwRKwmGmQQDBeoynpvvXvYk5wO8+wvB824Vvzma0ArhQo2jAmN2xaFrJ2ivpElhC1DI8w==
+  dependencies:
+    core-js "^2.5.7"
+    prop-types "^15.6.2"
+
 react-dev-utils@^4.2.1:
   version "4.2.3"
   resolved "https://registry.yarnpkg.com/react-dev-utils/-/react-dev-utils-4.2.3.tgz#5b42d9ea58d5e9e017a2f57a40a8af408a3a46fb"

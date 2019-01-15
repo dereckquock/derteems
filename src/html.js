@@ -23,12 +23,6 @@ export default class HTML extends React.Component {
           />
           {this.props.postBodyComponents}
         </body>
-        <script
-          type="text/javascript"
-          src="https://addevent.com/libs/atc/1.6.1/atc.min.js"
-          async
-          defer
-        />
       </html>
     )
   }

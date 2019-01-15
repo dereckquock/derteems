@@ -1,5 +1,60 @@
 import React from 'react'
+import AddToCalendarHOC from 'react-add-to-calendar-hoc'
 import SEO from '../components/seo'
+
+const event = {
+  title: `Dereck and Fatima's Wedding`,
+  description: 'Celebrate with us! 🍾',
+  location: 'California',
+  duration: '0500',
+  startDatetime: '20191102T170000',
+  endDatetime: '20191102T220000',
+}
+
+function Button({ children, onClick }) {
+  return (
+    <button
+      css={{
+        width: 200,
+        padding: 10,
+        border: '1px solid #e5e5e5',
+        color: '#e42d2d',
+        fontSize: 16,
+        borderRadius: 5,
+        cursor: 'pointer',
+        '&:focus': {
+          outline: 'none',
+        },
+      }}
+      onClick={onClick}
+    >
+      {children}
+    </button>
+  )
+}
+
+function Dropdown({ children }) {
+  return (
+    <div
+      css={{
+        width: 200,
+        padding: 10,
+        margin: '0 auto',
+        display: 'grid',
+        gridGap: 6,
+        border: '1px solid #e5e5e5',
+        borderTop: 'none',
+        borderBottomLeftRadius: 5,
+        borderBottomRightRadius: 5,
+        backgroundColor: '#fff',
+      }}
+    >
+      {children}
+    </div>
+  )
+}
+
+const AddToCalendar = AddToCalendarHOC(Button, Dropdown)
 
 const SecondPage = () => (
   <div style={{ background: '#E8DFC5' }}>
@@ -16,19 +71,14 @@ const SecondPage = () => (
         },
       }}
     >
-      <h1 style={{ paddingBottom: 20 }}>The Wedding👰🤵</h1>
+      <h1 style={{ paddingBottom: 20 }}>
+        <div>The Wedding</div>
+        👰🤵
+      </h1>
       <h2>when</h2>
       <div style={{ paddingBottom: 40, fontSize: 20 }}>
         <div style={{ marginBottom: 10 }}>November 2nd, 2019</div>
-        <div title="Add to Calendar" className="addeventatc">
-          Add to Calendar
-          <span className="start">11/02/2019 05:00 PM</span>
-          <span className="end">11/02/2019 10:00 PM</span>
-          <span className="timezone">America/Los_Angeles</span>
-          <span className="title">Dereck and Fatima's Wedding</span>
-          <span className="description">Please celebrate with us! 🍾</span>
-          <span className="location">Higuera Ranch</span>
-        </div>
+        <AddToCalendar event={event} />
       </div>
 
       <h2>where</h2>
