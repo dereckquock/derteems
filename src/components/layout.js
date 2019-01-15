@@ -17,16 +17,6 @@ const styles = {
   },
 }
 
-const pages = {
-  home: 0,
-  wedding: 1,
-  info: 2,
-}
-
-const defaultStyle = {
-  transition: 'opacity 150ms ease-in-out',
-  opacity: 0,
-}
 const transitionStyles = {
   entering: { opacity: 0 },
   entered: { opacity: 1 },
@@ -53,7 +43,8 @@ const Layout = ({ children }) => {
               {state => (
                 <div
                   style={{
-                    ...defaultStyle,
+                    transition: 'opacity 150ms ease-in-out',
+                    opacity: 0,
                     ...transitionStyles[state],
                   }}
                 >

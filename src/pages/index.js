@@ -29,7 +29,7 @@ const IndexPage = () => {
           <h1
             style={{
               width: '100%',
-              fontSize: '5vw',
+              fontSize: '8vw',
               fontWeight: 300,
               textShadow: '0 0 8px',
               fontFamily:
@@ -40,7 +40,7 @@ const IndexPage = () => {
           </h1>
           <h2
             style={{
-              fontSize: '3vw',
+              fontSize: '6vw',
               fontWeight: 300,
               letterSpacing: 10,
               textShadow: '0 0 8px',
