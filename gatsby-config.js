@@ -25,6 +25,7 @@ module.exports = {
         theme_color: `#DDD3C9`,
         display: `standalone`,
         icon: `src/images/pup.png`, // This path is relative to the root of the site.
+        legacy: true,
       },
     },
     'gatsby-plugin-offline',
