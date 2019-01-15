@@ -1,6 +1,6 @@
-import React from 'react'
+import React, { useState } from 'react'
 import PropTypes from 'prop-types'
-import { TransitionGroup, CSSTransition } from 'react-transition-group'
+import { TransitionGroup, Transition } from 'react-transition-group'
 import { StaticQuery, graphql, Link } from 'gatsby'
 import './layout.css'
 
@@ -23,17 +23,17 @@ const pages = {
   info: 2,
 }
 
-const Layout = ({ children }) => {
-  const { locations } = window
-  const currentRoute = window.location.pathname.replace('/', '') || 'home'
-  let transitionDirection = 'Left'
+const defaultStyle = {
+  transition: 'opacity 150ms ease-in-out',
+  opacity: 0,
+}
+const transitionStyles = {
+  entering: { opacity: 0 },
+  entered: { opacity: 1 },
+}
 
-  // determine the transition direction based on the previous tab/route
-  if (locations.length > 1) {
-    if (pages[locations[locations.length - 1]] > pages[currentRoute]) {
-      transitionDirection = 'Right'
-    }
-  }
+const Layout = ({ children }) => {
+  const [currentPage, setCurrentPage] = useState('home')
 
   return (
     <StaticQuery
@@ -49,13 +49,18 @@ const Layout = ({ children }) => {
       render={data => (
         <>
           <TransitionGroup>
-            <CSSTransition
-              key={currentRoute}
-              timeout={250}
-              classNames={`slide${transitionDirection}`}
-            >
-              {children}
-            </CSSTransition>
+            <Transition key={currentPage} timeout={150}>
+              {state => (
+                <div
+                  style={{
+                    ...defaultStyle,
+                    ...transitionStyles[state],
+                  }}
+                >
+                  {children}
+                </div>
+              )}
+            </Transition>
           </TransitionGroup>
           <div
             style={{
@@ -71,14 +76,19 @@ const Layout = ({ children }) => {
             }}
           >
             <div>
-              <Link to="/" style={styles.tab} activeStyle={styles.activeTab}>
+              <Link
+                to="/"
+                style={styles.tab}
+                activeStyle={styles.activeTab}
+                onClick={() => setCurrentPage('home')}
+              >
                 <div>
                   <svg
                     x="0px"
                     y="0px"
                     viewBox="0 0 306.773 306.773"
                     width="24px"
-                    height="24px"
+                    height="30px"
                   >
                     <g>
                       <path
@@ -96,6 +106,7 @@ const Layout = ({ children }) => {
                 to="/wedding"
                 style={styles.tab}
                 activeStyle={styles.activeTab}
+                onClick={() => setCurrentPage('wedding')}
               >
                 <div>
                   <svg
@@ -136,8 +147,11 @@ const Layout = ({ children }) => {
                 to="/info"
                 style={styles.tab}
                 activeStyle={styles.activeTab}
+                onClick={() => setCurrentPage('info')}
               >
-                <div style={{ fontSize: 26 }}>💁‍♀️</div>
+                <div style={{ height: 36, paddingTop: 6, fontSize: 26 }}>
+                  💁‍♀️
+                </div>
                 Info
               </Link>
             </div>
