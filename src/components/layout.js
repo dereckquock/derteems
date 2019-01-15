@@ -140,9 +140,7 @@ const Layout = ({ children }) => {
                 activeStyle={styles.activeTab}
                 onClick={() => setCurrentPage('info')}
               >
-                <div style={{ height: 36, paddingTop: 6, fontSize: 26 }}>
-                  💁‍♀️
-                </div>
+                <div style={{ height: 36, fontSize: 26 }}>💁‍♀️</div>
                 info
               </Link>
             </div>

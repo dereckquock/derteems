@@ -9,7 +9,7 @@ const IndexPage = () => {
         title="Home"
         keywords={[`dereck`, `fatima`, `quock`, `wedding`, `fatquock`]}
       />
-      <div style={{ position: 'relative' }}>
+      <div style={{ height: '100vh', position: 'relative' }}>
         <div
           style={{ width: '100%', position: 'absolute', filter: 'blur(8px)' }}
         >
@@ -20,8 +20,9 @@ const IndexPage = () => {
           css={{
             width: '100%',
             padding: '0 25%',
+            marginTop: -100,
             position: 'absolute',
-            top: '10rem',
+            top: '50%',
             textAlign: 'center',
             color: '#fff',
             '@media(max-width: 667px)': {
