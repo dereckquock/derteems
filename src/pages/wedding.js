@@ -22,7 +22,7 @@ export default () => {
             css={{
               fontFamily: 'Shorelines',
               breakWord: 'keep-all',
-              '@media(max-width: 568px)': { fontSize: 32 },
+              '@media(max-width: 414px)': { fontSize: 30 },
             }}
           >
             (wedding)
