@@ -1,27 +1,7 @@
-import React, { useState } from 'react'
-import AddToCalendarHOC from 'react-add-to-calendar-hoc'
-import { DialogOverlay, DialogContent } from '@reach/dialog'
-import '@reach/dialog/styles.css'
+import React from 'react'
 import SEO from '../components/seo'
-
-const styles = {
-  button: {
-    padding: '10px 16px',
-    fontSize: '1.5rem',
-    border: 0,
-    borderRadius: 25,
-    backgroundColor: '#3E3D4D',
-    color: '#fff',
-    cursor: 'pointer',
-    ':focus': {
-      outline: 'none',
-    },
-    ':active': {
-      backgroundColor: '#F7DBCA',
-      fontWeight: 'bold',
-    },
-  },
-}
+import AddToCalendar from '../components/addToCalendar'
+import Schedule from '../components/schedule'
 
 const event = {
   title: `Dereck and Fatima's Wedding`,
@@ -32,62 +12,21 @@ const event = {
   endDatetime: '20191102T220000',
 }
 
-function Button({ children, onClick }) {
-  return (
-    <button
-      css={{
-        width: 200,
-        padding: 10,
-        border: '1px solid #e5e5e5',
-        background: '#3E3D4D',
-        color: '#fff',
-        fontSize: '1.5rem',
-        borderRadius: 5,
-        cursor: 'pointer',
-        '&:focus': {
-          outline: 'none',
-        },
-      }}
-      onClick={onClick}
-    >
-      {children}
-    </button>
-  )
-}
-
-function Dropdown({ children }) {
-  return (
-    <div
-      css={{
-        width: 200,
-        padding: 10,
-        margin: '0 auto',
-        display: 'grid',
-        gridGap: 6,
-        border: '1px solid #e5e5e5',
-        borderTop: 'none',
-        borderBottomLeftRadius: 5,
-        borderBottomRightRadius: 5,
-        backgroundColor: '#fff',
-      }}
-    >
-      {children}
-    </div>
-  )
-}
-
-const AddToCalendar = AddToCalendarHOC(Button, Dropdown)
-
-const SecondPage = () => {
-  const [showSchedule, setShowSchedule] = useState(false)
-
+export default () => {
   return (
     <div style={{ background: '#DDD3C9' }}>
       <SEO title="The Wedding" />
       <div className="contents">
-        <h1 style={{ paddingBottom: 20 }}>
-          <div>The Wedding</div>
-          👰🤵
+        <h1 style={{ marginTop: 20 }}>
+          <div
+            css={{
+              fontFamily: 'Shorelines',
+              breakWord: 'keep-all',
+              '@media(max-width: 375px)': { fontSize: 32 },
+            }}
+          >
+            (wedding)
+          </div>
         </h1>
 
         <h2 style={{ fontSize: '2rem' }}>when</h2>
@@ -126,39 +65,8 @@ const SecondPage = () => {
           <p>coming soon...</p>
         </div>
 
-        <button
-          css={{ ...styles.button, marginBottom: 20 }}
-          onClick={() => setShowSchedule(true)}
-        >
-          Schedule
-        </button>
-        <DialogOverlay
-          style={{ background: 'hsla(0, 100%, 100%, 0.9)' }}
-          isOpen={showSchedule}
-        >
-          <DialogContent
-            style={{
-              textAlign: 'center',
-              boxShadow: '0px 10px 50px hsla(0, 0%, 0%, 0.33)',
-              borderRadius: 8,
-            }}
-          >
-            <p>Wedding schedule coming soon...</p>
-            <button
-              css={{
-                ...styles.button,
-                fontSize: '2rem',
-                backgroundColor: '#3E3D4D',
-              }}
-              onClick={() => setShowSchedule(false)}
-            >
-              Done
-            </button>
-          </DialogContent>
-        </DialogOverlay>
+        <Schedule />
       </div>
     </div>
   )
 }
-
-export default SecondPage

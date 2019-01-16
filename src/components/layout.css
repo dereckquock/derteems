@@ -1,3 +1,7 @@
+@font-face {
+  font-family: 'Shorelines';
+  src: local('Shorelines'), url(../fonts/Shorelines.otf) format('opentype');
+}
 html {
   font-family: 'Amatic SC', 'Oswald';
   -ms-text-size-adjust: 100%;
@@ -613,4 +617,20 @@ pre tt:after {
   .contents {
     padding: 20px 20px 100px;
   }
+}
+.btn {
+  padding: 0.75rem 1rem;
+  font-size: 1.5rem;
+  border: 0;
+  border-radius: 25px;
+  background-color: #3e3d4d;
+  color: #fff;
+  cursor: pointer;
+}
+.btn:focus {
+  outline: none;
+}
+.btn:active {
+  background-color: #f7dbca;
+  font-weight: bold;
 }

@@ -1,0 +1,35 @@
+.timeline {
+  padding: 1rem 0 0;
+  border-left: 1px solid #3e3d4d;
+  margin: 0 0 0 2rem;
+  list-style: none;
+  position: relative;
+}
+.event {
+  margin-bottom: 40px;
+  position: relative;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+.event::before {
+  content: ' ';
+  width: 16px;
+  height: 16px;
+  position: absolute;
+  top: 0;
+  left: -11px;
+  border: 2px solid #000;
+  border-radius: 50%;
+  background: #fff;
+}
+.event-time {
+  font-size: 30px;
+}
+.event-title {
+  margin-bottom: 6px;
+  font-size: 30px;
+}
+.event-description {
+  margin-bottom: 6px;
+  font-size: 24px;
+}

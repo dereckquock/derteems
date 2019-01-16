@@ -1,11 +1,20 @@
 import React from 'react'
 import SEO from '../components/seo'
 
-const SecondPage = () => (
+export default () => (
   <div style={{ background: '#DDD3C9' }}>
     <SEO title="Things to do" />
     <div className="contents">
-      <h1 style={{ paddingBottom: 20 }}>Information 💁‍♀️</h1>
+      <h1 style={{ marginTop: 20 }}>
+        <div
+          css={{
+            fontFamily: 'Shorelines',
+            breakWord: 'keep-all',
+          }}
+        >
+          (info)
+        </div>
+      </h1>
 
       <h2 style={{ fontSize: '2rem' }}>Things to do around SLO</h2>
       <div style={{ paddingBottom: 40, fontSize: '2rem' }}>
@@ -26,5 +35,3 @@ const SecondPage = () => (
     </div>
   </div>
 )
-
-export default SecondPage

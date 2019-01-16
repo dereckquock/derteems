@@ -2,7 +2,7 @@ import React from 'react'
 import Image from '../components/mainImage'
 import SEO from '../components/seo'
 
-const IndexPage = () => {
+export default () => {
   return (
     <>
       <SEO
@@ -61,5 +61,3 @@ const IndexPage = () => {
     </>
   )
 }
-
-export default IndexPage
