@@ -14,7 +14,7 @@ const event = {
 
 export default () => {
   return (
-    <div style={{ background: '#DDD3C9' }}>
+    <>
       <SEO title="The Wedding" />
       <div className="contents">
         <h1 style={{ marginTop: 20 }}>
@@ -29,34 +29,46 @@ export default () => {
           </div>
         </h1>
 
-        <h2 style={{ fontSize: '2rem' }}>when</h2>
-        <div style={{ paddingBottom: 40, fontSize: '2rem' }}>
-          <div style={{ marginBottom: 10 }}>November 2nd, 2019</div>
-          <AddToCalendar event={event} />
-        </div>
-
-        <h2 style={{ fontSize: '2rem' }}>where</h2>
-        <div style={{ paddingBottom: 40, fontSize: '2rem' }}>
-          <div style={{ paddingBottom: 10 }}>
-            <a
-              href="https://goo.gl/maps/atD3ofuWznq"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              Higuera Ranch
-            </a>
-            <p style={{ marginTop: 10, marginBottom: 10 }}>
-              525 El Camino Real, San Luis Obispo, CA 93401, USA
-            </p>
-          </div>
+        <div
+          css={{
+            display: 'grid',
+            gridTemplateColumns: '1fr 1fr',
+            '@media(max-width: 414px)': { gridTemplateColumns: '1fr' },
+          }}
+        >
           <div>
-            <a
-              href="https://www.google.com/maps/dir/?api=1&destination=Higuera+Ranch"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              Directions
-            </a>
+            <h2 style={{ fontSize: '2rem' }}>when</h2>
+            <div style={{ paddingBottom: 40, fontSize: '2rem' }}>
+              <div style={{ marginBottom: 10 }}>November 2nd, 2019</div>
+              <AddToCalendar event={event} />
+            </div>
+          </div>
+
+          <div>
+            <h2 style={{ fontSize: '2rem' }}>where</h2>
+            <div style={{ paddingBottom: 40, fontSize: '2rem' }}>
+              <div style={{ paddingBottom: 10 }}>
+                <a
+                  href="https://goo.gl/maps/atD3ofuWznq"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  Higuera Ranch
+                </a>
+                <p style={{ marginTop: 10, marginBottom: 10 }}>
+                  525 El Camino Real, San Luis Obispo, CA 93401, USA
+                </p>
+              </div>
+              <div>
+                <a
+                  href="https://www.google.com/maps/dir/?api=1&destination=Higuera+Ranch"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  Directions
+                </a>
+              </div>
+            </div>
           </div>
         </div>
 
@@ -67,6 +79,6 @@ export default () => {
 
         <Schedule />
       </div>
-    </div>
+    </>
   )
 }

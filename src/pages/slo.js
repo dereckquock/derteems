@@ -2,7 +2,7 @@ import React from 'react'
 import SEO from '../components/seo'
 
 export default () => (
-  <div style={{ background: '#DDD3C9' }}>
+  <>
     <SEO title="SLO" />
     <div className="contents">
       <h1 style={{ marginTop: 20 }}>
@@ -33,5 +33,5 @@ export default () => (
         <p>some hotel somewhere</p>
       </div>
     </div>
-  </div>
+  </>
 )
