@@ -51,7 +51,7 @@ export default () => {
               letterSpacing: 20,
               textShadow: '0 0 8px',
               '@media(max-width: 667px)': {
-                fontSize: '3rem',
+                fontSize: '2.5rem',
               },
             }}
           >

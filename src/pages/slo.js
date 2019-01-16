@@ -3,7 +3,7 @@ import SEO from '../components/seo'
 
 export default () => (
   <div style={{ background: '#DDD3C9' }}>
-    <SEO title="Things to do" />
+    <SEO title="SLO" />
     <div className="contents">
       <h1 style={{ marginTop: 20 }}>
         <div
