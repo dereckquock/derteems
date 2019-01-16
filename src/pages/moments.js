@@ -1,6 +1,7 @@
 import React from 'react'
+import { StaticQuery, graphql } from 'gatsby'
+import Img from 'gatsby-image'
 import SEO from '../components/seo'
-import Image from '../components/image'
 
 export default () => (
   <div style={{ background: '#DDD3C9' }}>
@@ -18,7 +19,22 @@ export default () => (
         </div>
       </h1>
 
-      <Image />
+      <StaticQuery
+        query={graphql`
+          query {
+            placeholderImage: file(relativePath: { eq: "fati.png" }) {
+              childImageSharp {
+                fluid(maxWidth: 700) {
+                  ...GatsbyImageSharpFluid
+                }
+              }
+            }
+          }
+        `}
+        render={data => (
+          <Img fluid={data.placeholderImage.childImageSharp.fluid} />
+        )}
+      />
     </div>
   </div>
 )
