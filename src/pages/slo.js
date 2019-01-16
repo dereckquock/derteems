@@ -12,7 +12,7 @@ export default () => (
             breakWord: 'keep-all',
           }}
         >
-          (info)
+          (slo)
         </div>
       </h1>
 

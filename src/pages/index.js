@@ -45,6 +45,7 @@ export default () => {
           </h1>
           <h2
             css={{
+              marginLeft: 20,
               fontSize: '5rem',
               fontWeight: 300,
               letterSpacing: 20,
