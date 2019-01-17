@@ -21,13 +21,21 @@ export default () => {
         isOpen={showSchedule}
       >
         <DialogContent
-          style={{
-            width: '80vw',
-            height: '80vh',
+          css={{
+            width: '80vw !important',
+            height: '80vh !important',
             maxWidth: 1024,
             textAlign: 'center',
             boxShadow: '0px 10px 50px hsla(0, 0%, 0%, 0.33)',
             borderRadius: 8,
+            overflow: 'scroll',
+            webkitOverflowScrolling: 'touch',
+
+            '@media(max-width: 414px)': {
+              width: '90vw !important',
+              height: '90vh !important',
+              margin: '20px auto !important',
+            },
           }}
         >
           <h2 style={{ position: 'relative', fontSize: '2rem' }}>
@@ -88,6 +96,13 @@ export default () => {
               <div className="event-time">7pm</div>
               <div>
                 <div className="event-title">Dinner Reception</div>
+                <div className="event-description">@ the barn</div>
+              </div>
+            </li>
+            <li className="event">
+              <div className="event-time">9pm</div>
+              <div>
+                <div className="event-title">Party!</div>
                 <div className="event-description">@ the barn</div>
               </div>
             </li>
