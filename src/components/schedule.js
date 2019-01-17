@@ -29,7 +29,7 @@ export default () => {
             boxShadow: '0px 10px 50px hsla(0, 0%, 0%, 0.33)',
             borderRadius: 8,
             overflow: 'scroll',
-            webkitOverflowScrolling: 'touch',
+            WebkitOverflowScrolling: 'touch',
 
             '@media(max-width: 414px)': {
               width: '90vw !important',
