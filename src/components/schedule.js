@@ -43,8 +43,8 @@ export default () => {
             <button
               css={{
                 position: 'absolute',
-                top: 0,
-                right: 0,
+                top: -20,
+                right: -20,
                 border: 0,
                 background: 'none',
                 cursor: 'pointer',
