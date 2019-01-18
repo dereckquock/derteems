@@ -18,8 +18,8 @@ const styles = {
 }
 
 const transitionStyles = {
-  entering: { opacity: 0 },
-  entered: { opacity: 1 },
+  entering: { position: 'absolute', opacity: 0 },
+  entered: { position: 'absolute', opacity: 1 },
 }
 
 const Layout = ({ children }) => {
@@ -45,7 +45,6 @@ const Layout = ({ children }) => {
                   style={{
                     width: '100%',
                     height: '100%',
-                    position: 'absolute',
                     transition: 'opacity 150ms ease-in-out',
                     opacity: 0,
                     ...transitionStyles[state],

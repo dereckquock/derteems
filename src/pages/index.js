@@ -1,6 +1,8 @@
 import React from 'react'
+import { css } from 'glamor'
 import Image from '../components/mainImage'
 import SEO from '../components/seo'
+import { animateInUp } from '../utils/animations'
 
 export default () => {
   return (
@@ -25,38 +27,53 @@ export default () => {
             top: '50%',
             textAlign: 'center',
             color: '#fff',
-            '@media(max-width: 667px)': {
+            fontSize: '6rem',
+            fontWeight: 300,
+            textShadow: '0 0 8px',
+            '@media(max-width: 768px)': {
               padding: '0 40px',
+              fontSize: '4rem',
             },
           }}
         >
-          <h1
-            css={{
-              width: '100%',
-              fontSize: '6rem',
-              fontWeight: 300,
-              textShadow: '0 0 8px',
-              '@media(max-width: 667px)': {
-                fontSize: '4rem',
+          <div className={css({ display: 'inline-block' }, animateInUp(1 / 4))}>
+            my
+          </div>{' '}
+          <div className={css({ display: 'inline-block' }, animateInUp(2 / 4))}>
+            big
+          </div>{' '}
+          <div className={css({ display: 'inline-block' }, animateInUp(3 / 4))}>
+            fat
+          </div>{' '}
+          <div className={css({ display: 'inline-block' }, animateInUp(5 / 4))}>
+            quock
+          </div>{' '}
+          <div className={css({ display: 'inline-block' }, animateInUp(6 / 4))}>
+            wedding
+          </div>{' '}
+          <div className={css({ display: 'inline-block' }, animateInUp(7 / 4))}>
+            coming
+          </div>{' '}
+          <div className={css({ display: 'inline-block' }, animateInUp(8 / 4))}>
+            soon
+          </div>
+          <div
+            className={css(
+              {
+                marginLeft: 20,
+                fontSize: '5rem',
+                fontWeight: 300,
+                letterSpacing: 20,
+                textShadow: '0 0 8px',
+                '@media(max-width: 768px)': {
+                  fontSize: '2.5rem',
+                },
               },
-            }}
-          >
-            my big fat quock wedding coming soon
-          </h1>
-          <h2
-            css={{
-              marginLeft: 20,
-              fontSize: '5rem',
-              fontWeight: 300,
-              letterSpacing: 20,
-              textShadow: '0 0 8px',
-              '@media(max-width: 667px)': {
-                fontSize: '2.5rem',
-              },
-            }}
+              animateInUp(9 / 4)
+            )}
           >
             11/02/19
-          </h2>
+          </div>
         </div>
       </div>
     </>
