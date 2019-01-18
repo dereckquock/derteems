@@ -1,34 +1,34 @@
 import React from 'react'
+import { css } from 'glamor'
+import { animateInDown } from '../utils/animations'
 import SEO from '../components/seo'
 
 export default () => (
   <>
     <SEO title="SLO" />
     <div className="contents">
-      <h1 style={{ marginTop: 20 }}>
-        <div
-          css={{
+      <div
+        className={css(
+          {
+            fontSize: '2.25rem',
             fontFamily: 'Shorelines',
             breakWord: 'keep-all',
-          }}
-        >
-          (slo)
-        </div>
-      </h1>
-
-      <h2 style={{ fontSize: '2rem' }}>Things to do around SLO</h2>
-      <div style={{ paddingBottom: 40, fontSize: '2rem' }}>
-        <h3 style={{ fontSize: '2rem', fontWeight: 'regular' }}>Cal Poly</h3>
-        <h3 style={{ fontSize: '2rem', fontWeight: 'regular' }}>
-          Farmers Market
-        </h3>
-        <h3 style={{ fontSize: '2rem', fontWeight: 'regular' }}>
-          Firestone Grill
-        </h3>
-        <h3 style={{ fontSize: '2rem', fontWeight: 'regular' }}>Pismo Beach</h3>
+          },
+          animateInDown()
+        )}
+      >
+        (slo)
       </div>
 
-      <h2 style={{ fontSize: '2rem' }}>Accommodations</h2>
+      <div style={{ fontSize: '2rem' }}>Things to do around SLO</div>
+      <div style={{ paddingBottom: 40, fontSize: '2rem' }}>
+        <div style={{ fontSize: '2rem' }}>Cal Poly</div>
+        <div style={{ fontSize: '2rem' }}>Farmers Market</div>
+        <div style={{ fontSize: '2rem' }}>Firestone Grill</div>
+        <div style={{ fontSize: '2rem' }}>Pismo Beach</div>
+      </div>
+
+      <div style={{ fontSize: '2rem' }}>Accommodations</div>
       <div style={{ paddingBottom: 40, fontSize: '2rem' }}>
         <p>some hotel somewhere</p>
       </div>

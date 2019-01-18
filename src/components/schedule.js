@@ -2,14 +2,16 @@ import React, { useState } from 'react'
 import { DialogOverlay, DialogContent } from '@reach/dialog'
 import '@reach/dialog/styles.css'
 import './schedule.css'
+import { css } from 'glamor'
+import { animateInDown, animateInUp } from '../utils/animations'
 
-export default () => {
+export default props => {
   const [showSchedule, setShowSchedule] = useState(false)
 
   return (
     <>
       <button
-        className="btn"
+        className={`btn ${props.className}`}
         style={{ marginBottom: 20 }}
         onClick={() => setShowSchedule(true)}
       >
@@ -38,22 +40,28 @@ export default () => {
             },
           }}
         >
-          <h2 style={{ position: 'relative', fontSize: '2rem' }}>
+          <div
+            className={animateInDown()}
+            style={{ position: 'relative', fontSize: '2rem' }}
+          >
             Schedule
             <button
-              css={{
-                position: 'absolute',
-                top: -20,
-                right: -20,
-                border: 0,
-                background: 'none',
-                cursor: 'pointer',
-                outline: 'none',
-                transition: 'all 0.75s cubic-bezier(0.68, -0.55, 0.27, 1.55)',
-                ':hover': {
-                  transform: 'rotateZ(90deg)',
+              className={css(
+                {
+                  position: 'absolute',
+                  top: -20,
+                  right: -20,
+                  border: 0,
+                  background: 'none',
+                  cursor: 'pointer',
+                  outline: 'none',
+                  transition: 'all 0.75s cubic-bezier(0.68, -0.55, 0.27, 1.55)',
+                  ':hover': {
+                    transform: 'rotateZ(90deg)',
+                  },
                 },
-              }}
+                animateInDown()
+              )}
               onClick={() => setShowSchedule(false)}
             >
               <svg width="22px" height="22px">
@@ -75,31 +83,31 @@ export default () => {
                 />
               </svg>
             </button>
-          </h2>
+          </div>
 
           <ul className="timeline">
-            <li className="event">
+            <li className={`event ${css(animateInUp(1 / 3))}`}>
               <div className="event-time">5pm</div>
               <div>
                 <div className="event-title">Ceremony</div>
                 <div className="event-description">@ the fig tree</div>
               </div>
             </li>
-            <li className="event">
+            <li className={`event ${css(animateInUp(2 / 3))}`}>
               <div className="event-time">6pm</div>
               <div>
                 <div className="event-title">Cocktail Hour</div>
                 <div className="event-description">@ the barn</div>
               </div>
             </li>
-            <li className="event">
+            <li className={`event ${css(animateInUp(3 / 3))}`}>
               <div className="event-time">7pm</div>
               <div>
                 <div className="event-title">Dinner Reception</div>
                 <div className="event-description">@ the barn</div>
               </div>
             </li>
-            <li className="event">
+            <li className={`event ${css(animateInUp(4 / 3))}`}>
               <div className="event-time">9pm</div>
               <div>
                 <div className="event-title">Party!</div>

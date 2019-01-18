@@ -1,9 +1,11 @@
 import React from 'react'
 import { StaticQuery, graphql } from 'gatsby'
 import Img from 'gatsby-image'
+import { css } from 'glamor'
+import { animateInDown } from '../utils/animations'
 import SEO from '../components/seo'
 
-const css = {
+const styles = {
   image: {
     width: '100%',
     height: '100%',
@@ -20,17 +22,20 @@ export default () => (
   <div style={{ background: '#DDD3C9' }}>
     <SEO title="Moments" />
     <div className="contents">
-      <h1 style={{ marginTop: 20 }}>
-        <div
-          css={{
+      <div
+        className={css(
+          {
+            fontSize: '2.25rem',
             fontFamily: 'Shorelines',
             breakWord: 'keep-all',
-            '@media(max-width: 414px)': { fontSize: 32 },
-          }}
-        >
-          (moments)
-        </div>
-      </h1>
+            '@media(max-width: 414px)': { fontSize: 30 },
+            '@media(max-width: 320px)': { fontSize: 26 },
+          },
+          animateInDown()
+        )}
+      >
+        (moments)
+      </div>
 
       <StaticQuery
         query={graphql`
@@ -75,7 +80,7 @@ export default () => (
               }}
             >
               {Object.values(data).map(({ childImageSharp: { fluid } }) => (
-                <Img key={fluid.src} fluid={fluid} css={css.image} />
+                <Img key={fluid.src} fluid={fluid} css={styles.image} />
               ))}
             </div>
           )

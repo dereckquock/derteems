@@ -1,8 +1,8 @@
 import React from 'react'
 import { css } from 'glamor'
-import Image from '../components/mainImage'
-import SEO from '../components/seo'
 import { animateInUp } from '../utils/animations'
+import SEO from '../components/seo'
+import Image from '../components/mainImage'
 
 export default () => {
   return (
