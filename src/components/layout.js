@@ -43,6 +43,9 @@ const Layout = ({ children }) => {
               {state => (
                 <div
                   style={{
+                    width: '100%',
+                    height: '100%',
+                    position: 'absolute',
                     transition: 'opacity 150ms ease-in-out',
                     opacity: 0,
                     ...transitionStyles[state],
