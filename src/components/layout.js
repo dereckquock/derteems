@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import PropTypes from 'prop-types'
 import { TransitionGroup, Transition } from 'react-transition-group'
 import { StaticQuery, graphql, Link } from 'gatsby'
+import 'typeface-amatic-sc'
 import './layout.css'
 
 const styles = {
