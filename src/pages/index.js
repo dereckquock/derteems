@@ -1,6 +1,6 @@
 import React from 'react'
 import { css } from 'glamor'
-import { animateInUp } from '../utils/animations'
+import { animateInDown, animateInUp } from '../utils/animations'
 import SEO from '../components/seo'
 import Image from '../components/mainImage'
 
@@ -36,25 +36,39 @@ export default () => {
             },
           }}
         >
-          <div className={css({ display: 'inline-block' }, animateInUp(1 / 4))}>
+          <div
+            className={css({ display: 'inline-block' }, animateInDown(1 / 4))}
+          >
             my
           </div>{' '}
-          <div className={css({ display: 'inline-block' }, animateInUp(2 / 4))}>
+          <div
+            className={css({ display: 'inline-block' }, animateInDown(2 / 4))}
+          >
             big
           </div>{' '}
-          <div className={css({ display: 'inline-block' }, animateInUp(3 / 4))}>
+          <div
+            className={css({ display: 'inline-block' }, animateInDown(3 / 4))}
+          >
             fat
           </div>{' '}
-          <div className={css({ display: 'inline-block' }, animateInUp(5 / 4))}>
+          <div
+            className={css({ display: 'inline-block' }, animateInDown(5 / 4))}
+          >
             quock
           </div>{' '}
-          <div className={css({ display: 'inline-block' }, animateInUp(6 / 4))}>
+          <div
+            className={css({ display: 'inline-block' }, animateInDown(6 / 4))}
+          >
             wedding
           </div>{' '}
-          <div className={css({ display: 'inline-block' }, animateInUp(7 / 4))}>
+          <div
+            className={css({ display: 'inline-block' }, animateInDown(7 / 4))}
+          >
             coming
           </div>{' '}
-          <div className={css({ display: 'inline-block' }, animateInUp(8 / 4))}>
+          <div
+            className={css({ display: 'inline-block' }, animateInDown(8 / 4))}
+          >
             soon
           </div>
           <div
