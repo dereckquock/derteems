@@ -3,7 +3,7 @@ import { css } from 'glamor'
 import { Parallax } from 'react-scroll-parallax'
 import { StaticQuery, graphql } from 'gatsby'
 import Img from 'gatsby-image'
-import { animateInDown } from '../utils/animations'
+import { animateInDown, animateInUp } from '../utils/animations'
 import SEO from '../components/seo'
 
 const thingsToDo = [
@@ -18,13 +18,11 @@ const thingsToDo = [
   {
     title: 'Downtown Farmers Market',
     url: 'https://downtownslo.com/farmers-market/',
-    details: 'Thursday evening from 6:00 PM to 9:00 PM in downtown SLO',
   },
   {
     title: 'Hiking',
     url:
       'https://sanluisobispovacations.com/things-to-do/outdoor-recreation/hiking/',
-    details: 'Bishop Peak is amazing if you wanna trek to the top ⛰',
   },
   {
     title: 'Pismo Beach',
@@ -53,20 +51,40 @@ export default () => (
         (slo)
       </div>
 
-      <div style={{ fontSize: '2rem', fontWeight: 600 }}>Accommodations</div>
-      <div style={{ paddingBottom: 40, fontSize: '2rem' }}>
+      <div
+        className={css(
+          { fontSize: '2rem', fontWeight: 600 },
+          animateInUp(1 / 4)
+        )}
+      >
+        Accommodations
+      </div>
+      <div
+        className={css(
+          { paddingBottom: 40, fontSize: '2rem' },
+          animateInUp(2 / 4)
+        )}
+      >
         <div>TBD</div>
       </div>
 
-      <div style={{ fontSize: '2rem', fontWeight: 600 }}>
+      <div
+        className={css(
+          { fontSize: '2rem', fontWeight: 600 },
+          animateInUp(3 / 4)
+        )}
+      >
         Things to do around SLO
       </div>
       <div
-        css={{
-          paddingTop: '6vw',
-          paddingBottom: 40,
-          fontSize: '2rem',
-        }}
+        className={css(
+          {
+            paddingTop: '6vw',
+            paddingBottom: 40,
+            fontSize: '2rem',
+          },
+          animateInUp(4 / 4)
+        )}
       >
         <StaticQuery
           query={graphql`
@@ -144,15 +162,14 @@ export default () => (
                       rotation = 'rotateZ(-10deg)'
                       break
                     default:
-                      rotation = 'rotateZ(0deg)'
                   }
 
                   return (
                     <div
-                      style={{
+                      className={css({
                         position: 'relative',
                         transform: rotation,
-                      }}
+                      })}
                     >
                       <div
                         key={thingsToDo[index].title}
