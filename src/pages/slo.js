@@ -1,6 +1,6 @@
 import React from 'react'
 import { css } from 'glamor'
-import { Parallax } from 'react-scroll-parallax'
+import { ParallaxProvider, Parallax } from 'react-scroll-parallax'
 import { StaticQuery, graphql } from 'gatsby'
 import Img from 'gatsby-image'
 import { animateInDown, animateInUp } from '../utils/animations'
@@ -35,7 +35,7 @@ const thingsToDo = [
 ]
 
 export default () => (
-  <>
+  <ParallaxProvider>
     <SEO title="SLO" />
     <div className="contents">
       <div
@@ -200,7 +200,6 @@ export default () => (
                       >
                         <Parallax
                           key={fluid.src}
-                          className="custom-class"
                           offsetYMax={20}
                           offsetYMin={-20}
                           slowerScrollRate
@@ -222,5 +221,5 @@ export default () => (
         />
       </div>
     </div>
-  </>
+  </ParallaxProvider>
 )

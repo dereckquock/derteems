@@ -61,6 +61,13 @@ export default () => (
                 }
               }
             }
+            image4: file(relativePath: { eq: "patriots.png" }) {
+              childImageSharp {
+                fluid(maxWidth: 800) {
+                  ...GatsbyImageSharpFluid
+                }
+              }
+            }
           }
         `}
         render={data => {
