@@ -83,7 +83,7 @@ export default () => {
                   fontSize: '2.5rem',
                 },
               },
-              animateInUp(9 / 4)
+              animateInUp(12 / 4)
             )}
           >
             11/02/19

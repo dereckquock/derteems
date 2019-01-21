@@ -42,7 +42,7 @@ export default props => {
         >
           <div
             className={animateInDown()}
-            style={{ position: 'relative', fontSize: '2rem' }}
+            style={{ position: 'relative', fontSize: '2rem', fontWeight: 600 }}
           >
             Schedule
             <button

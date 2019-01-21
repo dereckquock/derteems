@@ -1,8 +1,9 @@
 import React, { useState } from 'react'
 import PropTypes from 'prop-types'
+import 'typeface-amatic-sc'
 import { TransitionGroup, Transition } from 'react-transition-group'
 import { StaticQuery, graphql, Link } from 'gatsby'
-import 'typeface-amatic-sc'
+import { ParallaxProvider } from 'react-scroll-parallax'
 import './layout.css'
 
 const styles = {
@@ -39,23 +40,25 @@ const Layout = ({ children }) => {
       `}
       render={data => (
         <>
-          <TransitionGroup>
-            <Transition key={currentPage} timeout={150}>
-              {state => (
-                <div
-                  style={{
-                    width: '100%',
-                    height: '100%',
-                    transition: 'opacity 150ms ease-in-out',
-                    opacity: 0,
-                    ...transitionStyles[state],
-                  }}
-                >
-                  {children}
-                </div>
-              )}
-            </Transition>
-          </TransitionGroup>
+          <ParallaxProvider>
+            <TransitionGroup>
+              <Transition key={currentPage} timeout={150}>
+                {state => (
+                  <div
+                    style={{
+                      width: '100%',
+                      height: '100%',
+                      transition: 'opacity 150ms ease-in-out',
+                      opacity: 0,
+                      ...transitionStyles[state],
+                    }}
+                  >
+                    {children}
+                  </div>
+                )}
+              </Transition>
+            </TransitionGroup>
+          </ParallaxProvider>
           <div
             style={{
               width: '100%',

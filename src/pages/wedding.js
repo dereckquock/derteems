@@ -42,7 +42,7 @@ export default () => {
           }}
         >
           <div className={css(animateInUp(1 / 4))}>
-            <div style={{ fontSize: '2rem' }}>when</div>
+            <div style={{ fontSize: '2rem', fontWeight: 600 }}>when</div>
             <div style={{ paddingBottom: 40, fontSize: '2rem' }}>
               <div style={{ marginBottom: 10 }}>November 2nd, 2019</div>
               <AddToCalendar event={event} />
@@ -50,7 +50,7 @@ export default () => {
           </div>
 
           <div className={css(animateInUp(2 / 4))}>
-            <div style={{ fontSize: '2rem' }}>where</div>
+            <div style={{ fontSize: '2rem', fontWeight: 600 }}>where</div>
             <div style={{ paddingBottom: 40, fontSize: '2rem' }}>
               <div style={{ paddingBottom: 10 }}>
                 <a
@@ -77,7 +77,10 @@ export default () => {
           </div>
         </div>
 
-        <div className={css(animateInUp(3 / 4))} style={{ fontSize: '2rem' }}>
+        <div
+          className={css(animateInUp(3 / 4))}
+          style={{ fontSize: '2rem', fontWeight: 600 }}
+        >
           RSVP
         </div>
         <div

@@ -1,8 +1,8 @@
 import React from 'react'
+import { css } from 'glamor'
 import { StaticQuery, graphql } from 'gatsby'
 import Img from 'gatsby-image'
-import { css } from 'glamor'
-import { animateInDown } from '../utils/animations'
+import { animateInDown, animateInUp } from '../utils/animations'
 import SEO from '../components/seo'
 
 const styles = {
@@ -79,9 +79,15 @@ export default () => (
                 },
               }}
             >
-              {Object.values(data).map(({ childImageSharp: { fluid } }) => (
-                <Img key={fluid.src} fluid={fluid} css={styles.image} />
-              ))}
+              {Object.values(data).map(
+                ({ childImageSharp: { fluid } }, index) => (
+                  <Img
+                    key={fluid.src}
+                    fluid={fluid}
+                    className={css(styles.image, animateInUp((index + 1) / 4))}
+                  />
+                )
+              )}
             </div>
           )
         }}

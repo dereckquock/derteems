@@ -627,6 +627,7 @@ pre tt:after {
   background-color: #3e3d4d;
   color: #fff;
   cursor: pointer;
+  text-decoration: none;
 }
 .btn:focus {
   outline: none;
