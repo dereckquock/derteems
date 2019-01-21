@@ -162,7 +162,12 @@ export default () => (
                           top: 16,
                         }}
                       >
-                        <a href={thingsToDo[index].url} className="btn">
+                        <a
+                          href={thingsToDo[index].url}
+                          className="btn"
+                          target="_blank"
+                          rel="noopener noreferrer"
+                        >
                           {thingsToDo[index].title}
                         </a>
                       </div>
