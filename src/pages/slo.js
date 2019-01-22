@@ -4,6 +4,7 @@ import { ParallaxProvider } from 'react-scroll-parallax'
 import { animateInDown, animateInUp } from '../utils/animations'
 import SEO from '../components/seo'
 import ThingsToDo from '../components/thingsToDo'
+import FoodPlaces from '../components/foodPlaces'
 
 export default () => (
   <ParallaxProvider>
@@ -58,6 +59,27 @@ export default () => (
         )}
       >
         <ThingsToDo />
+      </div>
+
+      <div
+        className={css(
+          { marginTop: 20, fontSize: '2rem', fontWeight: 600 },
+          animateInUp(3 / 4)
+        )}
+      >
+        Food that we love
+      </div>
+      <div
+        className={css(
+          {
+            paddingTop: '6vw',
+            paddingBottom: 40,
+            fontSize: '2rem',
+          },
+          animateInUp(5 / 4)
+        )}
+      >
+        <FoodPlaces />
       </div>
     </div>
   </ParallaxProvider>
