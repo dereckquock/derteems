@@ -8,7 +8,7 @@ export default () => {
   return (
     <>
       <SEO
-        title="Home"
+        title="🥂"
         keywords={[`dereck`, `fatima`, `quock`, `wedding`, `fatquock`]}
       />
       <div style={{ height: '100vh', position: 'relative' }}>
