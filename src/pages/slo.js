@@ -67,7 +67,7 @@ export default () => (
           animateInUp(3 / 4)
         )}
       >
-        Food that we love
+        Food we love ♥
       </div>
       <div
         className={css(
