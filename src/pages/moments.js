@@ -40,28 +40,21 @@ export default () => (
       <StaticQuery
         query={graphql`
           query {
-            image1: file(relativePath: { eq: "fati.png" }) {
+            image1: file(relativePath: { eq: "main.png" }) {
               childImageSharp {
                 fluid(maxWidth: 800) {
                   ...GatsbyImageSharpFluid
                 }
               }
             }
-            image2: file(relativePath: { eq: "main.png" }) {
+            image2: file(relativePath: { eq: "pup.png" }) {
               childImageSharp {
                 fluid(maxWidth: 800) {
                   ...GatsbyImageSharpFluid
                 }
               }
             }
-            image3: file(relativePath: { eq: "pup.png" }) {
-              childImageSharp {
-                fluid(maxWidth: 800) {
-                  ...GatsbyImageSharpFluid
-                }
-              }
-            }
-            image4: file(relativePath: { eq: "patriots.png" }) {
+            image3: file(relativePath: { eq: "patriots.png" }) {
               childImageSharp {
                 fluid(maxWidth: 800) {
                   ...GatsbyImageSharpFluid

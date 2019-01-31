@@ -1,6 +1,6 @@
 module.exports = {
   siteMetadata: {
-    title: `D&F`,
+    title: `teem quock`,
     description: `Our wedding`,
     author: `@dereckquock`,
   },
@@ -24,7 +24,7 @@ module.exports = {
         background_color: `#DDD3C9`,
         theme_color: `#DDD3C9`,
         display: `standalone`,
-        icon: `src/images/pup.png`, // This path is relative to the root of the site.
+        icon: `src/images/icon.png`, // This path is relative to the root of the site.
         legacy: true,
       },
     },

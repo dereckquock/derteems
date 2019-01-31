@@ -39,35 +39,20 @@ export default () => {
           <div
             className={css({ display: 'inline-block' }, animateInDown(1 / 4))}
           >
-            my
+            teem
           </div>{' '}
           <div
             className={css({ display: 'inline-block' }, animateInDown(2 / 4))}
           >
-            big
+            quock
           </div>{' '}
           <div
             className={css({ display: 'inline-block' }, animateInDown(3 / 4))}
           >
-            fat
-          </div>{' '}
-          <div
-            className={css({ display: 'inline-block' }, animateInDown(5 / 4))}
-          >
-            quock
-          </div>{' '}
-          <div
-            className={css({ display: 'inline-block' }, animateInDown(6 / 4))}
-          >
-            wedding
-          </div>{' '}
-          <div
-            className={css({ display: 'inline-block' }, animateInDown(7 / 4))}
-          >
             coming
           </div>{' '}
           <div
-            className={css({ display: 'inline-block' }, animateInDown(8 / 4))}
+            className={css({ display: 'inline-block' }, animateInDown(4 / 4))}
           >
             soon
           </div>
@@ -83,7 +68,7 @@ export default () => {
                   fontSize: '2.5rem',
                 },
               },
-              animateInUp(12 / 4)
+              animateInUp(6 / 4)
             )}
           >
             11/02/19

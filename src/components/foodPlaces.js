@@ -9,6 +9,10 @@ const foodPlaces = [
     url: 'https://www.yelp.com/biz/firestone-grill-san-luis-obispo',
   },
   {
+    title: 'SLO Brew Rock',
+    url: 'https://www.yelp.com/biz/slo-brew-rock-san-luis-obispo-3',
+  },
+  {
     title: 'Splash Café',
     url:
       'https://www.yelp.com/biz/splash-caf%C3%A9-monterey-st-san-luis-obispo-37',
@@ -45,7 +49,14 @@ export default () => (
   <StaticQuery
     query={graphql`
       query {
-        image1: file(relativePath: { eq: "firestone.png" }) {
+        image0: file(relativePath: { eq: "firestone.png" }) {
+          childImageSharp {
+            fluid(maxWidth: 800) {
+              ...GatsbyImageSharpFluid
+            }
+          }
+        }
+        image1: file(relativePath: { eq: "slobrew.png" }) {
           childImageSharp {
             fluid(maxWidth: 800) {
               ...GatsbyImageSharpFluid
