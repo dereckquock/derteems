@@ -18,8 +18,8 @@ module.exports = {
     {
       resolve: `gatsby-plugin-manifest`,
       options: {
-        name: `Dereck & Fatima`,
-        short_name: `D&F`,
+        name: `teem quock`,
+        short_name: `teem quock`,
         start_url: `/`,
         background_color: `#DDD3C9`,
         theme_color: `#DDD3C9`,
