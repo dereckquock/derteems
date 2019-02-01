@@ -1,7 +1,7 @@
 module.exports = {
   siteMetadata: {
     title: `teem quock`,
-    description: `Our wedding`,
+    description: `Dereck and Fatima's Wedding`,
     author: `@dereckquock`,
   },
   plugins: [

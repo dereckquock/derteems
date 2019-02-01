@@ -7,10 +7,7 @@ import Image from '../components/mainImage'
 export default () => {
   return (
     <>
-      <SEO
-        title="🥂"
-        keywords={[`dereck`, `fatima`, `quock`, `wedding`, `fatquock`]}
-      />
+      <SEO title="🥂" />
       <div style={{ height: '100vh', position: 'relative' }}>
         <div
           style={{ width: '100%', position: 'absolute', filter: 'blur(8px)' }}

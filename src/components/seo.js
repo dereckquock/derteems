@@ -70,7 +70,17 @@ function SEO({ description, lang, meta, keywords, title }) {
 SEO.defaultProps = {
   lang: `en`,
   meta: [],
-  keywords: [],
+  keywords: [
+    `dereck`,
+    `fatima`,
+    `quock`,
+    `wedding`,
+    `fatquock`,
+    `teemquock`,
+    `teem quock`,
+    `slo`,
+    `higuera ranch`,
+  ],
 }
 
 SEO.propTypes = {
