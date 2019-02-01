@@ -71,7 +71,11 @@ const Layout = ({ children }) => {
           >
             <Link
               to="/"
-              style={styles.tab}
+              style={
+                currentPage === 'home'
+                  ? { ...styles.tab, ...styles.activeTab }
+                  : styles.tab
+              }
               activeStyle={styles.activeTab}
               onClick={() => setCurrentPage('home')}
             >
