@@ -8,7 +8,15 @@ const NotFoundPage = () => (
   <Layout>
     <SEO title="404: Not found" />
     <div className="contents">
-      <h1>🤷‍♀️ page not found 🤷‍♂️</h1>
+      <h1>
+        <span role="img" aria-label="shrug">
+          🤷‍♀️
+        </span>
+        <span>page not found</span>
+        <span role="img" aria-label="shrug">
+          🤷‍♂️
+        </span>
+      </h1>
       <Image />
     </div>
   </Layout>
