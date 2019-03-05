@@ -59,7 +59,6 @@ const Layout = ({ children }) => {
           <div
             style={{
               width: '100%',
-              height: 80,
               position: 'fixed',
               bottom: 0,
               display: 'grid',

@@ -21,7 +21,7 @@ const styles = {
 export default () => (
   <div style={{ background: '#DDD3C9' }}>
     <SEO title="Moments" />
-    <div className="contents">
+    <div className="contents" style={{ marginBottom: 20 }}>
       <div
         className={css(
           {
@@ -40,21 +40,35 @@ export default () => (
       <StaticQuery
         query={graphql`
           query {
-            image1: file(relativePath: { eq: "main.png" }) {
+            patriots: file(relativePath: { eq: "patriots.png" }) {
               childImageSharp {
                 fluid(maxWidth: 800) {
                   ...GatsbyImageSharpFluid
                 }
               }
             }
-            image2: file(relativePath: { eq: "pup.png" }) {
+            p1: file(relativePath: { eq: "1.jpg" }) {
               childImageSharp {
                 fluid(maxWidth: 800) {
                   ...GatsbyImageSharpFluid
                 }
               }
             }
-            image3: file(relativePath: { eq: "patriots.png" }) {
+            p2: file(relativePath: { eq: "2.jpg" }) {
+              childImageSharp {
+                fluid(maxWidth: 800) {
+                  ...GatsbyImageSharpFluid
+                }
+              }
+            }
+            p3: file(relativePath: { eq: "3.jpg" }) {
+              childImageSharp {
+                fluid(maxWidth: 800) {
+                  ...GatsbyImageSharpFluid
+                }
+              }
+            }
+            p5: file(relativePath: { eq: "5.jpg" }) {
               childImageSharp {
                 fluid(maxWidth: 800) {
                   ...GatsbyImageSharpFluid

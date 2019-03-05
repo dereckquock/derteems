@@ -71,6 +71,8 @@ SEO.defaultProps = {
   lang: `en`,
   meta: [],
   keywords: [
+    `fatima & dereck`,
+    `fatima and dereck`,
     `dereck`,
     `fatima`,
     `quock`,
@@ -78,6 +80,7 @@ SEO.defaultProps = {
     `fatquock`,
     `teemquock`,
     `teem quock`,
+    `team quock`,
     `slo`,
     `higuera ranch`,
   ],
