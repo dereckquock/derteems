@@ -711,7 +711,7 @@
 
 "@babel/runtime@^7.3.1":
   version "7.3.4"
-  resolved "http://npm.paypal.com/repository/npm-all/@babel/runtime/-/runtime-7.3.4.tgz#73d12ba819e365fcf7fd152aed56d6df97d21c83"
+  resolved "https://registry.npmjs.org/@babel/runtime/-/runtime-7.3.4.tgz#73d12ba819e365fcf7fd152aed56d6df97d21c83"
   integrity sha512-IvfvnMdSaLBateu0jfsYIpZTxAc2cKEXEMiezGGN75QcBcecDUKd3PgLAncT0oOgxKy8dd8hrJKj9MfzgfZd6g==
   dependencies:
     regenerator-runtime "^0.12.0"
@@ -852,7 +852,7 @@
 
 "@types/d3-timer@^1.0.9":
   version "1.0.9"
-  resolved "http://npm.paypal.com/repository/npm-all/@types/d3-timer/-/d3-timer-1.0.9.tgz#aed1bde0cf18920d33f5d44839d73de393633fd3"
+  resolved "https://registry.npmjs.org/@types/d3-timer/-/d3-timer-1.0.9.tgz#aed1bde0cf18920d33f5d44839d73de393633fd3"
   integrity sha512-WvfJ3LFxBbWjqRGz9n7GJt08RrTHPJDVsIwwoCMROlqF+iDacYiAFjf9oqnq0mXpb2juA2N/qjKP+MKdal3YNQ==
 
 "@types/debug@^0.0.29":
@@ -3467,12 +3467,12 @@ cyclist@~0.2.2:
 
 d3-ease@^1.0.3:
   version "1.0.5"
-  resolved "http://npm.paypal.com/repository/npm-all/d3-ease/-/d3-ease-1.0.5.tgz#8ce59276d81241b1b72042d6af2d40e76d936ffb"
+  resolved "https://registry.npmjs.org/d3-ease/-/d3-ease-1.0.5.tgz#8ce59276d81241b1b72042d6af2d40e76d936ffb"
   integrity sha512-Ct1O//ly5y5lFM9YTdu+ygq7LleSgSE4oj7vUt9tPLHUi8VCV7QoizGpdWRWAwCO9LdYzIrQDg97+hGVdsSGPQ==
 
 d3-timer@^1.0.9:
   version "1.0.9"
-  resolved "http://npm.paypal.com/repository/npm-all/d3-timer/-/d3-timer-1.0.9.tgz#f7bb8c0d597d792ff7131e1c24a36dd471a471ba"
+  resolved "https://registry.npmjs.org/d3-timer/-/d3-timer-1.0.9.tgz#f7bb8c0d597d792ff7131e1c24a36dd471a471ba"
   integrity sha512-rT34J5HnQUHhcLvhSB9GjCkN0Ddd5Y8nCwDBG2u6wQEeYxT/Lf51fTFFkldeib/sE/J0clIe0pnCfs6g/lRbyg==
 
 damerau-levenshtein@^1.0.4:
@@ -7204,7 +7204,7 @@ jsx-ast-utils@^2.0.1:
 
 kapellmeister@^2.0.0:
   version "2.0.2"
-  resolved "http://npm.paypal.com/repository/npm-all/kapellmeister/-/kapellmeister-2.0.2.tgz#e99d97205f07cdd09b1729d8afa9d4172fd1bc97"
+  resolved "https://registry.npmjs.org/kapellmeister/-/kapellmeister-2.0.2.tgz#e99d97205f07cdd09b1729d8afa9d4172fd1bc97"
   integrity sha512-Mk1IVuLFKb2704j3bX7CmCU8eqNFoiqPv/Z3tYRoFysg12mrVHKzKzmkP2eqf1W7do0c1Ekpc36L+hrE0PxAmg==
   dependencies:
     "@types/d3-timer" "^1.0.9"
@@ -8196,7 +8196,7 @@ nth-check@^1.0.2, nth-check@~1.0.1:
 
 nuka-carousel@^4.4.9:
   version "4.4.9"
-  resolved "http://npm.paypal.com/repository/npm-all/nuka-carousel/-/nuka-carousel-4.4.9.tgz#a009e6453692d44998da853b46c3e51aa98b7ace"
+  resolved "https://registry.npmjs.org/nuka-carousel/-/nuka-carousel-4.4.9.tgz#a009e6453692d44998da853b46c3e51aa98b7ace"
   integrity sha512-+gUPforTPMLYHgG9jM/Y77H1UTBne+lCjh81iWkfCJ8mUKdlpaq5M5gbBgAEIITIvSCg1AfNuxs6RNKvC6gBTg==
   dependencies:
     d3-ease "^1.0.3"
@@ -9646,7 +9646,7 @@ react-lifecycles-compat@^3.0.4:
 
 react-move@^5.0.0:
   version "5.2.0"
-  resolved "http://npm.paypal.com/repository/npm-all/react-move/-/react-move-5.2.0.tgz#d9c7f70d6feb256dc850aa0eab5d1f238576c231"
+  resolved "https://registry.npmjs.org/react-move/-/react-move-5.2.0.tgz#d9c7f70d6feb256dc850aa0eab5d1f238576c231"
   integrity sha512-iWHIqEgfmVzFTBMpGqKvUhQcC7A7afaej6amUkrUu8ZTqwdccsrUW0bme4iZuW1Yp5yNBqus6Gq4cFbHxMWIyg==
   dependencies:
     "@babel/runtime" "^7.3.1"
