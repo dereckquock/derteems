@@ -17,6 +17,7 @@
     "gatsby-source-filesystem": "^2.0.8",
     "gatsby-transformer-sharp": "^2.1.8",
     "glamor": "^2.20.40",
+    "nuka-carousel": "^4.4.9",
     "prop-types": "^15.6.2",
     "react": "^16.8.3",
     "react-add-to-calendar-hoc": "^1.0.7",

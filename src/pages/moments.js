@@ -3,6 +3,7 @@ import { css } from 'glamor'
 import { StaticQuery, graphql } from 'gatsby'
 import Img from 'gatsby-image'
 import { DialogOverlay, DialogContent } from '@reach/dialog'
+import Carousel from 'nuka-carousel'
 import { animateInDown, animateInUp } from '../utils/animations'
 import SEO from '../components/seo'
 
@@ -22,7 +23,8 @@ const styles = {
 }
 
 export default () => {
-  const [fluidImage, setFluidImage] = useState(null)
+  const [images, setImages] = useState({})
+  const [activeImage, setActiveImage] = useState(0)
   const [showImageDialog, setShowImageDialog] = useState(false)
 
   return (
@@ -49,35 +51,35 @@ export default () => {
             query {
               patriots: file(relativePath: { eq: "patriots.png" }) {
                 childImageSharp {
-                  fluid(maxWidth: 800) {
+                  fluid(maxWidth: 3264) {
                     ...GatsbyImageSharpFluid
                   }
                 }
               }
               p1: file(relativePath: { eq: "1.jpg" }) {
                 childImageSharp {
-                  fluid(maxWidth: 800) {
+                  fluid(maxWidth: 3264) {
                     ...GatsbyImageSharpFluid
                   }
                 }
               }
               p2: file(relativePath: { eq: "2.jpg" }) {
                 childImageSharp {
-                  fluid(maxWidth: 800) {
+                  fluid(maxWidth: 3264) {
                     ...GatsbyImageSharpFluid
                   }
                 }
               }
               p3: file(relativePath: { eq: "3.jpg" }) {
                 childImageSharp {
-                  fluid(maxWidth: 800) {
+                  fluid(maxWidth: 3264) {
                     ...GatsbyImageSharpFluid
                   }
                 }
               }
               p5: file(relativePath: { eq: "5.jpg" }) {
                 childImageSharp {
-                  fluid(maxWidth: 800) {
+                  fluid(maxWidth: 3264) {
                     ...GatsbyImageSharpFluid
                   }
                 }
@@ -85,6 +87,8 @@ export default () => {
             }
           `}
           render={data => {
+            setImages(data)
+
             return (
               <div
                 css={{
@@ -108,7 +112,7 @@ export default () => {
                       className={css(styles.image, { overflow: 'hidden' })}
                       onClick={event => {
                         event.preventDefault()
-                        setFluidImage(fluid)
+                        setActiveImage(index)
                         setShowImageDialog(true)
                       }}
                     >
@@ -136,9 +140,7 @@ export default () => {
       </div>
 
       <DialogOverlay
-        style={{
-          background: 'hsla(0, 100%, 100%, 0.9)',
-        }}
+        style={{ background: 'hsla(0, 100%, 100%, 0.9)' }}
         isOpen={showImageDialog}
         onDismiss={() => setShowImageDialog(false)}
       >
@@ -221,17 +223,32 @@ export default () => {
             </button>
           </div>
 
-          <Img
-            fluid={fluidImage}
-            className={css(
-              {
-                width: '100%',
-                height: '100%',
-              },
-              animateInUp()
+          <Carousel
+            enableKeyboardControls
+            dragging
+            swiping
+            withoutControls
+            wrapAround
+            slideIndex={activeImage}
+            style={{ width: '100%', height: '100%' }}
+          >
+            {Object.values(images).map(
+              ({ childImageSharp: { fluid } }, index) => (
+                <Img
+                  key={fluid.src}
+                  fluid={fluid}
+                  className={css(
+                    {
+                      width: '100%',
+                      height: '100%',
+                    },
+                    animateInUp()
+                  )}
+                  imgStyle={{ objectFit: 'contain' }}
+                />
+              )
             )}
-            imgStyle={{ objectFit: 'contain' }}
-          />
+          </Carousel>
         </DialogContent>
       </DialogOverlay>
     </div>
