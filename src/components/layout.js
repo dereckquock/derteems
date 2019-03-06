@@ -4,6 +4,7 @@ import 'typeface-amatic-sc'
 import { TransitionGroup, Transition } from 'react-transition-group'
 import { StaticQuery, graphql, Link } from 'gatsby'
 import './layout.css'
+import '@reach/dialog/styles.css'
 
 const styles = {
   tab: {

@@ -1,6 +1,5 @@
 import React, { useState } from 'react'
 import { DialogOverlay, DialogContent } from '@reach/dialog'
-import '@reach/dialog/styles.css'
 import './schedule.css'
 import { css } from 'glamor'
 import { animateInDown, animateInUp } from '../utils/animations'
