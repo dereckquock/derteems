@@ -137,8 +137,6 @@ export default () => {
 
       <DialogOverlay
         style={{
-          display: 'grid',
-          alignItems: 'center',
           background: 'hsla(0, 100%, 100%, 0.9)',
         }}
         isOpen={showImageDialog}
@@ -172,6 +170,7 @@ export default () => {
                 {
                   width: 44,
                   height: 44,
+                  padding: 0,
                   position: 'absolute',
                   top: -40,
                   right: -40,
