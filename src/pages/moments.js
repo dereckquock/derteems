@@ -149,12 +149,20 @@ export default () => {
             width: '600px !important',
             height: '600px !important',
             background: 'transparent !important',
+
+            '@media(max-width: 768px)': {
+              width: '100% !important',
+              height: '100% !important',
+              padding: '0 !important',
+              margin: '0 !important',
+            },
           }}
         >
           <div
             className={animateInDown()}
             style={{
               position: 'relative',
+              zIndex: 100,
               fontSize: '2rem',
               fontWeight: 600,
             }}
@@ -162,30 +170,45 @@ export default () => {
             <button
               className={css(
                 {
+                  width: 44,
+                  height: 44,
                   position: 'absolute',
                   top: -40,
                   right: -40,
                   border: 0,
-                  background: 'none',
+                  borderRadius: 22,
+                  background: '#816D66',
                   cursor: 'pointer',
                   outline: 'none',
-                  transition: 'all 0.75s cubic-bezier(0.68, -0.55, 0.27, 1.55)',
-                  ':hover': {
-                    transform: 'rotateZ(90deg)',
+
+                  '@media(max-width: 768px)': {
+                    top: 4,
+                    right: 4,
+                    boxShadow: '0 1px 4px 1px #000',
                   },
                 },
                 animateInDown()
               )}
               onClick={() => setShowImageDialog(false)}
             >
-              <svg width="22px" height="22px">
+              <svg
+                width="22px"
+                height="22px"
+                className={css({
+                  transition: 'all 0.75s cubic-bezier(0.68, -0.55, 0.27, 1.55)',
+
+                  ':hover': {
+                    transform: 'rotateZ(90deg)',
+                  },
+                })}
+              >
                 <line
                   x1="1"
                   y1="20"
                   x2="20"
                   y2="1"
                   stroke="#3E3D4D"
-                  strokeWidth="2"
+                  strokeWidth="4"
                 />
                 <line
                   x1="1"
@@ -193,7 +216,7 @@ export default () => {
                   x2="20"
                   y2="20"
                   stroke="#3E3D4D"
-                  strokeWidth="2"
+                  strokeWidth="4"
                 />
               </svg>
             </button>
@@ -208,6 +231,7 @@ export default () => {
               },
               animateInUp()
             )}
+            imgStyle={{ objectFit: 'contain' }}
           />
         </DialogContent>
       </DialogOverlay>
