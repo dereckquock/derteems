@@ -35,13 +35,22 @@ export default () => {
         </div>
 
         <div
+          className={css(
+            { marginBottom: 20, fontSize: 30, fontWeight: 600 },
+            animateInUp()
+          )}
+        >
+          #TeemQuock
+        </div>
+
+        <div
           css={{
             display: 'grid',
             gridTemplateColumns: '1fr 1fr',
             '@media(max-width: 414px)': { gridTemplateColumns: '1fr' },
           }}
         >
-          <div style={{ marginBottom: 40 }}>
+          <div>
             <div className={css(animateInUp(1 / 4))}>
               <div style={{ fontSize: '2rem', fontWeight: 600 }}>when</div>
               <div style={{ paddingBottom: 40, fontSize: '2rem' }}>
@@ -87,7 +96,7 @@ export default () => {
             <Schedule className={css(animateInUp(4 / 4))} />
           </div>
 
-          <div style={{ marginBottom: 40 }}>
+          <div>
             <div className={css(animateInUp(1 / 4))}>
               <div style={{ fontSize: '2rem', fontWeight: 600 }}>
                 bridal party
@@ -97,6 +106,15 @@ export default () => {
               <div style={{ fontSize: '2rem' }}>TBA</div>
             </div>
           </div>
+        </div>
+
+        <div
+          className={css(
+            { marginTop: 40, marginBottom: 40, fontSize: 20 },
+            animateInUp(4 / 4)
+          )}
+        >
+          romans 12:9-10
         </div>
       </div>
     </>

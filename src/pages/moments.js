@@ -137,6 +137,15 @@ export default () => {
             )
           }}
         />
+
+        <div
+          className={css(
+            { marginTop: 40, marginBottom: 40, fontSize: 20 },
+            animateInUp(6 / 4)
+          )}
+        >
+          ecclesiastes 4:12
+        </div>
       </div>
 
       <DialogOverlay

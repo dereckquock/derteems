@@ -73,13 +73,21 @@ export default () => (
         className={css(
           {
             paddingTop: '6vw',
-            paddingBottom: 40,
             fontSize: '2rem',
           },
           animateInUp(5 / 4)
         )}
       >
         <FoodPlaces />
+      </div>
+
+      <div
+        className={css(
+          { marginTop: 40, marginBottom: 40, fontSize: 20 },
+          animateInUp(6 / 4)
+        )}
+      >
+        ‭‭1 john‬ ‭3:18
       </div>
     </div>
   </ParallaxProvider>

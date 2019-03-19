@@ -89,14 +89,14 @@ export default props => {
               <div className="event-time">5pm</div>
               <div>
                 <div className="event-title">Ceremony</div>
-                <div className="event-description">@ the fig tree</div>
+                <div className="event-description">@ the lawn</div>
               </div>
             </li>
             <li className={`event ${css(animateInUp(2 / 3))}`}>
               <div className="event-time">6pm</div>
               <div>
                 <div className="event-title">Cocktail Hour</div>
-                <div className="event-description">@ the barn</div>
+                <div className="event-description">@ the patio</div>
               </div>
             </li>
             <li className={`event ${css(animateInUp(3 / 3))}`}>

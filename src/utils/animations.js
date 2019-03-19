@@ -9,7 +9,7 @@ import { css } from 'glamor'
 /**
  * Fade in animation keyframes
  */
-const growIn = css.keyframes('growIn', {
+const growIn = css.keyframes({
   '0%': { transform: 'scale(0.5)', opacity: 0 },
   '100%': { transform: 'scale(1)', opacity: 1 },
 })
@@ -18,7 +18,7 @@ const growIn = css.keyframes('growIn', {
  * Fade up animation keyframes
  * @type {[type]}
  */
-const fadeInUp = css.keyframes('fadeInUp', {
+const fadeInUp = css.keyframes({
   '0%': { transform: 'translateY(10px)', opacity: 0 },
   '100%': { transform: 'translateY(0)', opacity: 1 },
 })
@@ -27,7 +27,7 @@ const fadeInUp = css.keyframes('fadeInUp', {
  * Fade down animation keyframes
  * @type {[type]}
  */
-const fadeInDown = css.keyframes('fadeInDown', {
+const fadeInDown = css.keyframes({
   '0%': { transform: 'translateY(-10px)', opacity: 0 },
   '100%': { transform: 'translateY(0)', opacity: 1 },
 })
@@ -36,7 +36,7 @@ const fadeInDown = css.keyframes('fadeInDown', {
  * Fade down animation keyframes
  * @type {[type]}
  */
-const fadeFooterOutDown = css.keyframes('fadeFooterOutDown', {
+const fadeFooterOutDown = css.keyframes({
   '0%': { transform: 'translateY(0)' },
   '100%': { transform: 'translateY(200px)' },
 })
@@ -45,7 +45,7 @@ const fadeFooterOutDown = css.keyframes('fadeFooterOutDown', {
  * Fade up animation keyframes
  * @type {[type]}
  */
-const fadeFooterInUp = css.keyframes('fadeFooterInUp', {
+const fadeFooterInUp = css.keyframes({
   '0%': { transform: 'translateY(200px)' },
   '100%': { transform: 'translateY(0)' },
 })
@@ -54,7 +54,7 @@ const fadeFooterInUp = css.keyframes('fadeFooterInUp', {
  * Fade up animation keyframes
  * @type {[type]}
  */
-const fadePanelInUp = css.keyframes('fadePanelInUp', {
+const fadePanelInUp = css.keyframes({
   '0%': { transform: 'translateY(100%)' },
   '100%': { transform: 'translateY(0)' },
 })
@@ -63,7 +63,7 @@ const fadePanelInUp = css.keyframes('fadePanelInUp', {
  * Fade out animation keyframes
  * @type {[type]}
  */
-const fadePanelOutDown = css.keyframes('fadePanelOutDown', {
+const fadePanelOutDown = css.keyframes({
   '0%': { transform: 'translateY(0)' },
   '100%': { transform: 'translateY(100%)' },
 })
