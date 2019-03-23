@@ -38,6 +38,7 @@ const UpdateBrowser = () => (
         width: '100%',
         marginBottom: 40,
         display: 'inline-block',
+        textAlign: 'center',
         textDecoration: 'none',
       }}
     >
@@ -58,6 +59,7 @@ const UpdateBrowser = () => (
         width: '100%',
         marginBottom: 40,
         display: 'inline-block',
+        textAlign: 'center',
         textDecoration: 'none',
       }}
     >
