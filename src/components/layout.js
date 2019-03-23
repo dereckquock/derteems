@@ -3,6 +3,7 @@ import PropTypes from 'prop-types'
 import 'typeface-amatic-sc'
 import { TransitionGroup, Transition } from 'react-transition-group'
 import { StaticQuery, graphql, Link } from 'gatsby'
+import { isIE, isEdge } from 'react-device-detect'
 import './layout.css'
 import '@reach/dialog/styles.css'
 
@@ -24,8 +25,60 @@ const transitionStyles = {
   entered: { opacity: 1 },
 }
 
+const UpdateBrowser = () => (
+  <div style={{ padding: 40, textAlign: 'center' }}>
+    <h2 style={{ fontSize: 40 }}>
+      update your browser for more security, speed, and the best experience
+    </h2>
+    <a
+      href="https://www.google.com/chrome/"
+      target="_blank"
+      rel="noopener noreferrer"
+      style={{
+        width: '100%',
+        marginBottom: 40,
+        display: 'inline-block',
+        textDecoration: 'none',
+      }}
+    >
+      <img
+        src="https://www.google.com/chrome/static/images/chrome-logo.svg"
+        alt="Google Chrome"
+        width="100px"
+      />
+      <div className="btn" style={{ width: 250, margin: 'auto' }}>
+        Download Google Chrome
+      </div>
+    </a>
+    <a
+      href="https://www.google.com/chrome/"
+      target="_blank"
+      rel="noopener noreferrer"
+      style={{
+        width: '100%',
+        marginBottom: 40,
+        display: 'inline-block',
+        textDecoration: 'none',
+      }}
+    >
+      <img
+        src="https://www.mozilla.org/media/img/logos/firefox/logo-quantum.9c5e96634f92.png"
+        alt="Mozilla Firefox"
+        width="100px"
+      />
+      <div className="btn" style={{ width: 250, margin: 'auto' }}>
+        Download Mozilla Firefox
+      </div>
+    </a>
+  </div>
+)
+
 const Layout = ({ children }) => {
   const [currentPage, setCurrentPage] = useState('home')
+
+  if (isIE || isEdge) {
+    return <UpdateBrowser />
+  }
 
   return (
     <StaticQuery
@@ -71,11 +124,7 @@ const Layout = ({ children }) => {
           >
             <Link
               to="/"
-              style={
-                currentPage === 'home'
-                  ? { ...styles.tab, ...styles.activeTab }
-                  : styles.tab
-              }
+              style={styles.tab}
               activeStyle={styles.activeTab}
               onClick={() => setCurrentPage('home')}
             >
@@ -113,6 +162,7 @@ const Layout = ({ children }) => {
               to="/wedding"
               style={styles.tab}
               activeStyle={styles.activeTab}
+              partiallyActive
               onClick={() => setCurrentPage('wedding')}
             >
               <div style={{ height: 36 }}>
@@ -161,6 +211,7 @@ const Layout = ({ children }) => {
               to="/slo"
               style={styles.tab}
               activeStyle={styles.activeTab}
+              partiallyActive
               onClick={() => setCurrentPage('slo')}
             >
               <div style={{ height: 36 }}>
@@ -181,6 +232,7 @@ const Layout = ({ children }) => {
               to="/moments"
               style={styles.tab}
               activeStyle={styles.activeTab}
+              partiallyActive
               onClick={() => setCurrentPage('moments')}
             >
               <div style={{ height: 36 }}>

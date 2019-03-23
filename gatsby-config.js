@@ -28,7 +28,6 @@ module.exports = {
         legacy: true,
       },
     },
-    'gatsby-plugin-offline',
     {
       resolve: `gatsby-plugin-layout`,
       options: {
