@@ -27,7 +27,7 @@ const transitionStyles = {
 
 const UpdateBrowser = () => (
   <div style={{ padding: 40, textAlign: 'center' }}>
-    <h2 style={{ fontSize: 40 }}>
+    <h2 style={{ fontSize: 40, textAlign: 'center' }}>
       update your browser for more security, speed, and the best experience
     </h2>
     <a
