@@ -1,12 +1,20 @@
 import React, { useState } from 'react'
 import { css } from 'glamor'
 import ReactPlayer from 'react-player/lib/players/Vimeo'
-import { isMobile } from 'react-device-detect'
+import { isIos, isAndroid } from 'react-device-detect'
 import SEO from '../components/seo'
 import { animateInUp } from '../utils/animations'
 
 export default () => {
   const [done, setDone] = useState(false)
+  let fbUrl = 'https://www.facebook.com/MarkNicolasFilms/'
+
+  if (isIos) {
+    fbUrl = 'fb://page/?id=1908468772771411'
+  }
+  if (isAndroid) {
+    fbUrl = 'fb://page/1908468772771411'
+  }
 
   return (
     <>
@@ -176,11 +184,7 @@ export default () => {
                   </svg>
                 </a>
                 <a
-                  href={
-                    isMobile
-                      ? 'fb://pages/MarkNicolasFilms'
-                      : 'https://www.facebook.com/MarkNicolasFilms/'
-                  }
+                  href={fbUrl}
                   target="_blank"
                   rel="noopener noreferrer"
                   className={css({
