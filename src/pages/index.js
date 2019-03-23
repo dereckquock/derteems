@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import { css } from 'glamor'
 import ReactPlayer from 'react-player/lib/players/Vimeo'
-import { isIos, isAndroid } from 'react-device-detect'
+import { isIOS, isAndroid } from 'react-device-detect'
 import SEO from '../components/seo'
 import { animateInUp } from '../utils/animations'
 
@@ -9,7 +9,7 @@ export default () => {
   const [done, setDone] = useState(false)
   let fbUrl = 'https://www.facebook.com/MarkNicolasFilms/'
 
-  if (isIos) {
+  if (isIOS) {
     fbUrl = 'fb://page/?id=1908468772771411'
   }
   if (isAndroid) {
