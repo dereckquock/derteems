@@ -71,6 +71,8 @@ SEO.defaultProps = {
   lang: `en`,
   meta: [],
   keywords: [
+    `dereck & fatima`,
+    `dereck and fatima`,
     `fatima & dereck`,
     `fatima and dereck`,
     `dereck`,

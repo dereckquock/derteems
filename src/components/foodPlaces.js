@@ -118,7 +118,7 @@ export default () => (
       <div
         css={{
           display: 'grid',
-          gridTemplateColumns: '300px 300px 300px',
+          gridTemplateColumns: 'repeat(3, 300px)',
           gridGap: 20,
           alignItems: 'center',
           justifyContent: 'center',
