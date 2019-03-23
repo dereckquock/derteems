@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import { css } from 'glamor'
 import ReactPlayer from 'react-player/lib/players/Vimeo'
+import { isMobile } from 'react-device-detect'
 import SEO from '../components/seo'
 import { animateInUp } from '../utils/animations'
 
@@ -175,7 +176,11 @@ export default () => {
                   </svg>
                 </a>
                 <a
-                  href="https://www.facebook.com/MarkNicolasFilms/"
+                  href={
+                    isMobile
+                      ? 'fb://pages/MarkNicolasFilms'
+                      : 'https://www.facebook.com/MarkNicolasFilms/'
+                  }
                   target="_blank"
                   rel="noopener noreferrer"
                   className={css({

@@ -46,6 +46,7 @@
     "prop-types": "^15.6.2",
     "react": "^16.8.3",
     "react-add-to-calendar-hoc": "^1.0.7",
+    "react-device-detect": "^1.6.2",
     "react-dom": "^16.8.3",
     "react-helmet": "^5.2.0",
     "react-player": "^1.9.3",
