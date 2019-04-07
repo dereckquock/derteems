@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import PropTypes from 'prop-types'
 import 'typeface-amatic-sc'
 import { TransitionGroup, Transition } from 'react-transition-group'
@@ -6,6 +6,9 @@ import { StaticQuery, graphql, Link } from 'gatsby'
 import { isIE, isEdge } from 'react-device-detect'
 import './layout.css'
 import '@reach/dialog/styles.css'
+import ReactGA from 'react-ga'
+
+ReactGA.initialize('UA-137879047-1')
 
 const styles = {
   tab: {
@@ -76,7 +79,19 @@ const UpdateBrowser = () => (
 )
 
 const Layout = ({ children }) => {
-  const [currentPage, setCurrentPage] = useState('home')
+  const [currentPage, setCurrentPage] = useState('')
+
+  useEffect(() => {
+    const initialPage = window.location.pathname.replace(/\//g, '') || 'home'
+
+    setCurrentPage(initialPage)
+    ReactGA.pageview(`/${initialPage}`)
+  }, [])
+
+  const handleChangeTab = page => {
+    setCurrentPage(page)
+    ReactGA.pageview(`/${page}`)
+  }
 
   if (isIE || isEdge) {
     return <UpdateBrowser />
@@ -128,7 +143,7 @@ const Layout = ({ children }) => {
               to="/"
               style={styles.tab}
               activeStyle={styles.activeTab}
-              onClick={() => setCurrentPage('home')}
+              onClick={() => handleChangeTab('home')}
             >
               <div style={{ height: 36 }}>
                 <svg width="36px" height="36px" viewBox="-11 0 512 512">
@@ -165,7 +180,7 @@ const Layout = ({ children }) => {
               style={styles.tab}
               activeStyle={styles.activeTab}
               partiallyActive
-              onClick={() => setCurrentPage('wedding')}
+              onClick={() => handleChangeTab('wedding')}
             >
               <div style={{ height: 36 }}>
                 <svg width="36px" height="36px" viewBox="-41 0 512 512.00138">
@@ -214,7 +229,7 @@ const Layout = ({ children }) => {
               style={styles.tab}
               activeStyle={styles.activeTab}
               partiallyActive
-              onClick={() => setCurrentPage('slo')}
+              onClick={() => handleChangeTab('slo')}
             >
               <div style={{ height: 36 }}>
                 <svg width="34px" height="34px" viewBox="-91 0 512 512">
@@ -235,7 +250,7 @@ const Layout = ({ children }) => {
               style={styles.tab}
               activeStyle={styles.activeTab}
               partiallyActive
-              onClick={() => setCurrentPage('moments')}
+              onClick={() => handleChangeTab('moments')}
             >
               <div style={{ height: 36 }}>
                 <svg

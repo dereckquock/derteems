@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import { DialogOverlay, DialogContent } from '@reach/dialog'
+import ReactGA from 'react-ga'
 import './schedule.css'
 import { css } from 'glamor'
 import { animateInDown, animateInUp } from '../utils/animations'
@@ -12,7 +13,13 @@ export default props => {
       <button
         className={`btn ${props.className}`}
         style={{ marginBottom: 20 }}
-        onClick={() => setShowSchedule(true)}
+        onClick={() => {
+          setShowSchedule(true)
+          ReactGA.event({
+            category: 'Schedule',
+            action: 'Show Schedule',
+          })
+        }}
       >
         Schedule
       </button>
