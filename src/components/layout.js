@@ -86,6 +86,12 @@ const Layout = ({ children }) => {
 
     setCurrentPage(initialPage)
     ReactGA.pageview(`/${initialPage}`)
+
+    window.navigator.serviceWorker
+      .getRegistrations()
+      .then(registrations =>
+        registrations.forEach(registration => registration.unregister())
+      )
   }, [])
 
   const handleChangeTab = page => {
