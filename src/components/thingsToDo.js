@@ -133,8 +133,12 @@ export default () => (
                   {thingsToDo[index].title}
                 </a>
               </div>
-              <div
+              <a
+                href={thingsToDo[index].url}
+                target="_blank"
+                rel="noopener noreferrer"
                 style={{
+                  display: 'block',
                   overflow: 'hidden',
                   border: '20px solid #fff',
                   borderTopWidth: 80,
@@ -156,7 +160,7 @@ export default () => (
                     style={{ width: '100%', height: '100%' }}
                   />
                 </Parallax>
-              </div>
+              </a>
             </div>
           )
         })}

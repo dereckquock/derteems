@@ -155,16 +155,11 @@ export default () => {
       >
         <DialogContent
           css={{
-            width: '600px !important',
-            height: '600px !important',
+            width: '100% !important',
+            height: '100% !important',
+            padding: '0 !important',
+            margin: '0 !important',
             background: 'transparent !important',
-
-            '@media(max-width: 768px)': {
-              width: '100% !important',
-              height: '100% !important',
-              padding: '0 !important',
-              margin: '0 !important',
-            },
           }}
         >
           <div
@@ -183,19 +178,14 @@ export default () => {
                   height: 44,
                   padding: 0,
                   position: 'absolute',
-                  top: -40,
-                  right: -40,
+                  top: 4,
+                  right: 4,
                   border: 0,
                   borderRadius: 22,
                   background: '#816D66',
+                  boxShadow: '0 1px 4px 1px #000',
                   cursor: 'pointer',
                   outline: 'none',
-
-                  '@media(max-width: 768px)': {
-                    top: 4,
-                    right: 4,
-                    boxShadow: '0 1px 4px 1px #000',
-                  },
                 },
                 animateInDown()
               )}
