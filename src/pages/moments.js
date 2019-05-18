@@ -23,7 +23,7 @@ const styles = {
 }
 
 export default () => {
-  const [images, setImages] = useState({})
+  const [images, setImages] = useState([])
   const [activeImage, setActiveImage] = useState(0)
   const [showImageDialog, setShowImageDialog] = useState(false)
 
@@ -49,45 +49,23 @@ export default () => {
         <StaticQuery
           query={graphql`
             query {
-              patriots: file(relativePath: { eq: "patriots.png" }) {
-                childImageSharp {
-                  fluid(maxWidth: 3264) {
-                    ...GatsbyImageSharpFluid
-                  }
-                }
-              }
-              p1: file(relativePath: { eq: "1.jpg" }) {
-                childImageSharp {
-                  fluid(maxWidth: 3264) {
-                    ...GatsbyImageSharpFluid
-                  }
-                }
-              }
-              p2: file(relativePath: { eq: "2.jpg" }) {
-                childImageSharp {
-                  fluid(maxWidth: 3264) {
-                    ...GatsbyImageSharpFluid
-                  }
-                }
-              }
-              p3: file(relativePath: { eq: "3.jpg" }) {
-                childImageSharp {
-                  fluid(maxWidth: 3264) {
-                    ...GatsbyImageSharpFluid
-                  }
-                }
-              }
-              p5: file(relativePath: { eq: "5.jpg" }) {
-                childImageSharp {
-                  fluid(maxWidth: 3264) {
-                    ...GatsbyImageSharpFluid
+              images: allFile(filter: { extension: { eq: "jpg" } }) {
+                edges {
+                  node {
+                    extension
+                    relativePath
+                    childImageSharp {
+                      fluid(maxWidth: 1000) {
+                        ...GatsbyImageSharpFluid
+                      }
+                    }
                   }
                 }
               }
             }
           `}
-          render={data => {
-            setImages(data)
+          render={({ images: { edges } }) => {
+            setImages(edges)
 
             return (
               <div
@@ -104,8 +82,11 @@ export default () => {
                   },
                 }}
               >
-                {Object.values(data).map(
-                  ({ childImageSharp: { fluid } }, index) => (
+                {edges.map(
+                  (
+                    { node: { childImageSharp: { fluid } = {} } = {} } = {},
+                    index
+                  ) => (
                     <a
                       key={fluid.src}
                       href={fluid.src}
@@ -231,8 +212,11 @@ export default () => {
             slideIndex={activeImage}
             style={{ width: '100%', height: '100%' }}
           >
-            {Object.values(images).map(
-              ({ childImageSharp: { fluid } }, index) => (
+            {images.map(
+              (
+                { node: { childImageSharp: { fluid } = {} } = {} } = {},
+                index
+              ) => (
                 <Img
                   key={fluid.src}
                   fluid={fluid}
