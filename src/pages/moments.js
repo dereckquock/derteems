@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import { css } from 'glamor'
 import { StaticQuery, graphql } from 'gatsby'
 import Img from 'gatsby-image'
+import { BrowserView } from 'react-device-detect'
 import { DialogOverlay, DialogContent } from '@reach/dialog'
 import Carousel from 'nuka-carousel'
 import { animateInDown, animateInUp } from '../utils/animations'
@@ -129,111 +130,114 @@ export default () => {
         </div>
       </div>
 
-      <DialogOverlay
-        style={{ background: 'hsla(0, 100%, 100%, 0.9)' }}
-        isOpen={showImageDialog}
-        onDismiss={() => setShowImageDialog(false)}
-      >
-        <DialogContent
-          css={{
-            width: '100% !important',
-            height: '100% !important',
-            padding: '0 !important',
-            margin: '0 !important',
-            background: 'transparent !important',
-          }}
+      <BrowserView>
+        <DialogOverlay
+          style={{ background: 'hsla(0, 100%, 100%, 0.9)' }}
+          isOpen={showImageDialog}
+          onDismiss={() => setShowImageDialog(false)}
         >
-          <div
-            className={animateInDown()}
-            style={{
-              position: 'relative',
-              zIndex: 100,
-              fontSize: '2rem',
-              fontWeight: 600,
+          <DialogContent
+            css={{
+              width: '100% !important',
+              height: '100% !important',
+              padding: '0 !important',
+              margin: '0 !important',
+              background: 'transparent !important',
             }}
           >
-            <button
-              className={css(
-                {
-                  width: 44,
-                  height: 44,
-                  padding: 0,
-                  position: 'absolute',
-                  top: 4,
-                  right: 4,
-                  border: 0,
-                  borderRadius: 22,
-                  background: '#816D66',
-                  boxShadow: '0 1px 4px 1px #000',
-                  cursor: 'pointer',
-                  outline: 'none',
-                },
-                animateInDown()
-              )}
-              onClick={() => setShowImageDialog(false)}
+            <div
+              className={animateInDown()}
+              style={{
+                position: 'relative',
+                zIndex: 100,
+                fontSize: '2rem',
+                fontWeight: 600,
+              }}
             >
-              <svg
-                width="22px"
-                height="22px"
-                className={css({
-                  transition: 'all 0.75s cubic-bezier(0.68, -0.55, 0.27, 1.55)',
-
-                  ':hover': {
-                    transform: 'rotateZ(90deg)',
+              <button
+                className={css(
+                  {
+                    width: 44,
+                    height: 44,
+                    padding: 0,
+                    position: 'absolute',
+                    top: 4,
+                    right: 4,
+                    border: 0,
+                    borderRadius: 22,
+                    background: '#816D66',
+                    boxShadow: '0 1px 4px 1px #000',
+                    cursor: 'pointer',
+                    outline: 'none',
                   },
-                })}
+                  animateInDown()
+                )}
+                onClick={() => setShowImageDialog(false)}
               >
-                <line
-                  x1="1"
-                  y1="20"
-                  x2="20"
-                  y2="1"
-                  stroke="#3E3D4D"
-                  strokeWidth="4"
-                />
-                <line
-                  x1="1"
-                  y1="1"
-                  x2="20"
-                  y2="20"
-                  stroke="#3E3D4D"
-                  strokeWidth="4"
-                />
-              </svg>
-            </button>
-          </div>
+                <svg
+                  width="22px"
+                  height="22px"
+                  className={css({
+                    transition:
+                      'all 0.75s cubic-bezier(0.68, -0.55, 0.27, 1.55)',
 
-          <Carousel
-            enableKeyboardControls
-            dragging
-            swiping
-            withoutControls
-            wrapAround
-            slideIndex={activeImage}
-            style={{ width: '100%', height: '100%' }}
-          >
-            {images.map(
-              (
-                { node: { childImageSharp: { fluid } = {} } = {} } = {},
-                index
-              ) => (
-                <Img
-                  key={fluid.src}
-                  fluid={fluid}
-                  className={css(
-                    {
-                      width: '100%',
-                      height: '100vh',
+                    ':hover': {
+                      transform: 'rotateZ(90deg)',
                     },
-                    animateInUp()
-                  )}
-                  imgStyle={{ objectFit: 'contain' }}
-                />
-              )
-            )}
-          </Carousel>
-        </DialogContent>
-      </DialogOverlay>
+                  })}
+                >
+                  <line
+                    x1="1"
+                    y1="20"
+                    x2="20"
+                    y2="1"
+                    stroke="#3E3D4D"
+                    strokeWidth="4"
+                  />
+                  <line
+                    x1="1"
+                    y1="1"
+                    x2="20"
+                    y2="20"
+                    stroke="#3E3D4D"
+                    strokeWidth="4"
+                  />
+                </svg>
+              </button>
+            </div>
+
+            <Carousel
+              enableKeyboardControls
+              dragging
+              swiping
+              withoutControls
+              wrapAround
+              slideIndex={activeImage}
+              style={{ width: '100%', height: '100%' }}
+            >
+              {images.map(
+                (
+                  { node: { childImageSharp: { fluid } = {} } = {} } = {},
+                  index
+                ) => (
+                  <Img
+                    key={fluid.src}
+                    fluid={fluid}
+                    className={css(
+                      {
+                        width: '100%',
+                        height: '100vh',
+                      },
+                      animateInUp()
+                    )}
+                    imgStyle={{ objectFit: 'contain' }}
+                  />
+                )
+              )}
+            </Carousel>
+          </DialogContent>
+        </DialogOverlay>
+      </BrowserView>
     </div>
   )
 }
