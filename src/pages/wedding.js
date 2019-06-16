@@ -2,6 +2,7 @@ import React from 'react'
 import { css } from 'glamor'
 import { animateInDown, animateInUp } from '../utils/animations'
 import SEO from '../components/seo'
+import RSVP from '../components/rsvp'
 import AddToCalendar from '../components/addToCalendar'
 import Schedule from '../components/schedule'
 
@@ -44,6 +45,23 @@ export default () => {
         </div>
 
         <div
+          className={css(
+            {
+              marginTop: 10,
+              marginBottom: 20,
+              display: 'inline-block',
+              justifyContent: 'center',
+              overflow: 'hidden',
+              border: '1px solid #816D66',
+              borderRadius: 26,
+            },
+            animateInUp(1 / 4)
+          )}
+        >
+          <RSVP />
+        </div>
+
+        <div
           css={{
             display: 'grid',
             gridTemplateColumns: '1fr 1fr',
@@ -52,7 +70,7 @@ export default () => {
           }}
         >
           <div>
-            <div className={css(animateInUp(1 / 4))}>
+            <div className={css(animateInUp(2 / 4))}>
               <div style={{ fontSize: '2rem', fontWeight: 600 }}>when</div>
               <div style={{ paddingBottom: 40, fontSize: '2rem' }}>
                 <div style={{ marginBottom: 10 }}>November 2nd, 2019</div>
@@ -60,7 +78,7 @@ export default () => {
               </div>
             </div>
 
-            <div className={css(animateInUp(2 / 4))}>
+            <div className={css(animateInUp(3 / 4))}>
               <div style={{ fontSize: '2rem', fontWeight: 600 }}>where</div>
               <div style={{ paddingBottom: 40, fontSize: '2rem' }}>
                 <div style={{ paddingBottom: 10 }}>
@@ -87,13 +105,6 @@ export default () => {
               </div>
             </div>
 
-            <div className={css(animateInUp(3 / 4))}>
-              <div style={{ fontSize: '2rem', fontWeight: 600 }}>RSVP</div>
-              <p style={{ paddingBottom: 40, fontSize: '2rem' }}>
-                coming soon...
-              </p>
-            </div>
-
             <Schedule className={css(animateInUp(4 / 4))} />
           </div>
 
@@ -101,7 +112,7 @@ export default () => {
             <div
               className={css(
                 { maxWidth: 350, margin: 'auto' },
-                animateInUp(1 / 4)
+                animateInUp(2 / 4)
               )}
             >
               <div
@@ -110,7 +121,7 @@ export default () => {
                 bridal party
               </div>
             </div>
-            <div className={css(animateInUp(2 / 4))}>
+            <div className={css(animateInUp(3 / 4))}>
               <div style={{ fontSize: '2rem' }}>
                 <div
                   css={{
@@ -168,7 +179,7 @@ export default () => {
                 </div>
               </div>
             </div>
-            <div className={css(animateInUp(3 / 4))}>
+            <div className={css(animateInUp(4 / 4))}>
               <div style={{ fontSize: '2rem' }}>
                 <div
                   css={{

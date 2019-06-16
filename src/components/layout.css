@@ -619,6 +619,11 @@ pre tt:after {
     padding: 20px 20px 100px;
   }
 }
+@media only screen and (max-width: 320px) {
+  .contents {
+    padding: 10px 10px 100px;
+  }
+}
 .btn {
   padding: 0.75rem 1rem;
   font-size: 1.5rem;

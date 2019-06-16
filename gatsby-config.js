@@ -35,5 +35,13 @@ module.exports = {
       },
     },
     `gatsby-plugin-glamor`,
+    {
+      resolve: 'gatsby-source-google-sheets',
+      options: {
+        spreadsheetId: '13Nu_A9ELa1au2Vy1IEf5yESRC-nHASoLzviAFhJtjUg',
+        worksheetTitle: 'RSVP',
+        credentials: require('./teemquock-5149948e9ab9'),
+      },
+    },
   ],
 }
