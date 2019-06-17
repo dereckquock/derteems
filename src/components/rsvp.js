@@ -7,16 +7,14 @@ import qs from 'qs'
 import Checkbox from './checkbox'
 import Radio from './radio'
 
-function encode(data) {
-  // const rsvpData = data.reduce((formData, { guest, isGoing, protein }) => {
-  //   return {
-  //     ...formData,
-  //     [`${guest} Is Going`]: isGoing,
-  //     [`${guest} Protein`]: protein,
-  //   }
-  // }, {})
-
-  return qs.stringify({ 'form-name': 'rsvp', ...data })
+function getRsvpData(data) {
+  return data.reduce((formData, { guest, isGoing, protein }) => {
+    return {
+      ...formData,
+      [`${guest} Is Going`]: isGoing,
+      [`${guest} Protein`]: protein,
+    }
+  }, {})
 }
 
 export default () => {
@@ -94,11 +92,17 @@ export default () => {
       return
     }
 
+    const rsvpData = getRsvpData(party)
+
     window
       .fetch('/', {
         method: 'POST',
         headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-        body: encode({ name }),
+        body: qs.stringify({
+          'form-name': 'rsvp',
+          name,
+          rsvpData: JSON.stringify(rsvpData),
+        }),
       })
       .then(() => setRsvpSuccess(true))
       .catch(error => window.alert(error))
@@ -160,6 +164,8 @@ export default () => {
           <label hidden>
             Don’t fill this out if you're human: <input name="bot-field" />
           </label>
+
+          <input type="hidden" name="rsvpData" />
 
           <input
             name="name"
