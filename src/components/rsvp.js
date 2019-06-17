@@ -8,15 +8,15 @@ import Checkbox from './checkbox'
 import Radio from './radio'
 
 function encode(data) {
-  const rsvpData = data.reduce((formData, { guest, isGoing, protein }) => {
-    return {
-      ...formData,
-      [`${guest} Is Going`]: isGoing,
-      [`${guest} Protein`]: protein,
-    }
-  }, {})
+  // const rsvpData = data.reduce((formData, { guest, isGoing, protein }) => {
+  //   return {
+  //     ...formData,
+  //     [`${guest} Is Going`]: isGoing,
+  //     [`${guest} Protein`]: protein,
+  //   }
+  // }, {})
 
-  return qs.stringify({ 'form-name': 'rsvp', ...rsvpData })
+  return qs.stringify({ 'form-name': 'rsvp', ...data })
 }
 
 export default () => {
@@ -98,7 +98,7 @@ export default () => {
       .fetch('/', {
         method: 'POST',
         headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-        body: encode(party),
+        body: encode({ name: 'dereck' }),
       })
       .then(() => setRsvpSuccess(true))
       .catch(error => window.alert(error))
