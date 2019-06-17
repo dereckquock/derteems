@@ -10,8 +10,8 @@ function encode(data) {
   const rsvpData = data.reduce((formData, { guest, isGoing, protein }) => {
     return {
       ...formData,
-      [`${guest} Is Going`]: isGoing,
-      [`${guest} Protein`]: protein,
+      [`${guest.split(' ').join('')}IsGoing`]: isGoing,
+      [`${guest.split(' ').join('')}Protein`]: protein,
     }
   }, {})
 
