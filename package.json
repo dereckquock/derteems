@@ -45,6 +45,7 @@
     "glamor": "^2.20.40",
     "nuka-carousel": "^4.4.9",
     "prop-types": "^15.6.2",
+    "qs": "^6.7.0",
     "react": "^16.8.3",
     "react-add-to-calendar-hoc": "^1.0.7",
     "react-animate-height": "^2.0.9",

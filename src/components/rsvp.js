@@ -3,6 +3,7 @@ import { useStaticQuery, graphql } from 'gatsby'
 import { css } from 'glamor'
 import AnimateHeight from 'react-animate-height'
 import VisuallyHidden from '@reach/visually-hidden'
+import qs from 'qs'
 import Checkbox from './checkbox'
 import Radio from './radio'
 
@@ -10,16 +11,12 @@ function encode(data) {
   const rsvpData = data.reduce((formData, { guest, isGoing, protein }) => {
     return {
       ...formData,
-      [`${guest.split(' ').join('')}IsGoing`]: isGoing,
-      [`${guest.split(' ').join('')}Protein`]: protein,
+      [`${guest} Is Going`]: isGoing,
+      [`${guest} Protein`]: protein,
     }
   }, {})
 
-  return Object.keys(rsvpData)
-    .map(
-      key => `${encodeURIComponent(key)}=${encodeURIComponent(rsvpData[key])}`
-    )
-    .join('&')
+  return qs.stringify({ 'form-name': 'rsvp', ...rsvpData })
 }
 
 export default () => {
@@ -101,7 +98,7 @@ export default () => {
       .fetch('/', {
         method: 'POST',
         headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-        body: `form-name=rsvp&${encode(party)}`,
+        body: encode(party),
       })
       .then(() => setRsvpSuccess(true))
       .catch(error => window.alert(error))
