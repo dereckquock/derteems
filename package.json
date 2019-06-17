@@ -30,6 +30,7 @@
     }
   },
   "dependencies": {
+    "@reach/alert": "^0.1.5",
     "@reach/dialog": "^0.1.2",
     "@reach/visually-hidden": "^0.1.4",
     "gatsby": "^2.2.8",

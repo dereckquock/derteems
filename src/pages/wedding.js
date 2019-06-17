@@ -47,6 +47,8 @@ export default () => {
         <div
           className={css(
             {
+              width: '100%',
+              maxWidth: 400,
               marginTop: 10,
               marginBottom: 20,
               display: 'inline-block',

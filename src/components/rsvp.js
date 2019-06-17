@@ -3,6 +3,7 @@ import { useStaticQuery, graphql } from 'gatsby'
 import { css } from 'glamor'
 import AnimateHeight from 'react-animate-height'
 import VisuallyHidden from '@reach/visually-hidden'
+import Alert from '@reach/alert'
 import qs from 'qs'
 import Checkbox from './checkbox'
 import Radio from './radio'
@@ -15,6 +16,19 @@ function getRsvpData(data) {
       [`${guest} Protein`]: protein,
     }
   }, {})
+}
+
+const useError = (initialError = '') => {
+  const [errorMessage, setErrorMessage] = useState(initialError)
+
+  const setError = message => {
+    setErrorMessage(message)
+
+    // hide the error Alert after 5s
+    setTimeout(() => setErrorMessage(''), 5000)
+  }
+
+  return [errorMessage, setError]
 }
 
 export default () => {
@@ -32,6 +46,7 @@ export default () => {
       }
     }
   `)
+  const [error, setError] = useError('')
   const [showForm, setShowForm] = useState(false)
   const [showFindButton, setShowFindButton] = useState(false)
   const [name, setName] = useState('')
@@ -41,28 +56,35 @@ export default () => {
 
   const handleChangeName = ({ target: { value } }) => setName(value)
   const findParty = () => {
-    // HACK: testing
-    if (!name || name.toLowerCase() !== 'dereck quock') {
+    if (!name) {
       return
     }
 
-    const data = guests.find(({ guest: guestName }) =>
-      guestName.toLowerCase().includes(name)
-    )
+    const data = guests.find(({ guest: guestName }) => {
+      if (guestName) {
+        return guestName.toLowerCase().includes(name)
+      }
+    })
 
     if (!data) {
-      // TODO: handle error
+      setError('🤔 Make sure you spell your name correctly')
       return
     }
 
-    const { guest, party: others } = data
+    const { guest, party: others = '' } = data
 
     setParty(
-      [guest, ...others.split(',')].map(person => ({
-        guest: person.trim(),
-        isGoing: false,
-        protein: 'redMeat',
-      }))
+      [guest, ...(others && others.split(','))]
+        .map((person = '') => {
+          if (person) {
+            return {
+              guest: person.trim(),
+              isGoing: false,
+              protein: 'redMeat',
+            }
+          }
+        })
+        .filter(Boolean)
     )
   }
   const handleChangeRSVP = (guest, isGoing) => {
@@ -89,7 +111,12 @@ export default () => {
     event.preventDefault()
 
     if (!party.length) {
+      setError('😭 Something went wrong...try again')
       return
+    }
+
+    if (process.env.NODE_ENV === 'development') {
+      return setRsvpSuccess(true)
     }
 
     const rsvpData = getRsvpData(party)
@@ -105,27 +132,37 @@ export default () => {
         }),
       })
       .then(() => setRsvpSuccess(true))
-      .catch(error => window.alert(error))
-  }
-
-  if (showRsvpSuccess) {
-    return (
-      <div style={{ padding: 30, fontSize: '2.25rem' }}>
-        🤗 Thanks! We're excited to see you! 🍻
-      </div>
-    )
+      .catch(() => setError('😭 Something went wrong...try again'))
   }
 
   return (
     <>
+      <AnimateHeight duration={500} height={error ? 'auto' : 0}>
+        <Alert
+          className={css({
+            background: 'hsla(10, 50%, 50%, .10)',
+          })}
+        >
+          <div
+            className={css({
+              padding: 10,
+              fontSize: 24,
+              fontWeight: 600,
+            })}
+          >
+            {error}
+          </div>
+        </Alert>
+      </AnimateHeight>
+
       {showForm ? (
         <div
-          style={{
+          className={css({
             width: '100%',
             padding: '10px 40px',
             fontSize: '2rem',
             fontWeight: 600,
-          }}
+          })}
         >
           RSVP
         </div>
@@ -133,6 +170,7 @@ export default () => {
         <button
           className="btn"
           style={{
+            width: '100%',
             padding: '10px 40px',
             fontSize: '1.75rem',
             fontWeight: 600,
@@ -143,12 +181,17 @@ export default () => {
         </button>
       )}
 
+      <AnimateHeight duration={500} height={showRsvpSuccess ? 'auto' : 0}>
+        <div className={css({ padding: 10, fontSize: '2.25rem' })}>
+          Thanks! We're excited to see you!! 🤗🍻🥂🎉
+        </div>
+      </AnimateHeight>
+
       <AnimateHeight
         duration={500}
-        height={showForm ? 'auto' : 0}
+        height={showForm && !showRsvpSuccess ? 'auto' : 0}
         style={{
-          width: showForm ? '100vw' : 'auto',
-          maxWidth: 400,
+          width: showForm ? '100%' : 'auto',
         }}
       >
         <form
@@ -156,7 +199,7 @@ export default () => {
           method="post"
           data-netlify="true"
           data-netlify-honeypot="bot-field"
-          style={{ margin: 0 }}
+          className={css({ margin: 0 })}
           onSubmit={handleSubmit}
         >
           {/* The `form-name` hidden field is required to support form submissions without JavaScript */}
@@ -207,7 +250,7 @@ export default () => {
             height={party.length ? 'auto' : 0}
             style={{ width: '100%', textAlign: 'left' }}
           >
-            <div style={{ padding: 10 }}>
+            <div className={css({ padding: 10 })}>
               {party.map(({ guest, isGoing, protein }) => (
                 <div
                   key={guest}
@@ -222,8 +265,10 @@ export default () => {
                     },
                   })}
                 >
-                  <div style={{ fontSize: '2rem' }}>{guest}</div>
-                  <div style={{ fontSize: '1.5rem', textAlign: 'right' }}>
+                  <div className={css({ fontSize: '2rem' })}>{guest}</div>
+                  <div
+                    className={css({ fontSize: '1.5rem', textAlign: 'right' })}
+                  >
                     <label
                       className={css({
                         position: 'relative',
@@ -239,7 +284,7 @@ export default () => {
                       <VisuallyHidden>
                         <input
                           type="checkbox"
-                          name={`${guest} Is Going`}
+                          name="going"
                           checked={isGoing}
                           onChange={({ target: { checked } }) =>
                             handleChangeRSVP(guest, checked)
@@ -250,8 +295,10 @@ export default () => {
                     </label>
 
                     <AnimateHeight duration={500} height={isGoing ? 'auto' : 0}>
-                      <label style={{ fontSize: '1.5rem' }}>
-                        <span style={{ marginRight: 4 }}>Short Ribs</span>
+                      <label className={css({ fontSize: '1.5rem' })}>
+                        <span className={css({ marginRight: 4 })}>
+                          Short Ribs
+                        </span>
                         <VisuallyHidden>
                           <input
                             type="radio"
@@ -264,8 +311,8 @@ export default () => {
                         </VisuallyHidden>
                         <Radio checked={protein === 'redMeat'} />
                       </label>
-                      <label style={{ fontSize: '1.5rem' }}>
-                        <span style={{ marginRight: 4 }}>Halibut</span>
+                      <label className={css({ fontSize: '1.5rem' })}>
+                        <span className={css({ marginRight: 4 })}>Halibut</span>
                         <VisuallyHidden>
                           <input
                             type="radio"
