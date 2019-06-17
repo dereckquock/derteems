@@ -232,7 +232,7 @@ export default () => {
                       <VisuallyHidden>
                         <input
                           type="checkbox"
-                          name="going"
+                          name={`${guest} Is Going`}
                           checked={isGoing}
                           onChange={({ target: { checked } }) =>
                             handleChangeRSVP(guest, checked)
