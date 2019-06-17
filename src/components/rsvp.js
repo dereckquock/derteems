@@ -98,7 +98,7 @@ export default () => {
       .fetch('/', {
         method: 'POST',
         headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-        body: encode({ name: 'dereck' }),
+        body: encode({ name }),
       })
       .then(() => setRsvpSuccess(true))
       .catch(error => window.alert(error))
@@ -162,6 +162,7 @@ export default () => {
           </label>
 
           <input
+            name="name"
             className={css({
               width: '100%',
               padding: 10,
