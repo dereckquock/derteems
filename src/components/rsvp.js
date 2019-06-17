@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import { useStaticQuery, graphql } from 'gatsby'
+import ReactGA from 'react-ga'
 import { css } from 'glamor'
 import AnimateHeight from 'react-animate-height'
 import VisuallyHidden from '@reach/visually-hidden'
@@ -51,6 +52,7 @@ export default () => {
   const [showFindButton, setShowFindButton] = useState(false)
   const [name, setName] = useState('')
   const [party, setParty] = useState([]) // `party` is the data we wanna submit
+  const [isPartyAttending, setIsPartyAttending] = useState(false)
   const [showRsvpSuccess, setRsvpSuccess] = useState(false)
   const guests = edges.map(({ node }) => node)
 
@@ -60,14 +62,23 @@ export default () => {
       return
     }
 
+    ReactGA.event({
+      category: 'RSVP',
+      action: 'Find Invitation',
+    })
+
     const data = guests.find(({ guest: guestName }) => {
       if (guestName) {
-        return guestName.toLowerCase().includes(name)
+        return guestName.toLowerCase().includes(name.toLowerCase())
       }
     })
 
     if (!data) {
       setError('🤔 Make sure you spell your name correctly')
+      ReactGA.event({
+        category: 'RSVP',
+        action: 'Error finding invitation',
+      })
       return
     }
 
@@ -112,14 +123,25 @@ export default () => {
 
     if (!party.length) {
       setError('😭 Something went wrong...try again')
+      ReactGA.event({
+        category: 'RSVP',
+        action: 'Error with party data',
+      })
       return
     }
+
+    setIsPartyAttending(party.some(({ isGoing }) => isGoing))
 
     if (process.env.NODE_ENV === 'development') {
       return setRsvpSuccess(true)
     }
 
     const rsvpData = getRsvpData(party)
+
+    ReactGA.event({
+      category: 'RSVP',
+      action: 'Submit RSVP',
+    })
 
     window
       .fetch('/', {
@@ -131,8 +153,20 @@ export default () => {
           rsvpData: JSON.stringify(rsvpData),
         }),
       })
-      .then(() => setRsvpSuccess(true))
-      .catch(() => setError('😭 Something went wrong...try again'))
+      .then(() => {
+        setRsvpSuccess(true)
+        ReactGA.event({
+          category: 'RSVP',
+          action: 'Success',
+        })
+      })
+      .catch(() => {
+        setError('😭 Something went wrong...try again')
+        ReactGA.event({
+          category: 'RSVP',
+          action: 'Error submitting',
+        })
+      })
   }
 
   return (
@@ -175,7 +209,13 @@ export default () => {
             fontSize: '1.75rem',
             fontWeight: 600,
           }}
-          onClick={() => setShowForm(true)}
+          onClick={() => {
+            setShowForm(true)
+            ReactGA.event({
+              category: 'RSVP',
+              action: 'Start RSVP',
+            })
+          }}
         >
           RSVP
         </button>
@@ -183,7 +223,14 @@ export default () => {
 
       <AnimateHeight duration={500} height={showRsvpSuccess ? 'auto' : 0}>
         <div className={css({ padding: 10, fontSize: '2.25rem' })}>
-          Thanks! We're excited to see you!! 🤗🍻🥂🎉
+          {isPartyAttending ? (
+            <>
+              <div>Thanks! We're excited to see you!!</div>
+              <div>🤗🍻🥂🎉</div>
+            </>
+          ) : (
+            <div>😔 We'll miss you!</div>
+          )}
         </div>
       </AnimateHeight>
 
@@ -271,6 +318,7 @@ export default () => {
                   >
                     <label
                       className={css({
+                        margin: '4px 0',
                         position: 'relative',
                         display: 'flex',
                         alignItems: 'center',
@@ -295,7 +343,13 @@ export default () => {
                     </label>
 
                     <AnimateHeight duration={500} height={isGoing ? 'auto' : 0}>
-                      <label className={css({ fontSize: '1.5rem' })}>
+                      <label
+                        className={css({
+                          margin: '4px 0',
+                          display: 'block',
+                          fontSize: '1.5rem',
+                        })}
+                      >
                         <span className={css({ marginRight: 4 })}>
                           Short Ribs
                         </span>
@@ -311,7 +365,13 @@ export default () => {
                         </VisuallyHidden>
                         <Radio checked={protein === 'redMeat'} />
                       </label>
-                      <label className={css({ fontSize: '1.5rem' })}>
+                      <label
+                        className={css({
+                          margin: '4px 0',
+                          display: 'block',
+                          fontSize: '1.5rem',
+                        })}
+                      >
                         <span className={css({ marginRight: 4 })}>Halibut</span>
                         <VisuallyHidden>
                           <input
