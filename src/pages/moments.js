@@ -64,6 +64,9 @@ export default () => {
         <div
           className={css(
             {
+              maxWidth: 300,
+              marginLeft: 'auto',
+              marginRight: 'auto',
               marginBottom: 20,
               display: 'flex',
               justifyContent: 'space-around',

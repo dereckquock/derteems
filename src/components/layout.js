@@ -129,7 +129,7 @@ const Layout = ({ children }) => {
           </TransitionGroup>
           <div
             style={{
-              width: '100%',
+              width: '100vw',
               position: 'fixed',
               bottom: 0,
               display: 'grid',
