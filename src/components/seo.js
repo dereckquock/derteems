@@ -3,6 +3,23 @@ import PropTypes from 'prop-types'
 import Helmet from 'react-helmet'
 import { StaticQuery, graphql } from 'gatsby'
 
+const defaultKeywords = [
+  `dereck & fatima`,
+  `dereck and fatima`,
+  `fatima & dereck`,
+  `fatima and dereck`,
+  `dereck`,
+  `fatima`,
+  `quock`,
+  `wedding`,
+  `fatquock`,
+  `teemquock`,
+  `teem quock`,
+  `team quock`,
+  `slo`,
+  `higuera ranch`,
+]
+
 function SEO({ description, lang, meta, keywords, title }) {
   return (
     <StaticQuery
@@ -55,9 +72,9 @@ function SEO({ description, lang, meta, keywords, title }) {
                 keywords.length > 0
                   ? {
                       name: `keywords`,
-                      content: keywords.join(`, `),
+                      content: [...defaultKeywords, ...keywords].join(`, `),
                     }
-                  : []
+                  : defaultKeywords
               )
               .concat(meta)}
           />
@@ -70,22 +87,7 @@ function SEO({ description, lang, meta, keywords, title }) {
 SEO.defaultProps = {
   lang: `en`,
   meta: [],
-  keywords: [
-    `dereck & fatima`,
-    `dereck and fatima`,
-    `fatima & dereck`,
-    `fatima and dereck`,
-    `dereck`,
-    `fatima`,
-    `quock`,
-    `wedding`,
-    `fatquock`,
-    `teemquock`,
-    `teem quock`,
-    `team quock`,
-    `slo`,
-    `higuera ranch`,
-  ],
+  keywords: defaultKeywords,
 }
 
 SEO.propTypes = {

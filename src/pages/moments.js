@@ -30,7 +30,10 @@ export default () => {
 
   return (
     <div style={{ background: '#DDD3C9' }}>
-      <SEO title="Moments" />
+      <SEO
+        title="Moments"
+        keywords={['eugenedavidyuk', 'Eugene Davidyuk', 'Wedding Photographer']}
+      />
       <div className="contents" style={{ marginBottom: 20 }}>
         <div
           className={css(

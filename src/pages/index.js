@@ -18,7 +18,15 @@ export default () => {
 
   return (
     <>
-      <SEO title="🥂 dereck & fatima" />
+      <SEO
+        title="🥂 dereck & fatima"
+        keywords={[
+          'marknicolasfilms',
+          'Mark Nicolas',
+          'Mark Gonzales',
+          'Wedding Videographer',
+        ]}
+      />
 
       <div style={{ height: '100vh', paddingBottom: 95, position: 'relative' }}>
         <ReactPlayer

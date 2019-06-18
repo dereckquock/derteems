@@ -187,9 +187,7 @@ export default () => (
               >
                 <Parallax
                   key={fluid.src}
-                  offsetYMax={20}
-                  offsetYMin={-20}
-                  slowerScrollRate
+                  y={[20, -20]}
                   styleOuter={{ height: 200 }}
                   styleInner={{ width: '100%', height: '100%' }}
                 >
