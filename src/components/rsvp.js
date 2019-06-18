@@ -247,7 +247,6 @@ export default () => {
           data-netlify="true"
           data-netlify-honeypot="bot-field"
           className={css({ margin: 0 })}
-          onSubmit={handleSubmit}
         >
           {/* The `form-name` hidden field is required to support form submissions without JavaScript */}
           <input type="hidden" name="form-name" value="rsvp" />
@@ -267,6 +266,8 @@ export default () => {
               border: 0,
               fontSize: '1.75rem',
               outline: 'none',
+              caretColor: '#3e3d4d',
+              WebkitAppearance: 'none',
             })}
             autoCorrect="off"
             spellCheck="false"
@@ -318,7 +319,8 @@ export default () => {
                   >
                     <label
                       className={css({
-                        margin: '4px 0',
+                        marginTop: 10,
+                        marginBottom: 10,
                         position: 'relative',
                         display: 'flex',
                         alignItems: 'center',
@@ -345,8 +347,8 @@ export default () => {
                     <AnimateHeight duration={500} height={isGoing ? 'auto' : 0}>
                       <label
                         className={css({
-                          margin: '4px 0',
-                          display: 'block',
+                          marginBottom: 10,
+                          display: 'inline-block',
                           fontSize: '1.5rem',
                         })}
                       >
@@ -367,8 +369,8 @@ export default () => {
                       </label>
                       <label
                         className={css({
-                          margin: '4px 0',
-                          display: 'block',
+                          marginBottom: 10,
+                          display: 'inline-block',
                           fontSize: '1.5rem',
                         })}
                       >
@@ -392,9 +394,10 @@ export default () => {
             </div>
 
             <input
-              type="submit"
+              type="button"
               className="btn"
               value="Submit"
+              onClick={handleSubmit}
               style={{ width: '100%', borderRadius: 0 }}
             />
           </AnimateHeight>
