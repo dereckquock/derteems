@@ -9587,10 +9587,10 @@ rc@^1.1.7:
     minimist "^1.2.0"
     strip-json-comments "~2.0.1"
 
-react-add-to-calendar-hoc@^1.0.7:
-  version "1.0.7"
-  resolved "https://registry.npmjs.org/react-add-to-calendar-hoc/-/react-add-to-calendar-hoc-1.0.7.tgz#564f86a835129c7e62cd921d34ada04c9bea311a"
-  integrity sha512-nJArRX32qfwrWAxVKBwRKwmGmQQDBeoynpvvXvYk5wO8+wvB824Vvzma0ArhQo2jAmN2xaFrJ2ivpElhC1DI8w==
+react-add-to-calendar-hoc@^1.0.9:
+  version "1.0.9"
+  resolved "https://registry.yarnpkg.com/react-add-to-calendar-hoc/-/react-add-to-calendar-hoc-1.0.9.tgz#50aa4b67e6d09546aee659d1b1468d5335713426"
+  integrity sha512-O9XF5TIcmqvMqnLZDd/4ydQhlc+wnso8822FpREtYsmI9uGTF+268Cj5bzMbNcBxJGa6RBIVp8Irvz9KyyBY4A==
   dependencies:
     core-js "^2.5.7"
     prop-types "^15.6.2"
