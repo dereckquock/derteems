@@ -38,7 +38,7 @@
     "gatsby-plugin-glamor": "^2.0.10",
     "gatsby-plugin-layout": "^1.0.15",
     "gatsby-plugin-manifest": "^2.1.1",
-    "gatsby-plugin-react-helmet": "^3.0.10",
+    "gatsby-plugin-react-helmet": "^3.0.12",
     "gatsby-plugin-sharp": "^2.1.5",
     "gatsby-source-filesystem": "^2.0.39",
     "gatsby-source-google-sheets": "^1.1.1",
