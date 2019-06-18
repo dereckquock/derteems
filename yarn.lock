@@ -5153,10 +5153,10 @@ gatsby-link@^2.1.1:
     "@types/reach__router" "^1.0.0"
     prop-types "^15.6.1"
 
-gatsby-plugin-glamor@^2.0.9:
-  version "2.0.9"
-  resolved "https://registry.npmjs.org/gatsby-plugin-glamor/-/gatsby-plugin-glamor-2.0.9.tgz#0302b7441f5d0d4bab306c5ce8dc5d27aa5dae23"
-  integrity sha512-gWJJ8XMRFMQU5TGdMNG/Il9SXFqIm8Yhm5y59Iiqkqk5ujJj5O5HJeG92m6OW8d8jEj9SVNN5KCM8hiIggtsKQ==
+gatsby-plugin-glamor@^2.0.10:
+  version "2.0.10"
+  resolved "https://registry.yarnpkg.com/gatsby-plugin-glamor/-/gatsby-plugin-glamor-2.0.10.tgz#e02ac9d6c879d712997baab59d189acdb326d544"
+  integrity sha512-1X6WFlzdIa/xMGMpGkSC72kphExK6a1FbWacpz1JNThNHSoA/fThfNPnSGSpXqdcOCMqDEhHb2Bb+hcX/wj2VQ==
   dependencies:
     "@babel/runtime" "^7.0.0"
 
