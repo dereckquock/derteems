@@ -18,6 +18,7 @@
   },
   "scripts": {
     "build": "gatsby build",
+    "build:dev": "DEV_BUILD=true gatsby build",
     "develop": "gatsby develop",
     "start": "npm run develop",
     "format": "prettier --write \"src/**/*.js\"",
@@ -26,7 +27,7 @@
   },
   "husky": {
     "hooks": {
-      "pre-commit": "npm run lint && npm run build"
+      "pre-commit": "npm run lint && npm run build:dev"
     }
   },
   "dependencies": {

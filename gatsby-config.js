@@ -40,7 +40,10 @@ module.exports = {
       options: {
         spreadsheetId: '13Nu_A9ELa1au2Vy1IEf5yESRC-nHASoLzviAFhJtjUg',
         worksheetTitle: 'RSVP',
-        credentials: require('./teemquock-5149948e9ab9'),
+        credentials:
+          process.env.DEV_BUILD === 'true'
+            ? require('./teemquock')
+            : JSON.parse(process.env.GOOGLE_SHEETS),
       },
     },
   ],
