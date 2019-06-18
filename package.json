@@ -47,7 +47,7 @@
     "nuka-carousel": "^4.5.8",
     "prop-types": "^15.6.2",
     "qs": "^6.7.0",
-    "react": "^16.8.3",
+    "react": "^16.8.6",
     "react-add-to-calendar-hoc": "^1.0.7",
     "react-animate-height": "^2.0.10",
     "react-device-detect": "^1.6.2",
