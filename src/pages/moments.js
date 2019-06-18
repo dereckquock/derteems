@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import { css } from 'glamor'
 import { StaticQuery, graphql } from 'gatsby'
 import Img from 'gatsby-image'
-import { BrowserView, isMobile } from 'react-device-detect'
+import { BrowserView, isMobile, isTablet } from 'react-device-detect'
 import { DialogOverlay, DialogContent } from '@reach/dialog'
 import Carousel from 'nuka-carousel'
 import { animateInDown, animateInUp } from '../utils/animations'
@@ -76,7 +76,7 @@ export default () => {
         >
           <a
             href={
-              isMobile
+              isMobile || isTablet
                 ? 'fb://profile/100000254539748'
                 : 'https://www.facebook.com/davidyuk'
             }
