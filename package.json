@@ -21,6 +21,7 @@
     "build:dev": "DEV_BUILD=true gatsby build",
     "develop": "gatsby develop",
     "start": "npm run develop",
+    "start:dev": "DEV_BUILD=true npm run develop",
     "format": "prettier --write \"src/**/*.js\"",
     "lint": "eslint src/**/*.js",
     "test": "echo \"Write tests! -> https://gatsby.app/unit-testing\""

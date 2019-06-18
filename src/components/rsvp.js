@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useRef } from 'react'
 import { useStaticQuery, graphql } from 'gatsby'
 import ReactGA from 'react-ga'
 import { css } from 'glamor'
@@ -54,8 +54,17 @@ export default () => {
   const [party, setParty] = useState([]) // `party` is the data we wanna submit
   const [isPartyAttending, setIsPartyAttending] = useState(false)
   const [showRsvpSuccess, setRsvpSuccess] = useState(false)
+  const nameRef = useRef(null)
   const guests = edges.map(({ node }) => node)
 
+  const startRSVP = () => {
+    setShowForm(true)
+    setTimeout(() => nameRef.current.focus(), 0)
+    ReactGA.event({
+      category: 'RSVP',
+      action: 'Start RSVP',
+    })
+  }
   const handleChangeName = ({ target: { value } }) => setName(value)
   const findParty = () => {
     if (!name) {
@@ -209,13 +218,7 @@ export default () => {
             fontSize: '1.75rem',
             fontWeight: 600,
           }}
-          onClick={() => {
-            setShowForm(true)
-            ReactGA.event({
-              category: 'RSVP',
-              action: 'Start RSVP',
-            })
-          }}
+          onClick={startRSVP}
         >
           RSVP
         </button>
@@ -257,6 +260,7 @@ export default () => {
           <input type="hidden" name="rsvpData" />
 
           <input
+            ref={nameRef}
             name="name"
             className={css({
               width: '100%',
