@@ -1,5 +1,4 @@
 import React from 'react'
-import { css } from 'glamor'
 import { animateInDown, animateInUp } from '../utils/animations'
 import SEO from '../components/seo'
 import RSVP from '../components/rsvp'
@@ -21,44 +20,42 @@ export default () => {
       <SEO title="The Wedding" />
       <div className="contents">
         <div
-          className={css(
-            {
-              fontSize: '2.25rem',
-              fontFamily: 'Shorelines',
-              breakWord: 'keep-all',
-              '@media(max-width: 414px)': { fontSize: 30 },
-              '@media(max-width: 320px)': { fontSize: 26 },
-            },
-            animateInDown()
-          )}
+          css={{
+            fontSize: '2.25rem',
+            fontFamily: 'Shorelines',
+            breakWord: 'keep-all',
+            '@media(max-width: 414px)': { fontSize: 30 },
+            '@media(max-width: 320px)': { fontSize: 26 },
+            ...animateInDown(),
+          }}
         >
           (wedding)
         </div>
 
         <div
-          className={css(
-            { marginBottom: 20, fontSize: 30, fontWeight: 600 },
-            animateInUp()
-          )}
+          css={{
+            marginBottom: 20,
+            fontSize: 30,
+            fontWeight: 600,
+            ...animateInUp(),
+          }}
         >
           #TeemQuock
         </div>
 
         <div
-          className={css(
-            {
-              width: '100%',
-              maxWidth: 400,
-              marginTop: 10,
-              marginBottom: 20,
-              display: 'inline-block',
-              justifyContent: 'center',
-              overflow: 'hidden',
-              border: '1px solid #816D66',
-              borderRadius: 26,
-            },
-            animateInUp(1 / 4)
-          )}
+          css={{
+            width: '100%',
+            maxWidth: 400,
+            marginTop: 10,
+            marginBottom: 20,
+            display: 'inline-block',
+            justifyContent: 'center',
+            overflow: 'hidden',
+            border: '1px solid #816D66',
+            borderRadius: 26,
+            ...animateInUp(1 / 4),
+          }}
         >
           <RSVP />
         </div>
@@ -72,18 +69,18 @@ export default () => {
           }}
         >
           <div>
-            <div className={css(animateInUp(2 / 4))}>
-              <div style={{ fontSize: '2rem', fontWeight: 600 }}>when</div>
-              <div style={{ paddingBottom: 40, fontSize: '2rem' }}>
-                <div style={{ marginBottom: 10 }}>November 2nd, 2019</div>
+            <div css={animateInUp(2 / 4)}>
+              <div css={{ fontSize: '2rem', fontWeight: 600 }}>when</div>
+              <div css={{ paddingBottom: 40, fontSize: '2rem' }}>
+                <div css={{ marginBottom: 10 }}>November 2nd, 2019</div>
                 <AddToCalendar event={event} />
               </div>
             </div>
 
-            <div className={css(animateInUp(3 / 4))}>
-              <div style={{ fontSize: '2rem', fontWeight: 600 }}>where</div>
-              <div style={{ paddingBottom: 40, fontSize: '2rem' }}>
-                <div style={{ paddingBottom: 10 }}>
+            <div css={animateInUp(3 / 4)}>
+              <div css={{ fontSize: '2rem', fontWeight: 600 }}>where</div>
+              <div css={{ paddingBottom: 40, fontSize: '2rem' }}>
+                <div css={{ paddingBottom: 10 }}>
                   <a
                     href="https://goo.gl/maps/atD3ofuWznq"
                     target="_blank"
@@ -91,7 +88,7 @@ export default () => {
                   >
                     Higuera Ranch
                   </a>
-                  <p style={{ marginTop: 10, marginBottom: 10 }}>
+                  <p css={{ marginTop: 10, marginBottom: 10 }}>
                     525 El Camino Real, San Luis Obispo, CA 93401, USA
                   </p>
                 </div>
@@ -107,24 +104,19 @@ export default () => {
               </div>
             </div>
 
-            <Schedule className={css(animateInUp(4 / 4))} />
+            <Schedule css={animateInUp(4 / 4)} />
           </div>
 
           <div>
-            <div
-              className={css(
-                { maxWidth: 350, margin: 'auto' },
-                animateInUp(2 / 4)
-              )}
-            >
+            <div css={{ maxWidth: 350, margin: 'auto', ...animateInUp(2 / 4) }}>
               <div
-                style={{ marginBottom: 20, fontSize: '2rem', fontWeight: 600 }}
+                css={{ marginBottom: 20, fontSize: '2rem', fontWeight: 600 }}
               >
                 bridal party
               </div>
             </div>
-            <div className={css(animateInUp(3 / 4))}>
-              <div style={{ fontSize: '2rem' }}>
+            <div css={animateInUp(3 / 4)}>
+              <div css={{ fontSize: '2rem' }}>
                 <div
                   css={{
                     position: 'relative',
@@ -132,7 +124,7 @@ export default () => {
                   }}
                 >
                   <div
-                    style={{
+                    css={{
                       width: '100%',
                       position: 'absolute',
                       top: 6,
@@ -140,12 +132,12 @@ export default () => {
                     }}
                   >
                     <div>HER</div>
-                    <div style={{ marginTop: -10, fontSize: 26 }}>
+                    <div css={{ marginTop: -10, fontSize: 26 }}>
                       bridesmaids
                     </div>
                   </div>
                   <div
-                    style={{
+                    css={{
                       overflow: 'hidden',
                       border: '20px solid #fff',
                       borderTopWidth: 80,
@@ -155,16 +147,16 @@ export default () => {
                     }}
                   >
                     <div
-                      style={{
+                      css={{
                         padding: 10,
                         background: '#3E3D4D',
                         color: '#fff',
                       }}
                     >
-                      <div style={{ position: 'relative' }}>
+                      <div css={{ position: 'relative' }}>
                         jessica kataoka
                         <span
-                          style={{
+                          css={{
                             position: 'absolute',
                             color: 'transparent',
                             textShadow: '0 0 0 #fff',
@@ -181,8 +173,8 @@ export default () => {
                 </div>
               </div>
             </div>
-            <div className={css(animateInUp(4 / 4))}>
-              <div style={{ fontSize: '2rem' }}>
+            <div css={animateInUp(4 / 4)}>
+              <div css={{ fontSize: '2rem' }}>
                 <div
                   css={{
                     position: 'relative',
@@ -190,7 +182,7 @@ export default () => {
                   }}
                 >
                   <div
-                    style={{
+                    css={{
                       width: '100%',
                       position: 'absolute',
                       top: 6,
@@ -198,12 +190,12 @@ export default () => {
                     }}
                   >
                     <div>HIS</div>
-                    <div style={{ marginTop: -10, fontSize: 26 }}>
+                    <div css={{ marginTop: -10, fontSize: 26 }}>
                       groomspeople
                     </div>
                   </div>
                   <div
-                    style={{
+                    css={{
                       overflow: 'hidden',
                       border: '20px solid #fff',
                       borderTopWidth: 80,
@@ -213,16 +205,16 @@ export default () => {
                     }}
                   >
                     <div
-                      style={{
+                      css={{
                         padding: 10,
                         background: '#3E3D4D',
                         color: '#fff',
                       }}
                     >
-                      <div style={{ position: 'relative' }}>
+                      <div css={{ position: 'relative' }}>
                         aaron buenaobra
                         <span
-                          style={{
+                          css={{
                             position: 'absolute',
                             color: 'transparent',
                             textShadow: '0 0 0 #fff',
@@ -243,10 +235,12 @@ export default () => {
         </div>
 
         <div
-          className={css(
-            { marginTop: 40, marginBottom: 40, fontSize: 20 },
-            animateInUp(6 / 4)
-          )}
+          css={{
+            marginTop: 40,
+            marginBottom: 40,
+            fontSize: 20,
+            ...animateInUp(6 / 4),
+          }}
         >
           romans 12:9-10
         </div>

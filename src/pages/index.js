@@ -1,5 +1,4 @@
 import React, { useState } from 'react'
-import { css } from 'glamor'
 import ReactPlayer from 'react-player/lib/players/Vimeo'
 import { isIOS, isAndroid } from 'react-device-detect'
 import SEO from '../components/seo'
@@ -41,7 +40,7 @@ export default () => {
 
         {done && (
           <div
-            className={css({
+            css={{
               width: '100%',
               height: '100%',
               padding: 124,
@@ -59,43 +58,41 @@ export default () => {
               '@media(max-width: 640px)': {
                 padding: 10,
               },
-            })}
+            }}
           >
             <div>
-              <div className={css(animateInUp(1 / 4))}>
+              <div css={animateInUp(1 / 4)}>
                 Video by{' '}
                 <a
                   href="https://www.marknicolasfilms.com/"
                   target="_blank"
                   rel="noopener noreferrer"
-                  style={{ color: '#c9baaa' }}
+                  css={{ color: '#c9baaa' }}
                 >
                   Mark Nicolas Films
                 </a>
               </div>
               <div
-                className={css(
-                  {
-                    marginTop: 8,
-                    display: 'grid',
-                    gridTemplateColumns: 'repeat(3, 40px)',
-                    gridGap: 20,
-                    justifyContent: 'center',
-                  },
-                  animateInUp(2 / 4)
-                )}
+                css={{
+                  marginTop: 8,
+                  display: 'grid',
+                  gridTemplateColumns: 'repeat(3, 40px)',
+                  gridGap: 20,
+                  justifyContent: 'center',
+                  ...animateInUp(2 / 4),
+                }}
               >
                 <a
                   href="https://vimeo.com/user68584040"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className={css({
+                  css={{
                     transition: 'all 0.5s ease',
 
                     ':hover': {
                       transform: 'scale(1.1)',
                     },
-                  })}
+                  }}
                 >
                   <svg width="40px" height="40px" viewBox="0 0 256 223">
                     <path
@@ -108,13 +105,13 @@ export default () => {
                   href="https://www.instagram.com/marknicolasfilms/"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className={css({
+                  css={{
                     transition: 'all 0.5s ease',
 
                     ':hover': {
                       transform: 'scale(1.1)',
                     },
-                  })}
+                  }}
                 >
                   <svg
                     x="0px"
@@ -195,13 +192,13 @@ export default () => {
                   href={fbUrl}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className={css({
+                  css={{
                     transition: 'all 0.5s ease',
 
                     ':hover': {
                       transform: 'scale(1.1)',
                     },
-                  })}
+                  }}
                 >
                   <svg
                     x="0px"
@@ -225,15 +222,16 @@ export default () => {
                   </svg>
                 </a>
               </div>
-              <div className={css({ marginTop: 20 }, animateInUp(3 / 4))}>
+              <div css={{ marginTop: 20, ...animateInUp(3 / 4) }}>
                 Though one may be overpowered, two can defend themselves. A cord
                 of three strands is not quickly broken.
               </div>
-              <div className={css({ fontSize: 22 }, animateInUp(4 / 4))}>
+              <div css={{ fontSize: 22, ...animateInUp(4 / 4) }}>
                 ‭‭ecclesiastes 4:12
               </div>
               <button
-                className={`btn ${css({ margin: 20 }, animateInUp(5 / 4))}`}
+                className="btn"
+                css={{ margin: 20, ...animateInUp(5 / 4) }}
                 onClick={() => setDone(false)}
               >
                 Replay

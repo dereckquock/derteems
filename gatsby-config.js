@@ -34,7 +34,7 @@ module.exports = {
         component: require.resolve(`./src/components/layout`),
       },
     },
-    `gatsby-plugin-glamor`,
+    `gatsby-plugin-emotion`,
     {
       resolve: 'gatsby-source-google-sheets',
       options: {

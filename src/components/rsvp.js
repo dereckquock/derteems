@@ -1,7 +1,6 @@
 import React, { useState, useRef } from 'react'
 import { useStaticQuery, graphql } from 'gatsby'
 import ReactGA from 'react-ga'
-import { css } from 'glamor'
 import AnimateHeight from 'react-animate-height'
 import VisuallyHidden from '@reach/visually-hidden'
 import Alert from '@reach/alert'
@@ -182,16 +181,16 @@ export default () => {
     <>
       <AnimateHeight duration={500} height={error ? 'auto' : 0}>
         <Alert
-          className={css({
+          css={{
             background: 'hsla(10, 50%, 50%, .10)',
-          })}
+          }}
         >
           <div
-            className={css({
+            css={{
               padding: 10,
               fontSize: 24,
               fontWeight: 600,
-            })}
+            }}
           >
             {error}
           </div>
@@ -200,19 +199,19 @@ export default () => {
 
       {showForm ? (
         <div
-          className={css({
+          css={{
             width: '100%',
             padding: '10px 40px',
             fontSize: '2rem',
             fontWeight: 600,
-          })}
+          }}
         >
           RSVP
         </div>
       ) : (
         <button
           className="btn"
-          style={{
+          css={{
             width: '100%',
             padding: '10px 40px',
             fontSize: '1.75rem',
@@ -225,7 +224,7 @@ export default () => {
       )}
 
       <AnimateHeight duration={500} height={showRsvpSuccess ? 'auto' : 0}>
-        <div className={css({ padding: 10, fontSize: '2.25rem' })}>
+        <div css={{ padding: 10, fontSize: '2.25rem' }}>
           {isPartyAttending ? (
             <>
               <div>Thanks! We're excited to see you!!</div>
@@ -249,7 +248,7 @@ export default () => {
           method="post"
           data-netlify="true"
           data-netlify-honeypot="bot-field"
-          className={css({ margin: 0 })}
+          css={{ margin: 0 }}
         >
           {/* The `form-name` hidden field is required to support form submissions without JavaScript */}
           <input type="hidden" name="form-name" value="rsvp" />
@@ -262,7 +261,7 @@ export default () => {
           <input
             ref={nameRef}
             name="name"
-            className={css({
+            css={{
               width: '100%',
               padding: 10,
               margin: 'auto',
@@ -272,7 +271,7 @@ export default () => {
               outline: 'none',
               caretColor: '#3e3d4d',
               WebkitAppearance: 'none',
-            })}
+            }}
             autoCorrect="off"
             spellCheck="false"
             placeholder="Enter Your Full Name"
@@ -302,11 +301,11 @@ export default () => {
             height={party.length ? 'auto' : 0}
             style={{ width: '100%', textAlign: 'left' }}
           >
-            <div className={css({ padding: 10 })}>
+            <div css={{ padding: 10 }}>
               {party.map(({ guest, isGoing, protein }) => (
                 <div
                   key={guest}
-                  className={css({
+                  css={{
                     paddingBottom: 8,
                     display: 'grid',
                     gridTemplateColumns: '2fr 1fr',
@@ -315,14 +314,12 @@ export default () => {
                     ':not(:last-child)': {
                       borderBottom: '1px solid #fff',
                     },
-                  })}
+                  }}
                 >
-                  <div className={css({ fontSize: '2rem' })}>{guest}</div>
-                  <div
-                    className={css({ fontSize: '1.5rem', textAlign: 'right' })}
-                  >
+                  <div css={{ fontSize: '2rem' }}>{guest}</div>
+                  <div css={{ fontSize: '1.5rem', textAlign: 'right' }}>
                     <label
-                      className={css({
+                      css={{
                         marginTop: 10,
                         marginBottom: 10,
                         position: 'relative',
@@ -332,7 +329,7 @@ export default () => {
                         cursor: 'pointer',
                         WebkitTapHighlightColor: 'transparent',
                         transform: 'translate3d(0, 0, 0)',
-                      })}
+                      }}
                     >
                       going
                       <VisuallyHidden>
@@ -350,15 +347,13 @@ export default () => {
 
                     <AnimateHeight duration={500} height={isGoing ? 'auto' : 0}>
                       <label
-                        className={css({
+                        css={{
                           marginBottom: 10,
                           display: 'inline-block',
                           fontSize: '1.5rem',
-                        })}
+                        }}
                       >
-                        <span className={css({ marginRight: 4 })}>
-                          Short Ribs
-                        </span>
+                        <span css={{ marginRight: 4 }}>Short Ribs</span>
                         <VisuallyHidden>
                           <input
                             type="radio"
@@ -372,13 +367,13 @@ export default () => {
                         <Radio checked={protein === 'redMeat'} />
                       </label>
                       <label
-                        className={css({
+                        css={{
                           marginBottom: 10,
                           display: 'inline-block',
                           fontSize: '1.5rem',
-                        })}
+                        }}
                       >
-                        <span className={css({ marginRight: 4 })}>Halibut</span>
+                        <span css={{ marginRight: 4 }}>Halibut</span>
                         <VisuallyHidden>
                           <input
                             type="radio"
@@ -402,7 +397,7 @@ export default () => {
               className="btn"
               value="Submit"
               onClick={handleSubmit}
-              style={{ width: '100%', borderRadius: 0 }}
+              css={{ width: '100%', borderRadius: 0 }}
             />
           </AnimateHeight>
         </form>
