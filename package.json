@@ -42,7 +42,7 @@
     "gatsby-plugin-layout": "^1.0.15",
     "gatsby-plugin-manifest": "^2.1.1",
     "gatsby-plugin-react-helmet": "^3.0.12",
-    "gatsby-plugin-sharp": "^2.1.7",
+    "gatsby-plugin-sharp": "^2.1.9",
     "gatsby-source-filesystem": "^2.0.43",
     "gatsby-source-google-sheets": "^1.1.1",
     "gatsby-transformer-sharp": "^2.1.21",
