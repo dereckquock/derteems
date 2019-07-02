@@ -1,4 +1,4 @@
-import React, { useState, useRef } from 'react'
+import React, { useState, useReducer, useRef } from 'react'
 import { useStaticQuery, graphql } from 'gatsby'
 import ReactGA from 'react-ga'
 import AnimateHeight from 'react-animate-height'
@@ -8,17 +8,49 @@ import qs from 'qs'
 import Checkbox from './checkbox'
 import Radio from './radio'
 
-function getRsvpData(data) {
-  return data.reduce((formData, { guest, isGoing, protein }) => {
-    return {
-      ...formData,
-      [`${guest} Is Going`]: isGoing,
-      [`${guest} Protein`]: protein,
-    }
-  }, {})
+const isDev = process.env.NODE_ENV === 'development'
+
+const initialState = {
+  showForm: false,
+  showFindButton: false,
+  name: '',
+  party: [],
+  isPartyAttending: false,
+  showRsvpSuccess: false,
+  showAlreadyRSVPd: false,
 }
 
-const useError = (initialError = '') => {
+function reducer(state, action) {
+  if (isDev) {
+    console.log(
+      `%c${action.type}%c${JSON.stringify(action.value, null, 2)}`,
+      'padding: 6px 8px; margin-right: 10px; background: #00C6FF; color: #fff; border-radius: 4px;',
+      'color: #0078FF'
+    )
+  }
+
+  switch (action.type) {
+    case 'setShowForm':
+      return { ...state, showForm: action.value }
+    case 'setShowFindButton':
+      return { ...state, showFindButton: action.value }
+    case 'setName':
+      return { ...state, name: action.value }
+    case 'setParty':
+      return { ...state, party: action.value }
+    case 'setIsPartyAttending':
+      return { ...state, isPartyAttending: action.value }
+    case 'setShowRsvpSuccess':
+      return { ...state, showRsvpSuccess: action.value }
+    case 'setShowAlreadyRSVPd':
+      return { ...state, showAlreadyRSVPd: action.value }
+    default:
+      console.log(`action "${action.type}" not handled`)
+      return state
+  }
+}
+
+function useError(initialError = '') {
   const [errorMessage, setErrorMessage] = useState(initialError)
 
   const setError = message => {
@@ -31,6 +63,16 @@ const useError = (initialError = '') => {
   return [errorMessage, setError]
 }
 
+function getRsvpData(data) {
+  return data.reduce((formData, { guest, isGoing, protein }) => {
+    return {
+      ...formData,
+      [`${guest} Is Going`]: isGoing,
+      [`${guest} Protein`]: protein,
+    }
+  }, {})
+}
+
 export default () => {
   const {
     allGoogleSheetRsvpRow: { edges },
@@ -41,30 +83,39 @@ export default () => {
           node {
             guest
             party
+            hasrsvpd
           }
         }
       }
     }
   `)
   const [error, setError] = useError('')
-  const [showForm, setShowForm] = useState(false)
-  const [showFindButton, setShowFindButton] = useState(false)
-  const [name, setName] = useState('')
-  const [party, setParty] = useState([]) // `party` is the data we wanna submit
-  const [isPartyAttending, setIsPartyAttending] = useState(false)
-  const [showRsvpSuccess, setRsvpSuccess] = useState(false)
+  const [
+    {
+      showForm,
+      showFindButton,
+      name,
+      party, // `party` is the data we wanna submit
+      isPartyAttending,
+      showRsvpSuccess,
+      showAlreadyRSVPd,
+    },
+    dispatch,
+  ] = useReducer(reducer, initialState)
   const nameRef = useRef(null)
-  const guests = edges.map(({ node }) => node)
 
+  const guests = edges.map(({ node }) => node)
   const startRSVP = () => {
-    setShowForm(true)
+    dispatch({ type: 'setShowForm', value: true })
     setTimeout(() => nameRef.current.focus(), 0)
     ReactGA.event({
       category: 'RSVP',
       action: 'Start RSVP',
     })
   }
-  const handleChangeName = ({ target: { value } }) => setName(value)
+  const handleChangeName = ({ target: { value } }) =>
+    dispatch({ type: 'setName', value })
+
   const findParty = () => {
     if (!name) {
       return
@@ -90,10 +141,21 @@ export default () => {
       return
     }
 
-    const { guest, party: others = '' } = data
+    // data from google sheets
+    const { guest, party: others = '', hasrsvpd = false } = data
 
-    setParty(
-      [guest, ...(others && others.split(','))]
+    if (hasrsvpd) {
+      dispatch({ type: 'setShowAlreadyRSVPd', value: true })
+      ReactGA.event({
+        category: 'RSVP',
+        action: 'Already RSVPd',
+      })
+      return
+    }
+
+    dispatch({
+      type: 'setParty',
+      value: [guest, ...(others && others.split(','))]
         .map((person = '') => {
           if (person) {
             return {
@@ -103,28 +165,30 @@ export default () => {
             }
           }
         })
-        .filter(Boolean)
-    )
+        .filter(Boolean),
+    })
   }
   const handleChangeRSVP = (guest, isGoing) => {
-    setParty(
-      party.map(data => {
+    dispatch({
+      type: 'setParty',
+      value: party.map(data => {
         if (data.guest === guest) {
           return { ...data, isGoing }
         }
         return data
-      })
-    )
+      }),
+    })
   }
   const handleChangeProtein = (guest, protein) => {
-    setParty(
-      party.map(data => {
+    dispatch({
+      type: 'setParty',
+      value: party.map(data => {
         if (data.guest === guest) {
           return { ...data, protein }
         }
         return data
-      })
-    )
+      }),
+    })
   }
   const handleSubmit = event => {
     event.preventDefault()
@@ -138,13 +202,17 @@ export default () => {
       return
     }
 
-    setIsPartyAttending(party.some(({ isGoing }) => isGoing))
-
-    if (process.env.NODE_ENV === 'development') {
-      return setRsvpSuccess(true)
-    }
+    dispatch({
+      type: 'setIsPartyAttending',
+      value: party.some(({ isGoing }) => isGoing),
+    })
 
     const rsvpData = getRsvpData(party)
+
+    if (isDev) {
+      console.log('rsvpData', rsvpData)
+      return dispatch({ type: 'setShowRsvpSuccess', value: true })
+    }
 
     ReactGA.event({
       category: 'RSVP',
@@ -162,7 +230,7 @@ export default () => {
         }),
       })
       .then(() => {
-        setRsvpSuccess(true)
+        dispatch({ type: 'setShowRsvpSuccess', value: true })
         ReactGA.event({
           category: 'RSVP',
           action: 'Success',
@@ -236,9 +304,15 @@ export default () => {
         </div>
       </AnimateHeight>
 
+      <AnimateHeight duration={500} height={showAlreadyRSVPd ? 'auto' : 0}>
+        <div css={{ padding: 10, fontSize: '2.25rem' }}>
+          You've already RSVP'd! Thanks 🍻
+        </div>
+      </AnimateHeight>
+
       <AnimateHeight
         duration={500}
-        height={showForm && !showRsvpSuccess ? 'auto' : 0}
+        height={showForm && !showRsvpSuccess && !showAlreadyRSVPd ? 'auto' : 0}
         style={{
           width: showForm ? '100%' : 'auto',
         }}
@@ -276,8 +350,8 @@ export default () => {
             spellCheck="false"
             placeholder="Enter Your Full Name"
             value={name}
-            onFocus={() => setShowFindButton(true)}
-            onBlur={() => setShowFindButton(false)}
+            onFocus={() => dispatch({ type: 'setShowFindButton', value: true })}
+            onBlur={() => dispatch({ type: 'setShowFindButton', value: false })}
             onChange={handleChangeName}
           />
 
