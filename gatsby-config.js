@@ -35,19 +35,6 @@ module.exports = {
       },
     },
     `gatsby-plugin-netlify`,
-    {
-      resolve: 'gatsby-plugin-guess-js',
-      options: {
-        // Find the view id in the GA admin in a section labeled "views"
-        GAViewID: `193043111`,
-        minimumThreshold: 0.03,
-        // The "period" for fetching analytic data.
-        period: {
-          startDate: new Date('2019-4-6'),
-          endDate: new Date(),
-        },
-      },
-    },
     `gatsby-plugin-emotion`,
     {
       resolve: 'gatsby-source-google-sheets',
