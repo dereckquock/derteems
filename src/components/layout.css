@@ -1,5 +1,6 @@
 @font-face {
   font-family: 'Shorelines';
+  font-display: auto;
   src: local('Shorelines'), url(../fonts/Shorelines.otf) format('opentype');
 }
 html {
