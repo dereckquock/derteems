@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react'
 import PropTypes from 'prop-types'
-import 'typeface-amatic-sc'
 import { TransitionGroup, Transition } from 'react-transition-group'
 import { StaticQuery, graphql, Link } from 'gatsby'
 import { isIE, isEdge } from 'react-device-detect'
