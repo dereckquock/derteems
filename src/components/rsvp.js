@@ -7,6 +7,7 @@ import Alert from '@reach/alert'
 import qs from 'qs'
 import Checkbox from './checkbox'
 import Radio from './radio'
+import Success from './rsvpSuccess'
 
 const isDev = process.env.NODE_ENV === 'development'
 
@@ -18,6 +19,7 @@ const initialState = {
   isPartyAttending: false,
   showRsvpSuccess: false,
   showAlreadyRSVPd: false,
+  showYAG: false,
 }
 
 function reducer(state, action) {
@@ -44,6 +46,8 @@ function reducer(state, action) {
       return { ...state, showRsvpSuccess: action.value }
     case 'setShowAlreadyRSVPd':
       return { ...state, showAlreadyRSVPd: action.value }
+    case 'setShowYAG':
+      return { ...state, showYAG: action.value }
     default:
       console.log(`action "${action.type}" not handled`)
       return state
@@ -99,6 +103,7 @@ export default () => {
       isPartyAttending,
       showRsvpSuccess,
       showAlreadyRSVPd,
+      showYAG,
     },
     dispatch,
   ] = useReducer(reducer, initialState)
@@ -143,6 +148,16 @@ export default () => {
 
     // data from google sheets
     const { guest, party: others = '', hasrsvpd = false } = data
+
+    // 🦄
+    if (
+      guest === 'Aaron Buenaobra' ||
+      guest === 'Andrew Cruz' ||
+      guest === 'Ejay Landicho'
+    ) {
+      dispatch({ type: 'setShowYAG', value: true })
+      setTimeout(() => dispatch({ type: 'setShowYAG', value: false }), 1000)
+    }
 
     if (hasrsvpd) {
       dispatch({ type: 'setShowAlreadyRSVPd', value: true })
@@ -247,19 +262,35 @@ export default () => {
 
   return (
     <>
-      <AnimateHeight duration={500} height={error ? 'auto' : 0}>
-        <Alert
+      {showYAG && (
+        <div
           css={{
-            background: 'hsla(10, 50%, 50%, .10)',
+            width: '100vw',
+            height: '100vh',
+            padding: 40,
+            position: 'fixed',
+            top: 0,
+            left: 0,
+            zIndex: 1000,
+            fontSize: 80,
+            background: '#000',
+            color: '#fff',
           }}
         >
-          <div
-            css={{
-              padding: 10,
-              fontSize: 24,
-              fontWeight: 600,
-            }}
-          >
+          🍺🦄🍺
+          <img
+            src={
+              process.env.YAG ||
+              'https://i.giphy.com/media/MjcUR7bHAVHgs/giphy.webp'
+            }
+            css={{ width: '100%' }}
+          />
+          😂😂😂😂😂
+        </div>
+      )}
+      <AnimateHeight duration={500} height={error ? 'auto' : 0}>
+        <Alert css={{ background: 'hsla(10, 50%, 50%, .10)' }}>
+          <div css={{ padding: 10, fontSize: 24, fontWeight: 600 }}>
             {error}
           </div>
         </Alert>
@@ -292,16 +323,7 @@ export default () => {
       )}
 
       <AnimateHeight duration={500} height={showRsvpSuccess ? 'auto' : 0}>
-        <div css={{ padding: 10, fontSize: '2.25rem' }}>
-          {isPartyAttending ? (
-            <>
-              <div>Thanks! We're excited to see you!!</div>
-              <div>🤗🍻🥂🎉</div>
-            </>
-          ) : (
-            <div>😔 We'll miss you!</div>
-          )}
-        </div>
+        <Success isPartyAttending={isPartyAttending} />
       </AnimateHeight>
 
       <AnimateHeight duration={500} height={showAlreadyRSVPd ? 'auto' : 0}>
@@ -438,6 +460,7 @@ export default () => {
                             }
                           />
                         </VisuallyHidden>
+
                         <Radio checked={protein === 'redMeat'} />
                       </label>
                       <label
@@ -458,6 +481,7 @@ export default () => {
                             }
                           />
                         </VisuallyHidden>
+
                         <Radio checked={protein === 'fish'} />
                       </label>
                     </AnimateHeight>
