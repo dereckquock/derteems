@@ -156,7 +156,7 @@ export default () => {
       guest === 'Ejay Landicho'
     ) {
       dispatch({ type: 'setShowYAG', value: true })
-      setTimeout(() => dispatch({ type: 'setShowYAG', value: false }), 1000)
+      setTimeout(() => dispatch({ type: 'setShowYAG', value: false }), 3000)
     }
 
     if (hasrsvpd) {
@@ -279,11 +279,13 @@ export default () => {
         >
           🍺🦄🍺
           <img
-            src={
-              process.env.YAG ||
-              'https://i.giphy.com/media/MjcUR7bHAVHgs/giphy.webp'
-            }
-            css={{ width: '100%' }}
+            src={'https://i.giphy.com/media/MjcUR7bHAVHgs/giphy.webp'}
+            css={{
+              width: '100%',
+              maxWidth: 800,
+              margin: 'auto',
+              display: 'block',
+            }}
           />
           😂😂😂😂😂
         </div>
