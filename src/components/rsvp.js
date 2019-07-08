@@ -19,7 +19,6 @@ const initialState = {
   isPartyAttending: false,
   showRsvpSuccess: false,
   showAlreadyRSVPd: false,
-  showYAG: false,
 }
 
 function reducer(state, action) {
@@ -46,8 +45,6 @@ function reducer(state, action) {
       return { ...state, showRsvpSuccess: action.value }
     case 'setShowAlreadyRSVPd':
       return { ...state, showAlreadyRSVPd: action.value }
-    case 'setShowYAG':
-      return { ...state, showYAG: action.value }
     default:
       console.log(`action "${action.type}" not handled`)
       return state
@@ -103,7 +100,6 @@ export default () => {
       isPartyAttending,
       showRsvpSuccess,
       showAlreadyRSVPd,
-      showYAG,
     },
     dispatch,
   ] = useReducer(reducer, initialState)
@@ -148,16 +144,6 @@ export default () => {
 
     // data from google sheets
     const { guest, party: others = '', hasrsvpd = false } = data
-
-    // 🦄
-    if (
-      guest === 'Aaron Buenaobra' ||
-      guest === 'Andrew Cruz' ||
-      guest === 'Ejay Landicho'
-    ) {
-      dispatch({ type: 'setShowYAG', value: true })
-      setTimeout(() => dispatch({ type: 'setShowYAG', value: false }), 3000)
-    }
 
     if (hasrsvpd) {
       dispatch({ type: 'setShowAlreadyRSVPd', value: true })
@@ -262,34 +248,6 @@ export default () => {
 
   return (
     <>
-      {showYAG && (
-        <div
-          css={{
-            width: '100vw',
-            height: '100vh',
-            padding: 40,
-            position: 'fixed',
-            top: 0,
-            left: 0,
-            zIndex: 1000,
-            fontSize: 80,
-            background: '#000',
-            color: '#fff',
-          }}
-        >
-          🍺🦄🍺
-          <img
-            src={'https://i.giphy.com/media/MjcUR7bHAVHgs/giphy.webp'}
-            css={{
-              width: '100%',
-              maxWidth: 800,
-              margin: 'auto',
-              display: 'block',
-            }}
-          />
-          😂😂😂😂😂
-        </div>
-      )}
       <AnimateHeight duration={500} height={error ? 'auto' : 0}>
         <Alert css={{ background: 'hsla(10, 50%, 50%, .10)' }}>
           <div css={{ padding: 10, fontSize: 24, fontWeight: 600 }}>
