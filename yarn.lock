@@ -9916,10 +9916,10 @@ react-clientside-effect@^1.2.0:
   dependencies:
     "@babel/runtime" "^7.0.0"
 
-react-confetti@^3.1.1:
-  version "3.1.1"
-  resolved "https://registry.yarnpkg.com/react-confetti/-/react-confetti-3.1.1.tgz#3fb74b5aee29d3860bfd363108ee3977dabf595e"
-  integrity sha512-LLeF+v6KXN0XpPTluK4MScwkjFJ+DEY1aDCcaI87jegAXua9WZ38pLt4fdGTkLT6rAl1c+/CTImEtw1+gdm/eg==
+react-confetti@^3.1.2:
+  version "3.1.2"
+  resolved "https://registry.yarnpkg.com/react-confetti/-/react-confetti-3.1.2.tgz#0007dca24a140f0e2235c732389cb77daade1936"
+  integrity sha512-OTZn0nDad558xRbQEFITwT9NPBmq93ZgC6fk+E0BQIFPl9lQAinvYS//93gVDwsaHgtxL4Lbln6xqH+dXDCezQ==
   dependencies:
     tween-functions "^1.2.0"
 
