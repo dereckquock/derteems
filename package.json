@@ -61,7 +61,7 @@
     "react-player": "^1.11.1",
     "react-scroll-parallax": "^2.1.2",
     "react-transition-group": "^4.2.1",
-    "react-use": "^9.10.0",
+    "react-use": "^9.11.0",
     "typeface-amatic-sc": "^0.0.72"
   },
   "devDependencies": {
