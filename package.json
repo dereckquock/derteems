@@ -46,7 +46,7 @@
     "gatsby-plugin-sharp": "^2.2.4",
     "gatsby-source-filesystem": "^2.1.5",
     "gatsby-source-google-sheets": "^1.1.1",
-    "gatsby-transformer-sharp": "^2.2.2",
+    "gatsby-transformer-sharp": "^2.2.3",
     "nuka-carousel": "^4.5.9",
     "prop-types": "^15.6.2",
     "qs": "^6.7.0",
