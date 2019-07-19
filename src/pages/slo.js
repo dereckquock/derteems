@@ -93,12 +93,18 @@ export default ({ data }) => {
           </div>
         </div>
 
-        <div css={{ fontSize: '2rem', fontWeight: 600, ...animateInUp(3 / 4) }}>
+        <div
+          css={{
+            marginBottom: '2rem',
+            fontSize: '2rem',
+            fontWeight: 600,
+            ...animateInUp(3 / 4),
+          }}
+        >
           Things to do around SLO
         </div>
         <div
           css={{
-            paddingTop: '7vw',
             paddingBottom: 40,
             fontSize: '2rem',
             ...animateInUp(4 / 4),
@@ -110,6 +116,7 @@ export default ({ data }) => {
         <div
           css={{
             marginTop: 20,
+            marginBottom: '2rem',
             fontSize: '2rem',
             fontWeight: 600,
             ...animateInUp(3 / 4),
@@ -117,9 +124,7 @@ export default ({ data }) => {
         >
           Food we love ♥
         </div>
-        <div
-          css={{ paddingTop: '6vw', fontSize: '2rem', ...animateInUp(5 / 4) }}
-        >
+        <div css={{ fontSize: '2rem', ...animateInUp(5 / 4) }}>
           <FoodPlaces />
         </div>
 
