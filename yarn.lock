@@ -9955,10 +9955,10 @@ react-dev-utils@^4.2.3:
     strip-ansi "3.0.1"
     text-table "0.2.0"
 
-react-device-detect@^1.6.5:
-  version "1.6.5"
-  resolved "https://registry.yarnpkg.com/react-device-detect/-/react-device-detect-1.6.5.tgz#a613e5bbf70ff381de94891bb32551f201296a24"
-  integrity sha512-ZQR6BR3/x78gz7M8QB7qfqYUo//XOElX59iPblPpO/N63zpLhQbzfHYXx+zyGDSUICGrSqJU9T8xdEChbU9pMg==
+react-device-detect@^1.7.5:
+  version "1.7.5"
+  resolved "https://registry.yarnpkg.com/react-device-detect/-/react-device-detect-1.7.5.tgz#04c8a6475d67b5ac4f984c8d912ec11134f5b893"
+  integrity sha512-ccgJuTHVCI3yfqvgU56gQDvjueFyaHVAXsa5rJuzWRasvsd0IalzfyccSECIlygjv3E+DmAGcwNYWUarUA82Fw==
 
 react-dom@^16.8.6:
   version "16.8.6"
