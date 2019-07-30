@@ -156,7 +156,7 @@ export default () => {
 
     dispatch({
       type: 'setParty',
-      value: [guest, ...(others && others.split(','))]
+      value: [guest, ...((others && others.split(',')) || [])]
         .map((person = '') => {
           if (person) {
             return {

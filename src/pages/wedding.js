@@ -104,7 +104,17 @@ export default () => {
               </div>
             </div>
 
-            <Schedule css={animateInUp(4 / 4)} />
+            <div css={animateInUp(4 / 4)}>
+              <div css={{ fontSize: '2rem', fontWeight: 600 }}>attire</div>
+              <div css={{ marginBottom: 10, fontSize: '2rem' }}>
+                semi-formal
+              </div>
+              <em css={{ marginBottom: 10, fontSize: '1.75rem' }}>
+                we suggest leaving stilettos at home
+              </em>
+            </div>
+
+            <Schedule css={animateInUp(5 / 4)} />
           </div>
 
           <div>

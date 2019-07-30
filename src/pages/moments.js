@@ -20,7 +20,7 @@ function useKeyPress(targetKey) {
   }
 
   // If released key is our target key then set to false
-  const upHandler = ({ key }) => {
+  function upHandler({ key }) {
     if (key === targetKey) {
       setKeyPressed(false)
     }
@@ -30,6 +30,7 @@ function useKeyPress(targetKey) {
   useEffect(() => {
     window.addEventListener('keydown', downHandler)
     window.addEventListener('keyup', upHandler)
+
     // Remove event listeners on cleanup
     return () => {
       window.removeEventListener('keydown', downHandler)
