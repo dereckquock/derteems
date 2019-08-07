@@ -52,7 +52,7 @@
     "react": "^16.8.6",
     "react-add-to-calendar-hoc": "^1.0.9",
     "react-animate-height": "^2.0.15",
-    "react-confetti": "^3.1.2",
+    "react-confetti": "^4.0.0",
     "react-device-detect": "^1.7.5",
     "react-dom": "^16.8.6",
     "react-ga": "^2.6.0",
