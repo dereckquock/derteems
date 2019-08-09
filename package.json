@@ -54,7 +54,7 @@
     "react-animate-height": "^2.0.15",
     "react-confetti": "^4.0.1",
     "react-device-detect": "^1.7.5",
-    "react-dom": "^16.8.6",
+    "react-dom": "^16.9.0",
     "react-ga": "^2.6.0",
     "react-helmet": "^5.2.1",
     "react-player": "^1.11.1",
