@@ -49,7 +49,7 @@
     "gatsby-transformer-sharp": "^2.2.6",
     "prop-types": "^15.6.2",
     "qs": "^6.7.0",
-    "react": "^16.8.6",
+    "react": "^16.9.0",
     "react-add-to-calendar-hoc": "^1.0.9",
     "react-animate-height": "^2.0.15",
     "react-confetti": "^4.0.1",
