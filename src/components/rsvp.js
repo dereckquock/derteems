@@ -138,6 +138,7 @@ export default () => {
       ReactGA.event({
         category: 'RSVP',
         action: 'Error finding invitation',
+        label: name,
       })
       return
     }
@@ -150,6 +151,7 @@ export default () => {
       ReactGA.event({
         category: 'RSVP',
         action: 'Already RSVPd',
+        label: name,
       })
       return
     }
