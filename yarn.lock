@@ -10111,10 +10111,10 @@ react-transition-group@^4.2.2:
     loose-envify "^1.4.0"
     prop-types "^15.6.2"
 
-react-use@^10.5.0:
-  version "10.5.0"
-  resolved "https://registry.yarnpkg.com/react-use/-/react-use-10.5.0.tgz#625e025c7c4eeaa8bc1401284b10aca864bccf09"
-  integrity sha512-sqpGs9e1aENXXYHJjEh3hctn0W845FGHovv3KXMi+kCXeqYNH0/UV4/9yCmWR4kO/TNdPVb7om5Be0eV0H8BeA==
+react-use@^10.6.2:
+  version "10.6.2"
+  resolved "https://registry.yarnpkg.com/react-use/-/react-use-10.6.2.tgz#aca7476536cc819cb335a607e7a5f46ab58d8fae"
+  integrity sha512-WAAVNTAiLS2dSQepPmmmZtx/H71w+AzNxcEYVNNMdU7sxintP7nGIZv82ben6w1fyz2eqw/z07DThYd9oaOo1w==
   dependencies:
     "@types/react-wait" "^0.3.0"
     copy-to-clipboard "^3.1.0"
