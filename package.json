@@ -46,7 +46,7 @@
     "gatsby-plugin-sharp": "^2.2.21",
     "gatsby-source-filesystem": "^2.1.22",
     "gatsby-source-google-sheets": "^1.1.1",
-    "gatsby-transformer-sharp": "^2.2.13",
+    "gatsby-transformer-sharp": "^2.2.14",
     "prop-types": "^15.6.2",
     "qs": "^6.8.0",
     "react": "^16.9.0",
