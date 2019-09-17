@@ -29,7 +29,7 @@ export default () => {
 
       <div style={{ height: '100vh', paddingBottom: 95, position: 'relative' }}>
         <ReactPlayer
-          url="https://vimeo.com/320916775/5b9da95da4"
+          url="https://vimeo.com/328272334"
           width="100%"
           height="100%"
           volume={0.35}

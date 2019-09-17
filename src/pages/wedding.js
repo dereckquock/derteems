@@ -1,4 +1,6 @@
 import React from 'react'
+import { useStaticQuery, graphql } from 'gatsby'
+import Img from 'gatsby-image'
 import { animateInDown, animateInUp } from '../utils/animations'
 import SEO from '../components/seo'
 import RSVP from '../components/rsvp'
@@ -15,6 +17,22 @@ const event = {
 }
 
 export default () => {
+  const {
+    logo: {
+      childImageSharp: { fluid },
+    },
+  } = useStaticQuery(graphql`
+    query {
+      logo: file(relativePath: { eq: "icon.png" }) {
+        childImageSharp {
+          fluid(maxWidth: 800) {
+            ...GatsbyImageSharpFluid
+          }
+        }
+      }
+    }
+  `)
+
   return (
     <>
       <SEO title="The Wedding" />
@@ -32,15 +50,26 @@ export default () => {
           (wedding)
         </div>
 
+        <Img
+          fluid={fluid}
+          css={[{ width: 100, margin: '10px auto' }, animateInUp()]}
+        />
+
         <div
           css={{
             marginBottom: 20,
-            fontSize: 30,
+            fontSize: 38,
             fontWeight: 600,
             ...animateInUp(),
           }}
         >
-          #TeemQuock
+          <a
+            href="https://www.instagram.com/explore/tags/teemquock/"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            #TeemQuock
+          </a>
         </div>
 
         <div
