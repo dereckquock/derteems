@@ -2,7 +2,7 @@ import React from 'react'
 import { useStaticQuery, graphql } from 'gatsby'
 import Img from 'gatsby-image'
 import { isIOS, isAndroid } from 'react-device-detect'
-import { animateInDown, animateInUp } from '../utils/animations'
+import { animateInDown, animateInUp, animateGrowIn } from '../utils/animations'
 import SEO from '../components/seo'
 import RSVP from '../components/rsvp'
 import AddToCalendar from '../components/addToCalendar'
@@ -61,18 +61,46 @@ export default () => {
           (wedding)
         </div>
 
-        <Img
-          fluid={fluid}
-          css={[{ width: 100, margin: '10px auto' }, animateInUp()]}
-        />
+        <a
+          href={instagramUrl}
+          target="_blank"
+          rel="noopener noreferrer"
+          css={[
+            {
+              width: 100,
+              padding: 10,
+              margin: '0 auto',
+              display: 'block',
+              overflow: 'hidden',
+              borderRadius: 50,
+              background: '#fff',
+              transition: 'all 0.35s cubic-bezier(0, -0.55, 0.25, 2) 0s',
+              ':hover': {
+                marginBottom: 6,
+                transform: 'scale(1.1)',
+              },
+            },
+            animateGrowIn(),
+          ]}
+        >
+          <Img fluid={fluid} />
+        </a>
 
         <div
-          css={{
-            marginBottom: 20,
-            fontSize: 38,
-            fontWeight: 600,
-            ...animateInUp(),
-          }}
+          css={[
+            {
+              marginTop: 0,
+              marginBottom: 20,
+              fontSize: 38,
+              fontWeight: 600,
+              transition: 'all 0.35s cubic-bezier(0, -0.55, 0.25, 2) 0s',
+              ':hover': {
+                marginTop: 6,
+                transform: 'scale(1.1)',
+              },
+            },
+            animateInUp(),
+          ]}
         >
           <a href={instagramUrl} target="_blank" rel="noopener noreferrer">
             #TeemQuock
