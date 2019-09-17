@@ -1,6 +1,7 @@
 import React from 'react'
 import { useStaticQuery, graphql } from 'gatsby'
 import Img from 'gatsby-image'
+import { isIOS, isAndroid } from 'react-device-detect'
 import { animateInDown, animateInUp } from '../utils/animations'
 import SEO from '../components/seo'
 import RSVP from '../components/rsvp'
@@ -33,6 +34,16 @@ export default () => {
     }
   `)
 
+  let instagramUrl = 'https://www.instagram.com/explore/tags/teemquock/'
+
+  if (isIOS) {
+    instagramUrl = 'instagram://tag?name=teemquock'
+  }
+  if (isAndroid) {
+    instagramUrl =
+      'intent://instagram.com/explore/tags/teemquock/#Intent;package=com.instagram.android;scheme=https;end'
+  }
+
   return (
     <>
       <SEO title="The Wedding" />
@@ -63,11 +74,7 @@ export default () => {
             ...animateInUp(),
           }}
         >
-          <a
-            href="https://www.instagram.com/explore/tags/teemquock/"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
+          <a href={instagramUrl} target="_blank" rel="noopener noreferrer">
             #TeemQuock
           </a>
         </div>
