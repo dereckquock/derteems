@@ -102,7 +102,12 @@ export default () => {
             animateInUp(),
           ]}
         >
-          <a href={instagramUrl} target="_blank" rel="noopener noreferrer">
+          <a
+            href={instagramUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            css={{ display: 'block' }}
+          >
             #TeemQuock
           </a>
         </div>
