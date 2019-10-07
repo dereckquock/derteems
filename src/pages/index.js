@@ -1,244 +1,297 @@
-import React, { useState } from 'react'
-import ReactPlayer from 'react-player/lib/players/Vimeo'
+import React from 'react'
+import { useStaticQuery, graphql } from 'gatsby'
+import Img from 'gatsby-image'
 import { isIOS, isAndroid } from 'react-device-detect'
+import { animateInUp, animateGrowIn } from '../utils/animations'
 import SEO from '../components/seo'
-import { animateInUp } from '../utils/animations'
+import AddToCalendar from '../components/addToCalendar'
+import Schedule from '../components/schedule'
+
+const event = {
+  title: `Dereck and Fatima's Wedding`,
+  description: 'Celebrate with us! 🍾',
+  location: 'California',
+  duration: '0500',
+  startDatetime: '20191102T170000',
+  endDatetime: '20191102T220000',
+}
 
 export default () => {
-  const [done, setDone] = useState(false)
-  let fbUrl = 'https://www.facebook.com/MarkNicolasFilms/'
+  const {
+    logo: {
+      childImageSharp: { fluid },
+    },
+  } = useStaticQuery(graphql`
+    query {
+      logo: file(relativePath: { eq: "icon.png" }) {
+        childImageSharp {
+          fluid(maxWidth: 800) {
+            ...GatsbyImageSharpFluid
+          }
+        }
+      }
+    }
+  `)
+
+  let instagramUrl = 'https://www.instagram.com/explore/tags/teemquock/'
 
   if (isIOS) {
-    fbUrl = 'fb://page/?id=1908468772771411'
+    instagramUrl = 'instagram://tag?name=teemquock'
   }
   if (isAndroid) {
-    fbUrl = 'fb://page/1908468772771411'
+    instagramUrl =
+      'intent://instagram.com/explore/tags/teemquock/#Intent;package=com.instagram.android;scheme=https;end'
   }
 
   return (
     <>
-      <SEO
-        title="🥂 dereck & fatima"
-        keywords={[
-          'marknicolasfilms',
-          'Mark Nicolas',
-          'Mark Gonzales',
-          'Wedding Videographer',
-        ]}
-      />
-
-      <div style={{ height: '100vh', paddingBottom: 95, position: 'relative' }}>
-        <ReactPlayer
-          url="https://vimeo.com/328272334"
-          width="100%"
-          height="100%"
-          volume={0.35}
-          playing={!done}
-          config={{ vimeo: { preload: true } }}
-          onEnded={() => setDone(true)}
-        />
-
-        {done && (
-          <div
-            css={{
-              width: '100%',
-              height: '100%',
-              padding: 124,
-              position: 'absolute',
-              top: 0,
-              left: 0,
-              display: 'grid',
-              alignItems: 'center',
-              justifyContent: 'center',
-              textAlign: 'center',
-              fontSize: 30,
-              background: '#000',
-              color: '#fff',
-
-              '@media(max-width: 640px)': {
-                padding: 10,
+      <SEO title="🥂 dereck & fatima" />
+      <div className="contents">
+        <a
+          href={instagramUrl}
+          target="_blank"
+          rel="noopener noreferrer"
+          css={[
+            {
+              width: 100,
+              padding: 10,
+              margin: '0 auto',
+              display: 'block',
+              overflow: 'hidden',
+              borderRadius: 50,
+              background: '#fff',
+              transition: 'all 0.35s cubic-bezier(0, -0.55, 0.25, 2) 0s',
+              ':hover': {
+                marginBottom: 6,
+                transform: 'scale(1.1)',
               },
-            }}
+            },
+            animateGrowIn(),
+          ]}
+        >
+          <Img fluid={fluid} />
+        </a>
+
+        <div
+          css={[
+            {
+              marginTop: 0,
+              marginBottom: 20,
+              fontSize: 38,
+              fontWeight: 600,
+              transition: 'all 0.35s cubic-bezier(0, -0.55, 0.25, 2) 0s',
+              ':hover': {
+                marginTop: 6,
+                transform: 'scale(1.1)',
+              },
+            },
+            animateInUp(),
+          ]}
+        >
+          <a
+            href={instagramUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            css={{ display: 'block' }}
           >
-            <div>
-              <div css={animateInUp(1 / 4)}>
-                Video by{' '}
-                <a
-                  href="https://www.marknicolasfilms.com/"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  css={{ color: '#c9baaa' }}
-                >
-                  Mark Nicolas Films
-                </a>
+            #TeemQuock
+          </a>
+        </div>
+
+        <Schedule css={animateInUp(1 / 4)} />
+
+        <div
+          css={{
+            display: 'grid',
+            gridTemplateColumns: '1fr 1fr',
+            gridGap: 20,
+            '@media(max-width: 414px)': { gridTemplateColumns: '1fr' },
+          }}
+        >
+          <div>
+            <div css={animateInUp(2 / 4)}>
+              <div css={{ fontSize: '2rem', fontWeight: 600 }}>when</div>
+              <div css={{ paddingBottom: 40, fontSize: '2rem' }}>
+                <div css={{ marginBottom: 10 }}>November 2nd, 2019</div>
+                <AddToCalendar event={event} />
               </div>
-              <div
-                css={{
-                  marginTop: 8,
-                  display: 'grid',
-                  gridTemplateColumns: 'repeat(3, 40px)',
-                  gridGap: 20,
-                  justifyContent: 'center',
-                  ...animateInUp(2 / 4),
-                }}
-              >
-                <a
-                  href="https://vimeo.com/user68584040"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  css={{
-                    transition: 'all 0.5s ease',
+            </div>
 
-                    ':hover': {
-                      transform: 'scale(1.1)',
-                    },
-                  }}
-                >
-                  <svg width="40px" height="40px" viewBox="0 0 256 223">
-                    <path
-                      d="M255.876213,51.662485 C254.737006,76.6303263 237.331453,110.819347 203.667236,154.211627 C168.861251,199.53928 139.413381,222.200547 115.323625,222.200547 C100.406409,222.200547 87.772727,208.402057 77.4609804,180.794839 C70.5694159,155.489076 63.6855314,130.185872 56.7965269,104.880109 C49.1343974,77.2882505 40.9193043,63.4744013 32.1358876,63.4744013 C30.2209952,63.4744013 23.5188719,67.5115474 12.0448778,75.5551193 L0,60.0081389 C12.6336816,48.884867 25.0984021,37.7641552 37.3608813,26.6280832 C54.2109102,12.038549 66.8599519,4.36617944 75.2900864,3.59049443 C95.2146951,1.67304204 107.477174,15.3179302 112.080084,44.5277189 C117.054196,76.0415225 120.494858,95.6435691 122.430231,103.315939 C128.172348,129.461388 134.490469,142.517472 141.394833,142.517472 C146.752948,142.517472 154.80164,134.038697 165.533229,117.081148 C176.254579,100.118478 181.996696,87.2134346 182.772381,78.3480974 C184.298151,63.7099228 178.553473,56.3729154 165.533229,56.3729154 C159.40455,56.3729154 153.086429,57.7860445 146.586547,60.5790226 C159.166468,19.2885158 183.205023,-0.764093703 218.686853,0.380233689 C244.991023,1.15335868 257.391743,18.2465891 255.876213,51.662485"
-                      fill="#32B8E8"
-                    />
-                  </svg>
-                </a>
-                <a
-                  href="https://www.instagram.com/marknicolasfilms/"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  css={{
-                    transition: 'all 0.5s ease',
-
-                    ':hover': {
-                      transform: 'scale(1.1)',
-                    },
-                  }}
-                >
-                  <svg
-                    x="0px"
-                    y="0px"
-                    width="40px"
-                    height="40px"
-                    viewBox="0 0 551.034 551.034"
+            <div css={animateInUp(3 / 4)}>
+              <div css={{ fontSize: '2rem', fontWeight: 600 }}>where</div>
+              <div css={{ paddingBottom: 40, fontSize: '2rem' }}>
+                <div css={{ paddingBottom: 10 }}>
+                  <a
+                    href="https://goo.gl/maps/atD3ofuWznq"
+                    target="_blank"
+                    rel="noopener noreferrer"
                   >
-                    <g>
-                      <linearGradient
-                        id="ig1"
-                        gradientUnits="userSpaceOnUse"
-                        x1="275.517"
-                        y1="4.57"
-                        x2="275.517"
-                        y2="549.72"
-                        gradientTransform="matrix(1 0 0 -1 0 554)"
-                      >
-                        <stop offset="0" style={{ stopColor: '#E09B3D' }} />
-                        <stop offset="0.3" style={{ stopColor: '#C74C4D' }} />
-                        <stop offset="0.6" style={{ stopColor: '#C21975' }} />
-                        <stop offset="1" style={{ stopColor: '#7024C4' }} />
-                      </linearGradient>
-                      <path
-                        style={{ fill: 'url(#ig1)' }}
-                        d="M386.878,0H164.156C73.64,0,0,73.64,0,164.156v222.722
-                		c0,90.516,73.64,164.156,164.156,164.156h222.722c90.516,0,164.156-73.64,164.156-164.156V164.156
-                		C551.033,73.64,477.393,0,386.878,0z M495.6,386.878c0,60.045-48.677,108.722-108.722,108.722H164.156
-                		c-60.045,0-108.722-48.677-108.722-108.722V164.156c0-60.046,48.677-108.722,108.722-108.722h222.722
-                		c60.045,0,108.722,48.676,108.722,108.722L495.6,386.878L495.6,386.878z"
-                      />
-
-                      <linearGradient
-                        id="ig2"
-                        gradientUnits="userSpaceOnUse"
-                        x1="275.517"
-                        y1="4.57"
-                        x2="275.517"
-                        y2="549.72"
-                        gradientTransform="matrix(1 0 0 -1 0 554)"
-                      >
-                        <stop offset="0" style={{ stopColor: '#E09B3D' }} />
-                        <stop offset="0.3" style={{ stopColor: '#C74C4D' }} />
-                        <stop offset="0.6" style={{ stopColor: '#C21975' }} />
-                        <stop offset="1" style={{ stopColor: '#7024C4' }} />
-                      </linearGradient>
-                      <path
-                        style={{ fill: 'url(#ig2)' }}
-                        d="M275.517,133C196.933,133,133,196.933,133,275.516s63.933,142.517,142.517,142.517
-                		S418.034,354.1,418.034,275.516S354.101,133,275.517,133z M275.517,362.6c-48.095,0-87.083-38.988-87.083-87.083
-                		s38.989-87.083,87.083-87.083c48.095,0,87.083,38.988,87.083,87.083C362.6,323.611,323.611,362.6,275.517,362.6z"
-                      />
-
-                      <linearGradient
-                        id="SVGID_3_"
-                        gradientUnits="userSpaceOnUse"
-                        x1="418.31"
-                        y1="4.57"
-                        x2="418.31"
-                        y2="549.72"
-                        gradientTransform="matrix(1 0 0 -1 0 554)"
-                      >
-                        <stop offset="0" style={{ stopColor: '#E09B3D' }} />
-                        <stop offset="0.3" style={{ stopColor: '#C74C4D' }} />
-                        <stop offset="0.6" style={{ stopColor: '#C21975' }} />
-                        <stop offset="1" style={{ stopColor: '#7024C4' }} />
-                      </linearGradient>
-                      <circle
-                        style={{ fill: 'url(#SVGID_3_)' }}
-                        cx="418.31"
-                        cy="134.07"
-                        r="34.15"
-                      />
-                    </g>
-                  </svg>
-                </a>
-                <a
-                  href={fbUrl}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  css={{
-                    transition: 'all 0.5s ease',
-
-                    ':hover': {
-                      transform: 'scale(1.1)',
-                    },
-                  }}
-                >
-                  <svg
-                    x="0px"
-                    y="0px"
-                    width="40px"
-                    height="40px"
-                    viewBox="0 0 266.893 266.895"
+                    Higuera Ranch
+                  </a>
+                  <p css={{ marginTop: 10, marginBottom: 10 }}>
+                    525 El Camino Real, San Luis Obispo, CA 93401, USA
+                  </p>
+                </div>
+                <div>
+                  <a
+                    href="https://www.google.com/maps/dir/?api=1&destination=Higuera+Ranch"
+                    target="_blank"
+                    rel="noopener noreferrer"
                   >
-                    <path
-                      fill="#3C5A99"
-                      d="M248.082,262.307c7.854,0,14.223-6.369,14.223-14.225V18.812
-                  	c0-7.857-6.368-14.224-14.223-14.224H18.812c-7.857,0-14.224,6.367-14.224,14.224v229.27c0,7.855,6.366,14.225,14.224,14.225
-                  	H248.082z"
-                    />
-                    <path
-                      fill="#FFFFFF"
-                      d="M182.409,262.307v-99.803h33.499l5.016-38.895h-38.515V98.777c0-11.261,3.127-18.935,19.275-18.935
-                  	l20.596-0.009V45.045c-3.562-0.474-15.788-1.533-30.012-1.533c-29.695,0-50.025,18.126-50.025,51.413v28.684h-33.585v38.895h33.585
-                  	v99.803H182.409z"
-                    />
-                  </svg>
-                </a>
+                    Directions
+                  </a>
+                </div>
               </div>
-              <div css={{ marginTop: 20, ...animateInUp(3 / 4) }}>
-                Though one may be overpowered, two can defend themselves. A cord
-                of three strands is not quickly broken.
+            </div>
+
+            <div css={animateInUp(4 / 4)}>
+              <div css={{ fontSize: '2rem', fontWeight: 600 }}>attire</div>
+              <div css={{ marginBottom: 10, fontSize: '2rem' }}>
+                semi-formal
               </div>
-              <div css={{ fontSize: 22, ...animateInUp(4 / 4) }}>
-                ‭‭ecclesiastes 4:12
-              </div>
-              <button
-                className="btn"
-                css={{ margin: 20, ...animateInUp(5 / 4) }}
-                onClick={() => setDone(false)}
-              >
-                Replay
-              </button>
+              <em css={{ marginBottom: 10, fontSize: '1.75rem' }}>
+                we suggest leaving stilettos at home
+              </em>
             </div>
           </div>
-        )}
+
+          <div>
+            <div css={{ maxWidth: 350, margin: 'auto', ...animateInUp(2 / 4) }}>
+              <div
+                css={{ marginBottom: 20, fontSize: '2rem', fontWeight: 600 }}
+              >
+                bridal party
+              </div>
+            </div>
+            <div css={animateInUp(3 / 4)}>
+              <div css={{ fontSize: '2rem' }}>
+                <div
+                  css={{
+                    position: 'relative',
+                    transform: 'rotateZ(-5deg)',
+                  }}
+                >
+                  <div
+                    css={{
+                      width: '100%',
+                      position: 'absolute',
+                      top: 6,
+                      fontWeight: 600,
+                    }}
+                  >
+                    <div>HER</div>
+                    <div css={{ marginTop: -10, fontSize: 26 }}>
+                      bridesmaids
+                    </div>
+                  </div>
+                  <div
+                    css={{
+                      overflow: 'hidden',
+                      border: '20px solid #fff',
+                      borderTopWidth: 80,
+                      background: '#fff',
+                      borderRadius: 4,
+                      boxShadow: '2px 4px 16px 2px #000',
+                    }}
+                  >
+                    <div
+                      css={{
+                        padding: 10,
+                        background: '#3E3D4D',
+                        color: '#fff',
+                      }}
+                    >
+                      <div css={{ position: 'relative' }}>
+                        jessica kataoka
+                        <span
+                          css={{
+                            position: 'absolute',
+                            color: 'transparent',
+                            textShadow: '0 0 0 #fff',
+                          }}
+                        >
+                          ✨
+                        </span>
+                      </div>
+                      <div>sandy wong</div>
+                      <div>megan kwang</div>
+                      <div>joan batoon</div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div css={animateInUp(4 / 4)}>
+              <div css={{ fontSize: '2rem' }}>
+                <div
+                  css={{
+                    position: 'relative',
+                    transform: 'rotateZ(3deg)',
+                  }}
+                >
+                  <div
+                    css={{
+                      width: '100%',
+                      position: 'absolute',
+                      top: 6,
+                      fontWeight: 600,
+                    }}
+                  >
+                    <div>HIS</div>
+                    <div css={{ marginTop: -10, fontSize: 26 }}>
+                      groomspeople
+                    </div>
+                  </div>
+                  <div
+                    css={{
+                      overflow: 'hidden',
+                      border: '20px solid #fff',
+                      borderTopWidth: 80,
+                      background: '#fff',
+                      borderRadius: 4,
+                      boxShadow: '2px 4px 16px 2px #000',
+                    }}
+                  >
+                    <div
+                      css={{
+                        padding: 10,
+                        background: '#3E3D4D',
+                        color: '#fff',
+                      }}
+                    >
+                      <div css={{ position: 'relative' }}>
+                        aaron buenaobra
+                        <span
+                          css={{
+                            position: 'absolute',
+                            color: 'transparent',
+                            textShadow: '0 0 0 #fff',
+                          }}
+                        >
+                          ✨
+                        </span>
+                      </div>
+                      <div>andrew cruz</div>
+                      <div>ejay landicho</div>
+                      <div>leilani quock</div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div
+          css={{
+            marginTop: 40,
+            marginBottom: 40,
+            fontSize: 20,
+            ...animateInUp(6 / 4),
+          }}
+        >
+          romans 12:9-10
+        </div>
       </div>
     </>
   )

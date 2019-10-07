@@ -11,7 +11,14 @@ export default props => {
     <>
       <button
         className={`btn ${props.className}`}
-        style={{ marginTop: 40, marginBottom: 20 }}
+        css={{
+          width: '80%',
+          padding: '10px 40px',
+          marginTop: 20,
+          marginBottom: 20,
+          fontSize: '1.75rem',
+          fontWeight: 600,
+        }}
         onClick={() => {
           setShowSchedule(true)
           ReactGA.event({
@@ -94,35 +101,35 @@ export default props => {
 
           <ul className="timeline">
             <li className="event" css={animateInUp(1 / 3)}>
-              <div className="event-time">4:30pm</div>
+              <div className="event-time">4:30</div>
               <div>
                 <div className="event-title">💒 Ceremony</div>
-                <div className="event-description">@ the lawn</div>
+                <div className="event-description">@ the olive grove lawn</div>
               </div>
             </li>
             <li className="event" css={animateInUp(2 / 3)}>
-              <div className="event-time">5pm</div>
+              <div className="event-time">5</div>
               <div>
                 <div className="event-title">🍸 Cocktail Hour</div>
                 <div className="event-description">@ the patio</div>
               </div>
             </li>
             <li className="event" css={animateInUp(3 / 3)}>
-              <div className="event-time">6:30pm</div>
+              <div className="event-time">6:30</div>
               <div>
                 <div className="event-title">🍽 Dinner Reception</div>
                 <div className="event-description">@ the barn</div>
               </div>
             </li>
             <li className="event" css={animateInUp(4 / 3)}>
-              <div className="event-time">8pm</div>
+              <div className="event-time">8</div>
               <div>
                 <div className="event-title">🍰 Cake</div>
                 <div className="event-description">@ the barn</div>
               </div>
             </li>
             <li className="event" css={animateInUp(5 / 3)}>
-              <div className="event-time">8:30pm</div>
+              <div className="event-time">8:30</div>
               <div>
                 <div className="event-title">🎉 Party!</div>
                 <div className="event-description">@ the barn</div>
