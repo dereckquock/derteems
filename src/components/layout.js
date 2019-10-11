@@ -6,6 +6,7 @@ import { isIE, isEdge } from 'react-device-detect'
 import './layout.css'
 import '@reach/dialog/styles.css'
 import ReactGA from 'react-ga'
+import { animateGrowIn, animateInDown } from '../utils/animations'
 
 ReactGA.initialize('UA-137879047-1')
 
@@ -79,6 +80,7 @@ const UpdateBrowser = () => (
 
 const Layout = ({ children }) => {
   const [currentPage, setCurrentPage] = useState('')
+  const [showBoos, setShowBoos] = useState(false)
 
   useEffect(() => {
     const initialPage = window.location.pathname.replace(/\//g, '') || 'home'
@@ -98,6 +100,93 @@ const Layout = ({ children }) => {
 
   return (
     <>
+      <div
+        css={{
+          position: 'absolute',
+          top: 0,
+          right: 0,
+          display: 'flex',
+          flexDirection: 'column',
+          alignItems: 'flex-end',
+          zIndex: 88,
+        }}
+      >
+        <button
+          css={[
+            {
+              padding: '10px 14px',
+              border: 0,
+              background: 'transparent',
+              outline: 'none',
+              cursor: 'pointer',
+            },
+            animateInDown(1),
+          ]}
+          onClick={() => setShowBoos(!showBoos)}
+        >
+          <div
+            css={[
+              {
+                fontSize: showBoos ? 36 : 30,
+                transform: `rotate(${showBoos ? '200deg' : '0'})`,
+                transition: 'all 0.25s cubic-bezier(0.68, -0.55, 0.27, 1.55)',
+              },
+              animateGrowIn(1.25),
+            ]}
+          >
+            👻
+          </div>
+          <div
+            css={{
+              width: 48,
+              fontSize: 20,
+              lineHeight: '16px',
+              color: '#eb6123',
+              fontWeight: 600,
+            }}
+          >
+            here's the boos
+          </div>
+        </button>
+        {showBoos && (
+          <ul
+            css={[
+              {
+                width: 200,
+                padding: 10,
+                margin: 0,
+                fontSize: 18,
+                background: '#fff',
+                listStyle: 'none',
+                borderTopLeftRadius: 10,
+                borderBottomLeftRadius: 10,
+              },
+              animateInDown(),
+            ]}
+          >
+            <li css={{ display: 'flex' }}>
+              <span>🎃</span>{' '}
+              <span>
+                <b>Thursday</b> – we'll be at Farmers
+              </span>
+            </li>
+            <li css={{ display: 'flex' }}>
+              <span>🎃</span>{' '}
+              <span>
+                <b>Friday</b> – we'll go downtown to the bars and{' '}
+                <b>be sure to wear a costume! 🧟‍♀️</b>
+              </span>
+            </li>
+            <li css={{ display: 'flex' }}>
+              <span>🎃</span>{' '}
+              <span>
+                <b>Saturday</b> – please <b>be on time!</b>
+              </span>
+            </li>
+          </ul>
+        )}
+      </div>
+
       <TransitionGroup>
         <Transition key={currentPage} timeout={150}>
           {state => (
