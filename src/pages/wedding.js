@@ -133,6 +133,10 @@ export default () => {
               <div css={{ fontSize: '2rem', fontWeight: 600 }}>when</div>
               <div css={{ paddingBottom: 40, fontSize: '2rem' }}>
                 <div css={{ marginBottom: 10 }}>November 2nd, 2019</div>
+                <div css={{ marginBottom: 10 }}>
+                  starting promptly at{' '}
+                  <b css={{ fontSize: '2.25rem' }}>4:30pm</b>
+                </div>
                 <AddToCalendar
                   event={{
                     title: `Dereck and Fatima's Wedding`,

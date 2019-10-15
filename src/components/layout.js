@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react'
 import PropTypes from 'prop-types'
 import { TransitionGroup, Transition } from 'react-transition-group'
 import { Link } from 'gatsby'
+import { keyframes } from '@emotion/core'
 import { isIE, isEdge } from 'react-device-detect'
 import './layout.css'
 import '@reach/dialog/styles.css'
@@ -17,11 +18,26 @@ const styles = {
     background: '#3E3D4D',
     color: '#fff',
     textDecoration: 'none',
+    transition: 'all 0.5s ease-in-out 0s',
   },
   activeTab: {
     background: '#816D66',
   },
 }
+const orange = '#eb6123'
+const crawlAnimation = keyframes({
+  '0%': { transform: 'translateY(220px)', opacity: 0 },
+  '10%': { transform: 'translateY(200px) rotate(10deg)', opacity: 1 },
+  '20%': { transform: 'translateY(180px) rotate(-10deg)' },
+  '30%': { transform: 'translateY(160px) rotate(10deg)' },
+  '40%': { transform: 'translateY(140px) rotate(-10deg)' },
+  '50%': { transform: 'translateY(120px) rotate(10deg)' },
+  '60%': { transform: 'translateY(100px) rotate(-10deg)' },
+  '70%': { transform: 'translateY(80px) rotate(10deg)' },
+  '80%': { transform: 'translateY(40px) rotate(-10deg)' },
+  '90%': { transform: 'translateY(20px) rotate(10deg)' },
+  '100%': { transform: 'translateY(0px) rotate(-10deg)' },
+})
 
 const transitionStyles = {
   entering: { position: 'absolute', opacity: 0 },
@@ -141,7 +157,7 @@ const Layout = ({ children }) => {
               width: 48,
               fontSize: 20,
               lineHeight: '16px',
-              color: '#eb6123',
+              color: orange,
               fontWeight: 600,
             }}
           >
@@ -149,42 +165,56 @@ const Layout = ({ children }) => {
           </div>
         </button>
         {showBoos && (
-          <ul
-            css={[
-              {
-                width: 326,
-                padding: 20,
-                margin: 0,
-                fontSize: 24,
-                background: '#fff',
-                listStyle: 'none',
-                borderTopLeftRadius: 10,
-                borderBottomLeftRadius: 10,
-                boxShadow: '0 2px 10px 6px rgb(129, 109, 102)',
-              },
-              animateInDown(),
-            ]}
-          >
-            <li css={{ display: 'flex' }}>
-              <span>🎃</span>{' '}
-              <span>
-                <b>Thursday</b> – we'll be at Farmers
-              </span>
-            </li>
-            <li css={{ display: 'flex' }}>
-              <span>🎃</span>{' '}
-              <span>
-                <b>Friday</b> – we'll go downtown to the bars and{' '}
-                <b>be sure to wear a costume! 🧟‍♀️</b>
-              </span>
-            </li>
-            <li css={{ margin: 0, display: 'flex' }}>
-              <span>🎃</span>{' '}
-              <span>
-                <b>Saturday</b> – please <b>be on time!</b>
-              </span>
-            </li>
-          </ul>
+          <>
+            <ul
+              css={[
+                {
+                  width: 326,
+                  padding: 20,
+                  margin: 0,
+                  fontSize: 24,
+                  background: '#fff',
+                  listStyle: 'none',
+                  borderTopLeftRadius: 10,
+                  borderBottomLeftRadius: 10,
+                  boxShadow: '0 2px 10px 6px rgb(129, 109, 102)',
+                },
+                animateInDown(),
+              ]}
+            >
+              <li css={{ display: 'flex' }}>
+                <span>🎃</span>{' '}
+                <span>
+                  <b>Thursday</b> – we'll be at Farmers
+                </span>
+              </li>
+              <li css={{ display: 'flex' }}>
+                <span>🎃</span>{' '}
+                <span>
+                  <b>Friday</b> – we'll go downtown to the bars and{' '}
+                  <b>be sure to wear a costume! 🧟‍♀️</b>
+                </span>
+              </li>
+              <li css={{ margin: 0, display: 'flex' }}>
+                <span>🎃</span>{' '}
+                <span>
+                  <b>Saturday</b> – please <b>be on time!</b>
+                </span>
+              </li>
+            </ul>
+
+            <div
+              css={{
+                position: 'absolute',
+                top: 100,
+                right: 0,
+                fontSize: 30,
+                animation: `${crawlAnimation} 8s 0.5s 1 normal backwards`,
+              }}
+            >
+              🕷
+            </div>
+          </>
         )}
       </div>
 
@@ -192,13 +222,16 @@ const Layout = ({ children }) => {
         <Transition key={currentPage} timeout={150}>
           {state => (
             <div
-              style={{
-                width: '100%',
-                height: '100%',
-                transition: 'opacity 150ms ease-in-out',
-                opacity: 0,
-                ...transitionStyles[state],
-              }}
+              className={showBoos ? 'darkMode' : ''}
+              css={[
+                {
+                  width: '100%',
+                  height: '100%',
+                  transition: 'opacity 150ms ease-in-out',
+                  opacity: 0,
+                },
+                transitionStyles[state],
+              ]}
             >
               {children}
             </div>
@@ -219,7 +252,7 @@ const Layout = ({ children }) => {
       >
         <Link
           to="/"
-          style={styles.tab}
+          css={[styles.tab, showBoos ? { background: orange } : {}]}
           activeStyle={styles.activeTab}
           onClick={() => handleChangeTab('home')}
         >
@@ -267,7 +300,7 @@ const Layout = ({ children }) => {
         </Link>
         <Link
           to="/slo"
-          style={styles.tab}
+          css={[styles.tab, showBoos ? { background: orange } : {}]}
           activeStyle={styles.activeTab}
           partiallyActive
           onClick={() => handleChangeTab('slo')}
@@ -288,7 +321,7 @@ const Layout = ({ children }) => {
         </Link>
         <Link
           to="/moments"
-          style={styles.tab}
+          css={[styles.tab, showBoos ? { background: orange } : {}]}
           activeStyle={styles.activeTab}
           partiallyActive
           onClick={() => handleChangeTab('moments')}

@@ -118,7 +118,7 @@ export default () => {
             }}
           >
             <div
-              style={{
+              css={{
                 width: '100%',
                 position: 'absolute',
                 top: 16,
@@ -137,7 +137,7 @@ export default () => {
               href={thingsToDo[index].url}
               target="_blank"
               rel="noopener noreferrer"
-              style={{
+              css={{
                 display: 'block',
                 overflow: 'hidden',
                 border: '20px solid #fff',
@@ -153,7 +153,7 @@ export default () => {
                 styleOuter={{ height: 200 }}
                 styleInner={{ width: '100%', height: '100%' }}
               >
-                <Img fluid={fluid} style={{ width: '100%', height: '100%' }} />
+                <Img fluid={fluid} css={{ width: '100%', height: '100%' }} />
               </Parallax>
             </a>
           </div>

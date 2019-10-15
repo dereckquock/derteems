@@ -70,11 +70,6 @@ export default () => {
               marginBottom: 20,
               fontSize: 38,
               fontWeight: 600,
-              transition: 'all 0.35s cubic-bezier(0, -0.55, 0.25, 2) 0s',
-              ':hover': {
-                marginTop: 6,
-                transform: 'scale(1.1)',
-              },
             },
             animateInUp(),
           ]}
@@ -83,7 +78,14 @@ export default () => {
             href={instagramUrl}
             target="_blank"
             rel="noopener noreferrer"
-            css={{ display: 'block' }}
+            css={{
+              display: 'block',
+              transition: 'all 0.35s cubic-bezier(0, -0.55, 0.25, 2) 0s',
+              ':hover': {
+                marginTop: 6,
+                transform: 'scale(1.1)',
+              },
+            }}
           >
             #TeemQuock
           </a>
