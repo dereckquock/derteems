@@ -7,15 +7,6 @@ import SEO from '../components/seo'
 import AddToCalendar from '../components/addToCalendar'
 import Schedule from '../components/schedule'
 
-const event = {
-  title: `Dereck and Fatima's Wedding`,
-  description: 'Celebrate with us! 🍾',
-  location: 'California',
-  duration: '0500',
-  startDatetime: '20191102T170000',
-  endDatetime: '20191102T220000',
-}
-
 export default () => {
   const {
     logo: {
@@ -113,7 +104,20 @@ export default () => {
               <div css={{ fontSize: '2rem', fontWeight: 600 }}>when</div>
               <div css={{ paddingBottom: 40, fontSize: '2rem' }}>
                 <div css={{ marginBottom: 10 }}>November 2nd, 2019</div>
-                <AddToCalendar event={event} />
+                <div css={{ marginBottom: 10 }}>
+                  starting promptly at{' '}
+                  <b css={{ fontSize: '2.25rem' }}>4:30pm</b>
+                </div>
+                <AddToCalendar
+                  event={{
+                    title: `Dereck and Fatima's Wedding`,
+                    description: 'Celebrate with us! 🍾',
+                    location: 'California',
+                    duration: '0530',
+                    startDatetime: '20191102T163000',
+                    endDatetime: '20191102T220000',
+                  }}
+                />
               </div>
             </div>
 

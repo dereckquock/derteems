@@ -152,14 +152,15 @@ const Layout = ({ children }) => {
           <ul
             css={[
               {
-                width: 200,
-                padding: 10,
+                width: 326,
+                padding: 20,
                 margin: 0,
-                fontSize: 18,
+                fontSize: 24,
                 background: '#fff',
                 listStyle: 'none',
                 borderTopLeftRadius: 10,
                 borderBottomLeftRadius: 10,
+                boxShadow: '0 2px 10px 6px rgb(129, 109, 102)',
               },
               animateInDown(),
             ]}
@@ -177,7 +178,7 @@ const Layout = ({ children }) => {
                 <b>be sure to wear a costume! 🧟‍♀️</b>
               </span>
             </li>
-            <li css={{ display: 'flex' }}>
+            <li css={{ margin: 0, display: 'flex' }}>
               <span>🎃</span>{' '}
               <span>
                 <b>Saturday</b> – please <b>be on time!</b>

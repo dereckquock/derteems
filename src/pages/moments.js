@@ -302,8 +302,6 @@ export default () => {
       images: allFile(filter: { extension: { eq: "jpg" } }) {
         edges {
           node {
-            extension
-            relativePath
             childImageSharp {
               fluid(maxWidth: 1000) {
                 ...GatsbyImageSharpFluid
