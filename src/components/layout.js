@@ -138,7 +138,13 @@ const Layout = ({ children }) => {
             },
             animateInDown(1),
           ]}
-          onClick={() => setShowBoos(!showBoos)}
+          onClick={() => {
+            ReactGA.event({
+              category: 'Boos',
+              action: 'Show',
+            })
+            setShowBoos(!showBoos)
+          }}
         >
           <div
             css={[
