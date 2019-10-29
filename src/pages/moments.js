@@ -332,7 +332,7 @@ export default () => {
   }, [next, prev])
 
   return (
-    <div css={{ background: '#DDD3C9' }}>
+    <>
       <SEO
         title="Moments"
         keywords={[
@@ -410,7 +410,7 @@ export default () => {
       </div>
 
       <DialogOverlay
-        css={{ background: 'hsla(0, 100%, 100%, 0.9)' }}
+        css={{ zIndex: 999, background: 'hsla(0, 100%, 100%, 0.9)' }}
         isOpen={showImageDialog}
         onDismiss={() => setShowImageDialog(false)}
       >
@@ -442,6 +442,6 @@ export default () => {
           <BigImage images={images} activeImageIndex={activeImageIndex} />
         </DialogContent>
       </DialogOverlay>
-    </div>
+    </>
   )
 }

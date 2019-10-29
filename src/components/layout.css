@@ -643,10 +643,7 @@ pre tt:after {
   background-color: #f7dbca;
   font-weight: bold;
 }
-.darkMode div,
-.darkMode a {
-  transition: border-color 0.5s ease-in-out 0.25s,
-    background 0.5s ease-in-out 0.5s, color 0.5s ease-in-out 0s;
+.darkMode {
   border-color: #000;
   background: #000;
   color: #eb6123;

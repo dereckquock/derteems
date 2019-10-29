@@ -7,6 +7,7 @@ import { isIE, isEdge } from 'react-device-detect'
 import './layout.css'
 import '@reach/dialog/styles.css'
 import ReactGA from 'react-ga'
+import { ThemeProvider } from '../utils/theme-context'
 import { animateGrowIn, animateInDown } from '../utils/animations'
 
 ReactGA.initialize('UA-137879047-1')
@@ -26,17 +27,17 @@ const styles = {
 }
 const orange = '#eb6123'
 const crawlAnimation = keyframes({
-  '0%': { transform: 'translateY(220px)', opacity: 0 },
-  '10%': { transform: 'translateY(200px) rotate(10deg)', opacity: 1 },
+  '0%': { transform: 'translateY(220px)' },
+  '10%': { transform: 'translateY(200px) rotate(10deg)' },
   '20%': { transform: 'translateY(180px) rotate(-10deg)' },
-  '30%': { transform: 'translateY(160px) rotate(10deg)' },
-  '40%': { transform: 'translateY(140px) rotate(-10deg)' },
-  '50%': { transform: 'translateY(120px) rotate(10deg)' },
-  '60%': { transform: 'translateY(100px) rotate(-10deg)' },
-  '70%': { transform: 'translateY(80px) rotate(10deg)' },
+  '30%': { transform: 'translateY(160px) rotate(10deg)', opacity: 1 },
+  '40%': { transform: 'translateY(140px) rotate(-10deg)', opacity: 1 },
+  '50%': { transform: 'translateY(120px) rotate(10deg)', opacity: 1 },
+  '60%': { transform: 'translateY(100px) rotate(-10deg)', opacity: 1 },
+  '70%': { transform: 'translateY(80px) rotate(10deg)', opacity: 1 },
   '80%': { transform: 'translateY(40px) rotate(-10deg)' },
   '90%': { transform: 'translateY(20px) rotate(10deg)' },
-  '100%': { transform: 'translateY(0px) rotate(-10deg)' },
+  '100%': { transform: 'translateY(10px) rotate(-10deg)' },
 })
 
 const transitionStyles = {
@@ -161,8 +162,8 @@ const Layout = ({ children }) => {
           <div
             css={{
               width: 48,
-              fontSize: 20,
-              lineHeight: '16px',
+              fontSize: 24,
+              lineHeight: '18px',
               color: orange,
               fontWeight: 600,
             }}
@@ -178,31 +179,31 @@ const Layout = ({ children }) => {
                   width: 326,
                   padding: 20,
                   margin: 0,
-                  fontSize: 24,
+                  fontSize: 28,
                   background: '#fff',
                   listStyle: 'none',
                   borderTopLeftRadius: 10,
                   borderBottomLeftRadius: 10,
-                  boxShadow: '0 2px 10px 6px rgb(129, 109, 102)',
+                  boxShadow: '0 2px 16px 10px rgb(129, 109, 102)',
                 },
                 animateInDown(),
               ]}
             >
               <li css={{ display: 'flex' }}>
-                <span>🎃</span>{' '}
+                <span css={{ marginRight: 4 }}>🎃</span>
                 <span>
                   <b>Thursday</b> – we'll be at Farmers
                 </span>
               </li>
               <li css={{ display: 'flex' }}>
-                <span>🎃</span>{' '}
+                <span css={{ marginRight: 4 }}>🎃</span>
                 <span>
                   <b>Friday</b> – we'll go downtown to the bars and{' '}
                   <b>be sure to wear a costume! 🧟‍♀️</b>
                 </span>
               </li>
               <li css={{ margin: 0, display: 'flex' }}>
-                <span>🎃</span>{' '}
+                <span css={{ marginRight: 4 }}>🎃</span>
                 <span>
                   <b>Saturday</b> – please <b>be on time!</b>
                 </span>
@@ -212,10 +213,11 @@ const Layout = ({ children }) => {
             <div
               css={{
                 position: 'absolute',
-                top: 100,
+                top: 130,
                 right: 0,
                 fontSize: 30,
-                animation: `${crawlAnimation} 8s 0.5s 1 normal backwards`,
+                opacity: 0,
+                animation: `${crawlAnimation} 3s ease-in 0.5s infinite normal backwards`,
               }}
             >
               🕷
@@ -233,13 +235,15 @@ const Layout = ({ children }) => {
                 {
                   width: '100%',
                   height: '100%',
-                  transition: 'opacity 150ms ease-in-out',
+                  transition: 'all 1.25s ease-in-out',
                   opacity: 0,
                 },
                 transitionStyles[state],
               ]}
             >
-              {children}
+              <ThemeProvider key={currentPage} darkMode={showBoos}>
+                {children}
+              </ThemeProvider>
             </div>
           )}
         </Transition>

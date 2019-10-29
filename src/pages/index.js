@@ -6,6 +6,7 @@ import { animateInUp, animateGrowIn } from '../utils/animations'
 import SEO from '../components/seo'
 import AddToCalendar from '../components/addToCalendar'
 import Schedule from '../components/schedule'
+import { useTheme } from '../utils/theme-context'
 
 export default () => {
   const {
@@ -23,6 +24,7 @@ export default () => {
       }
     }
   `)
+  const { darkMode } = useTheme()
 
   let instagramUrl = 'https://www.instagram.com/explore/tags/teemquock/'
 
@@ -193,11 +195,12 @@ export default () => {
                   <div
                     css={{
                       overflow: 'hidden',
-                      border: '20px solid #fff',
+                      border: `20px solid ${darkMode ? '#000' : '#fff'}`,
                       borderTopWidth: 80,
-                      background: '#fff',
+                      background: darkMode ? '#000' : '#fff',
                       borderRadius: 4,
                       boxShadow: '2px 4px 16px 2px #000',
+                      transition: 'all 1.25s ease-in-out',
                     }}
                   >
                     <div
@@ -251,11 +254,12 @@ export default () => {
                   <div
                     css={{
                       overflow: 'hidden',
-                      border: '20px solid #fff',
+                      border: `20px solid ${darkMode ? '#000' : '#fff'}`,
                       borderTopWidth: 80,
-                      background: '#fff',
+                      background: darkMode ? '#000' : '#fff',
                       borderRadius: 4,
                       boxShadow: '2px 4px 16px 2px #000',
+                      transition: 'all 1.25s ease-in-out',
                     }}
                   >
                     <div

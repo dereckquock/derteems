@@ -2,10 +2,12 @@ import React, { useState } from 'react'
 import { DialogOverlay, DialogContent } from '@reach/dialog'
 import ReactGA from 'react-ga'
 import './schedule.css'
+import { useTheme } from '../utils/theme-context'
 import { animateInDown, animateInUp } from '../utils/animations'
 
 export default props => {
   const [showSchedule, setShowSchedule] = useState(false)
+  const { darkMode } = useTheme()
 
   return (
     <>
@@ -31,7 +33,11 @@ export default props => {
       </button>
 
       <DialogOverlay
-        css={{ background: 'hsla(0, 100%, 100%, 0.9)' }}
+        css={{
+          zIndex: 999,
+          background: darkMode ? '#000' : 'hsla(0, 100%, 100%, 0.9)',
+          transition: 'all 1.25s ease-in-out',
+        }}
         isOpen={showSchedule}
       >
         <DialogContent
@@ -40,10 +46,13 @@ export default props => {
             height: '80vh !important',
             maxWidth: 1024,
             textAlign: 'center',
+            color: darkMode ? '#eb6123' : '#000',
+            background: darkMode ? '#000' : '#fff',
             boxShadow: '0px 10px 50px hsla(0, 0%, 0%, 0.33)',
             borderRadius: 8,
             overflow: 'scroll',
             WebkitOverflowScrolling: 'touch',
+            transition: 'all 1.25s ease-in-out',
 
             '@media(max-width: 414px)': {
               width: '90vw !important',
@@ -84,7 +93,7 @@ export default props => {
                   y1="20"
                   x2="20"
                   y2="1"
-                  stroke="#3E3D4D"
+                  stroke={darkMode ? '#eb6123' : '#3E3D4D'}
                   strokeWidth="2"
                 />
                 <line
@@ -92,7 +101,7 @@ export default props => {
                   y1="1"
                   x2="20"
                   y2="20"
-                  stroke="#3E3D4D"
+                  stroke={darkMode ? '#eb6123' : '#3E3D4D'}
                   strokeWidth="2"
                 />
               </svg>
