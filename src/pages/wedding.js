@@ -2,11 +2,11 @@ import React from 'react'
 import { useStaticQuery, graphql } from 'gatsby'
 import Img from 'gatsby-image'
 import { isIOS, isAndroid } from 'react-device-detect'
-import { animateInDown, animateInUp, animateGrowIn } from '../utils/animations'
+import { animateInUp, animateGrowIn } from '../utils/animations'
 import SEO from '../components/seo'
-import RSVP from '../components/rsvp'
 import AddToCalendar from '../components/addToCalendar'
 import Schedule from '../components/schedule'
+import { useTheme } from '../utils/theme-context'
 
 export default () => {
   const {
@@ -24,6 +24,7 @@ export default () => {
       }
     }
   `)
+  const { darkMode } = useTheme()
 
   let instagramUrl = 'https://www.instagram.com/explore/tags/teemquock/'
 
@@ -37,21 +38,8 @@ export default () => {
 
   return (
     <>
-      <SEO title="The Wedding" />
+      <SEO title="🥂 dereck & fatima" />
       <div className="contents">
-        <div
-          css={{
-            fontSize: '2.25rem',
-            fontFamily: 'Shorelines',
-            breakWord: 'keep-all',
-            '@media(max-width: 414px)': { fontSize: 30 },
-            '@media(max-width: 320px)': { fontSize: 26 },
-            ...animateInDown(),
-          }}
-        >
-          (wedding)
-        </div>
-
         <a
           href={instagramUrl}
           target="_blank"
@@ -84,11 +72,6 @@ export default () => {
               marginBottom: 20,
               fontSize: 38,
               fontWeight: 600,
-              transition: 'all 0.35s cubic-bezier(0, -0.55, 0.25, 2) 0s',
-              ':hover': {
-                marginTop: 6,
-                transform: 'scale(1.1)',
-              },
             },
             animateInUp(),
           ]}
@@ -97,28 +80,20 @@ export default () => {
             href={instagramUrl}
             target="_blank"
             rel="noopener noreferrer"
-            css={{ display: 'block' }}
+            css={{
+              display: 'block',
+              transition: 'all 0.35s cubic-bezier(0, -0.55, 0.25, 2) 0s',
+              ':hover': {
+                marginTop: 6,
+                transform: 'scale(1.1)',
+              },
+            }}
           >
             #TeemQuock
           </a>
         </div>
 
-        <div
-          css={{
-            width: '100%',
-            maxWidth: 400,
-            marginTop: 10,
-            marginBottom: 20,
-            display: 'inline-block',
-            justifyContent: 'center',
-            overflow: 'hidden',
-            border: '1px solid #816D66',
-            borderRadius: 26,
-            ...animateInUp(1 / 4),
-          }}
-        >
-          <RSVP />
-        </div>
+        <Schedule css={animateInUp(1 / 4)} />
 
         <div
           css={{
@@ -186,8 +161,6 @@ export default () => {
                 we suggest leaving stilettos at home
               </em>
             </div>
-
-            <Schedule css={animateInUp(5 / 4)} />
           </div>
 
           <div>
@@ -222,11 +195,12 @@ export default () => {
                   <div
                     css={{
                       overflow: 'hidden',
-                      border: '20px solid #fff',
+                      border: `20px solid ${darkMode ? '#000' : '#fff'}`,
                       borderTopWidth: 80,
-                      background: '#fff',
+                      background: darkMode ? '#000' : '#fff',
                       borderRadius: 4,
                       boxShadow: '2px 4px 16px 2px #000',
+                      transition: 'all 1.25s ease-in-out',
                     }}
                   >
                     <div
@@ -280,11 +254,12 @@ export default () => {
                   <div
                     css={{
                       overflow: 'hidden',
-                      border: '20px solid #fff',
+                      border: `20px solid ${darkMode ? '#000' : '#fff'}`,
                       borderTopWidth: 80,
-                      background: '#fff',
+                      background: darkMode ? '#000' : '#fff',
                       borderRadius: 4,
                       boxShadow: '2px 4px 16px 2px #000',
+                      transition: 'all 1.25s ease-in-out',
                     }}
                   >
                     <div

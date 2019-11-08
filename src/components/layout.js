@@ -192,20 +192,21 @@ const Layout = ({ children }) => {
               <li css={{ display: 'flex' }}>
                 <span css={{ marginRight: 4 }}>🎃</span>
                 <span>
-                  <b>Thursday</b> – we'll be at Farmers
+                  <b>Thursday</b> – we went to Farmers and it was delicious
                 </span>
               </li>
               <li css={{ display: 'flex' }}>
                 <span css={{ marginRight: 4 }}>🎃</span>
                 <span>
-                  <b>Friday</b> – we'll go downtown to the bars and{' '}
-                  <b>be sure to wear a costume! 🧟‍♀️</b>
+                  <b>Friday</b> – we went downtown to the bars and we were saucy
+                  🌮🌶🔥
                 </span>
               </li>
               <li css={{ margin: 0, display: 'flex' }}>
                 <span css={{ marginRight: 4 }}>🎃</span>
                 <span>
-                  <b>Saturday</b> – please <b>be on time!</b>
+                  <b>THANK YOU ALL FOR COMING 🔥</b> we love you and we're
+                  blessed to have you in our lives
                 </span>
               </li>
             </ul>

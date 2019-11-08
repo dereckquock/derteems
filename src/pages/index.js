@@ -4,8 +4,6 @@ import Img from 'gatsby-image'
 import { isIOS, isAndroid } from 'react-device-detect'
 import { animateInUp, animateGrowIn } from '../utils/animations'
 import SEO from '../components/seo'
-import AddToCalendar from '../components/addToCalendar'
-import Schedule from '../components/schedule'
 import { useTheme } from '../utils/theme-context'
 
 export default () => {
@@ -93,7 +91,9 @@ export default () => {
           </a>
         </div>
 
-        <Schedule css={animateInUp(1 / 4)} />
+        <h2 css={[{ marginBottom: 40, fontSize: 40 }, animateInUp(1 / 4)]}>
+          thanks for celebrating with us! we love you all 🥰
+        </h2>
 
         <div
           css={{
@@ -112,16 +112,6 @@ export default () => {
                   starting promptly at{' '}
                   <b css={{ fontSize: '2.25rem' }}>4:30pm</b>
                 </div>
-                <AddToCalendar
-                  event={{
-                    title: `Dereck and Fatima's Wedding`,
-                    description: 'Celebrate with us! 🍾',
-                    location: 'California',
-                    duration: '0530',
-                    startDatetime: '20191102T163000',
-                    endDatetime: '20191102T220000',
-                  }}
-                />
               </div>
             </div>
 
@@ -150,16 +140,6 @@ export default () => {
                   </a>
                 </div>
               </div>
-            </div>
-
-            <div css={animateInUp(4 / 4)}>
-              <div css={{ fontSize: '2rem', fontWeight: 600 }}>attire</div>
-              <div css={{ marginBottom: 10, fontSize: '2rem' }}>
-                semi-formal
-              </div>
-              <em css={{ marginBottom: 10, fontSize: '1.75rem' }}>
-                we suggest leaving stilettos at home
-              </em>
             </div>
           </div>
 
