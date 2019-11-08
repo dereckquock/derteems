@@ -357,7 +357,7 @@ export default () => {
           (moments)
         </div>
 
-        <div css={animateInUp()}>
+        <div css={[{ fontSize: 18 }, animateInUp()]}>
           Though one may be overpowered, two can defend themselves. A cord of
           three strands is not quickly broken.
         </div>
