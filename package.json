@@ -33,7 +33,7 @@
   },
   "dependencies": {
     "@emotion/core": "^10.0.22",
-    "@reach/alert": "^0.8.0",
+    "@reach/alert": "^0.8.6",
     "@reach/dialog": "^0.8.0",
     "@reach/visually-hidden": "^0.8.0",
     "gatsby": "^2.19.12",
