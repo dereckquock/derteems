@@ -57,7 +57,7 @@
     "react-dom": "^16.12.0",
     "react-ga": "^2.7.0",
     "react-helmet": "^5.2.1",
-    "react-scroll-parallax": "^2.2.0",
+    "react-scroll-parallax": "^2.3.1",
     "react-transition-group": "^4.3.0",
     "react-use": "^13.22.4",
     "typeface-amatic-sc": "^0.0.72"
