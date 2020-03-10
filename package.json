@@ -32,7 +32,7 @@
     }
   },
   "dependencies": {
-    "@emotion/core": "^10.0.22",
+    "@emotion/core": "^10.0.28",
     "@reach/alert": "^0.8.0",
     "@reach/dialog": "^0.8.0",
     "@reach/visually-hidden": "^0.8.0",
